@@ -17,39 +17,39 @@ namespace AgendaPlusAPI.Controllers
         private BaseDeDatos db = new BaseDeDatos();
 
         // GET: api/Pendientes
-        public IQueryable<Pendiente> GetPendientes()
+        public IQueryable<Pendientes> GetPendientes()
         {
             return db.Pendientes;
         }
 
         // GET: api/Pendientes/5
-        [ResponseType(typeof(Pendiente))]
-        public IHttpActionResult GetPendiente(int id)
+        [ResponseType(typeof(Pendientes))]
+        public IHttpActionResult GetPendientes(int id)
         {
-            Pendiente pendiente = db.Pendientes.Find(id);
-            if (pendiente == null)
+            Pendientes pendientes = db.Pendientes.Find(id);
+            if (pendientes == null)
             {
                 return NotFound();
             }
 
-            return Ok(pendiente);
+            return Ok(pendientes);
         }
 
         // PUT: api/Pendientes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPendiente(int id, Pendiente pendiente)
+        public IHttpActionResult PutPendientes(int id, Pendientes pendientes)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pendiente.PendienteID)
+            if (id != pendientes.PendienteID)
             {
                 return BadRequest();
             }
 
-            db.Entry(pendiente).State = EntityState.Modified;
+            db.Entry(pendientes).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PendienteExists(id))
+                if (!PendientesExists(id))
                 {
                     return NotFound();
                 }
@@ -71,34 +71,34 @@ namespace AgendaPlusAPI.Controllers
         }
 
         // POST: api/Pendientes
-        [ResponseType(typeof(Pendiente))]
-        public IHttpActionResult PostPendiente(Pendiente pendiente)
+        [ResponseType(typeof(Pendientes))]
+        public IHttpActionResult PostPendientes(Pendientes pendientes)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Pendientes.Add(pendiente);
+            db.Pendientes.Add(pendientes);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pendiente.PendienteID }, pendiente);
+            return CreatedAtRoute("DefaultApi", new { id = pendientes.PendienteID }, pendientes);
         }
 
         // DELETE: api/Pendientes/5
-        [ResponseType(typeof(Pendiente))]
-        public IHttpActionResult DeletePendiente(int id)
+        [ResponseType(typeof(Pendientes))]
+        public IHttpActionResult DeletePendientes(int id)
         {
-            Pendiente pendiente = db.Pendientes.Find(id);
-            if (pendiente == null)
+            Pendientes pendientes = db.Pendientes.Find(id);
+            if (pendientes == null)
             {
                 return NotFound();
             }
 
-            db.Pendientes.Remove(pendiente);
+            db.Pendientes.Remove(pendientes);
             db.SaveChanges();
 
-            return Ok(pendiente);
+            return Ok(pendientes);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,7 +110,7 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PendienteExists(int id)
+        private bool PendientesExists(int id)
         {
             return db.Pendientes.Count(e => e.PendienteID == id) > 0;
         }

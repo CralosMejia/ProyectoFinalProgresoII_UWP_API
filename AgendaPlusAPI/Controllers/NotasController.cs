@@ -17,39 +17,39 @@ namespace AgendaPlusAPI.Controllers
         private BaseDeDatos db = new BaseDeDatos();
 
         // GET: api/Notas
-        public IQueryable<Nota> GetNotas()
+        public IQueryable<Notas> GetNotas()
         {
             return db.Notas;
         }
 
         // GET: api/Notas/5
-        [ResponseType(typeof(Nota))]
-        public IHttpActionResult GetNota(int id)
+        [ResponseType(typeof(Notas))]
+        public IHttpActionResult GetNotas(int id)
         {
-            Nota nota = db.Notas.Find(id);
-            if (nota == null)
+            Notas notas = db.Notas.Find(id);
+            if (notas == null)
             {
                 return NotFound();
             }
 
-            return Ok(nota);
+            return Ok(notas);
         }
 
         // PUT: api/Notas/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutNota(int id, Nota nota)
+        public IHttpActionResult PutNotas(int id, Notas notas)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != nota.NotaID)
+            if (id != notas.NotaID)
             {
                 return BadRequest();
             }
 
-            db.Entry(nota).State = EntityState.Modified;
+            db.Entry(notas).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!NotaExists(id))
+                if (!NotasExists(id))
                 {
                     return NotFound();
                 }
@@ -71,34 +71,34 @@ namespace AgendaPlusAPI.Controllers
         }
 
         // POST: api/Notas
-        [ResponseType(typeof(Nota))]
-        public IHttpActionResult PostNota(Nota nota)
+        [ResponseType(typeof(Notas))]
+        public IHttpActionResult PostNotas(Notas notas)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Notas.Add(nota);
+            db.Notas.Add(notas);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = nota.NotaID }, nota);
+            return CreatedAtRoute("DefaultApi", new { id = notas.NotaID }, notas);
         }
 
         // DELETE: api/Notas/5
-        [ResponseType(typeof(Nota))]
-        public IHttpActionResult DeleteNota(int id)
+        [ResponseType(typeof(Notas))]
+        public IHttpActionResult DeleteNotas(int id)
         {
-            Nota nota = db.Notas.Find(id);
-            if (nota == null)
+            Notas notas = db.Notas.Find(id);
+            if (notas == null)
             {
                 return NotFound();
             }
 
-            db.Notas.Remove(nota);
+            db.Notas.Remove(notas);
             db.SaveChanges();
 
-            return Ok(nota);
+            return Ok(notas);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,7 +110,7 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool NotaExists(int id)
+        private bool NotasExists(int id)
         {
             return db.Notas.Count(e => e.NotaID == id) > 0;
         }

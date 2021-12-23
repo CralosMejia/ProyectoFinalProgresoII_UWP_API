@@ -173,13 +173,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseDeDatos.cs" />
-    <Compile Include="Models\Contacto.cs" />
-    <Compile Include="Models\C__MigrationHistory.cs" />
-    <Compile Include="Models\FechasImportante.cs" />
-    <Compile Include="Models\Nota.cs" />
-    <Compile Include="Models\Pendiente.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Contactos.cs" />
+    <Compile Include="Models\FechasImportantes.cs" />
+    <Compile Include="Models\Notas.cs" />
+    <Compile Include="Models\Pendientes.cs" />
+    <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

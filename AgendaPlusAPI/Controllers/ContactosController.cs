@@ -17,39 +17,39 @@ namespace AgendaPlusAPI.Controllers
         private BaseDeDatos db = new BaseDeDatos();
 
         // GET: api/Contactos
-        public IQueryable<Contacto> GetContactos()
+        public IQueryable<Contactos> GetContactos()
         {
             return db.Contactos;
         }
 
         // GET: api/Contactos/5
-        [ResponseType(typeof(Contacto))]
-        public IHttpActionResult GetContacto(int id)
+        [ResponseType(typeof(Contactos))]
+        public IHttpActionResult GetContactos(int id)
         {
-            Contacto contacto = db.Contactos.Find(id);
-            if (contacto == null)
+            Contactos contactos = db.Contactos.Find(id);
+            if (contactos == null)
             {
                 return NotFound();
             }
 
-            return Ok(contacto);
+            return Ok(contactos);
         }
 
         // PUT: api/Contactos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutContacto(int id, Contacto contacto)
+        public IHttpActionResult PutContactos(int id, Contactos contactos)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contacto.ContactoID)
+            if (id != contactos.ContactoID)
             {
                 return BadRequest();
             }
 
-            db.Entry(contacto).State = EntityState.Modified;
+            db.Entry(contactos).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContactoExists(id))
+                if (!ContactosExists(id))
                 {
                     return NotFound();
                 }
@@ -71,34 +71,34 @@ namespace AgendaPlusAPI.Controllers
         }
 
         // POST: api/Contactos
-        [ResponseType(typeof(Contacto))]
-        public IHttpActionResult PostContacto(Contacto contacto)
+        [ResponseType(typeof(Contactos))]
+        public IHttpActionResult PostContactos(Contactos contactos)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Contactos.Add(contacto);
+            db.Contactos.Add(contactos);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = contacto.ContactoID }, contacto);
+            return CreatedAtRoute("DefaultApi", new { id = contactos.ContactoID }, contactos);
         }
 
         // DELETE: api/Contactos/5
-        [ResponseType(typeof(Contacto))]
-        public IHttpActionResult DeleteContacto(int id)
+        [ResponseType(typeof(Contactos))]
+        public IHttpActionResult DeleteContactos(int id)
         {
-            Contacto contacto = db.Contactos.Find(id);
-            if (contacto == null)
+            Contactos contactos = db.Contactos.Find(id);
+            if (contactos == null)
             {
                 return NotFound();
             }
 
-            db.Contactos.Remove(contacto);
+            db.Contactos.Remove(contactos);
             db.SaveChanges();
 
-            return Ok(contacto);
+            return Ok(contactos);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,7 +110,7 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ContactoExists(int id)
+        private bool ContactosExists(int id)
         {
             return db.Contactos.Count(e => e.ContactoID == id) > 0;
         }

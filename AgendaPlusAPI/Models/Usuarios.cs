@@ -6,17 +6,18 @@ namespace AgendaPlusAPI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Usuario
+    public partial class Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
+        public Usuarios()
         {
-            Contactos = new HashSet<Contacto>();
-            FechasImportantes = new HashSet<FechasImportante>();
-            Notas = new HashSet<Nota>();
-            Pendientes = new HashSet<Pendiente>();
+            Contactos = new HashSet<Contactos>();
+            FechasImportantes = new HashSet<FechasImportantes>();
+            Notas = new HashSet<Notas>();
+            Pendientes = new HashSet<Pendientes>();
         }
 
+        [Key]
         public int UsuarioID { get; set; }
 
         [Required]
@@ -34,15 +35,15 @@ namespace AgendaPlusAPI.Models
         public string Avatar { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contacto> Contactos { get; set; }
+        public virtual ICollection<Contactos> Contactos { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FechasImportante> FechasImportantes { get; set; }
+        public virtual ICollection<FechasImportantes> FechasImportantes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nota> Notas { get; set; }
+        public virtual ICollection<Notas> Notas { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pendiente> Pendientes { get; set; }
+        public virtual ICollection<Pendientes> Pendientes { get; set; }
     }
 }
