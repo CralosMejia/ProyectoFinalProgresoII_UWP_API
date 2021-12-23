@@ -26,5 +26,10 @@ namespace AgendaPlusUWP.Views
         {
             this.InitializeComponent();
         }
+
+        private void btn_AddTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

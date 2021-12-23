@@ -2,7 +2,7 @@
     x:Class="AgendaPlusUWP.Views.MainTasks"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AgendaPlusUWP.Views"
+    xmlns:local="using:AgendaPlusUWP.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -110,6 +110,30 @@
                 <!--AQUI APARECEN DINAMICAMENTE LOS PENDEINTES-->
                 <StackPanel   Grid.Row="0" MinHeight="725" MaxHeight="728">
 
+
+                    <GridView>
+                        <GridView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
+                                    <TextBlock Text="Titulo" Width="320" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                    <TextBlock Text="Descripcion" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridView.HeaderTemplate>
+                    </GridView>
+                    <ScrollViewer
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" Height="320">
+                        <GridView x:Name="ListaNota">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="local:Pendientes" >
+                                    <StackPanel Orientation="Horizontal"  Margin="15,5,0,0">
+                                        <TextBlock x:Name="TituloNota" Text="{x:Bind Titulo}" Width="320" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind Descripcion}" Width="500" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </ScrollViewer>
                     <!--ABRE COMPONENTE PENDIENTES-->
                     <!--<StackPanel Height="150" Width="500" CornerRadius="20">
                         <Grid MinHeight="150">

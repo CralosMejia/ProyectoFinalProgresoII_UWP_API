@@ -119,7 +119,7 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Width="314">
-                        <Button x:Name="btn_AddTask" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Create" FontSize="25" HorizontalAlignment="Center" Foreground="White">
+                        <Button x:Name="btn_AddTask" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Create" FontSize="25" HorizontalAlignment="Center" Foreground="White" Click="btn_AddTask_Click">
 
 
                         </Button>

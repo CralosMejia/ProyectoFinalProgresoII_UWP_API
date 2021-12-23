@@ -27,17 +27,14 @@ namespace AgendaPlusUWP.Views
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
             ("pendientes", typeof(MainTasks)),
-            ("contactos", typeof(AgregarPendientes)),
-            ("notas", typeof(EditarPendientes)),
-            ("fechas", typeof(VerPendientes)),
+            ("contactos", typeof(AddTasks)),
+            ("notas", typeof(EditTasks)),
+            ("fechas", typeof(TaskDetails)),
         };
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
