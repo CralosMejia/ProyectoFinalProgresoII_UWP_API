@@ -63,10 +63,10 @@
                         </StackPanel>
                         <!--buscar-->
                         <StackPanel Grid.Column="1" MinHeight="30"  VerticalAlignment="Top" Height="99">
-                            <TextBox  CornerRadius="10" Header="Search"  x:Name="buscar" Width=" 495" Foreground="Black" BorderThickness="1,1,1,1" Height="85" HorizontalAlignment="Left" FontSize="25" Background="#FFC5C5C5">
+                            <TextBox  CornerRadius="10" Header="Search"  x:Name="buscar" Width=" 495" Foreground="Black" BorderThickness="1,1,1,1" Height="85" HorizontalAlignment="Left" FontSize="25" Background="#FFC5C5C5" TextChanged="buscar_TextChanged">
                                 <TextBox.HeaderTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding}" Foreground="Black" />
+                                        <TextBlock Text="Search by task title" Foreground="Black" />
                                     </DataTemplate>
                                 </TextBox.HeaderTemplate>
                             </TextBox>
@@ -97,38 +97,44 @@
 
         <!--Contenido Principal-->
         <StackPanel x:Name="panelPrincipal" Grid.Column="1" Grid.Row="1" Padding="30">
-            <Grid MinHeight="600">
+            <Grid MinHeight="500" Height="585">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
 
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="166"/>
                 </Grid.RowDefinitions>
 
                 <!--AQUI APARECEN DINAMICAMENTE LOS PENDEINTES-->
-                <StackPanel   Grid.Row="0" MinHeight="725" MaxHeight="728">
+                <StackPanel   Grid.Row="0" MinHeight="725" MaxHeight="728" Margin="0,0,0,-140" Grid.RowSpan="2">
 
 
                     <GridView>
                         <GridView.HeaderTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
-                                    <TextBlock Text="Titulo" Width="320" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
-                                    <TextBlock Text="Descripcion" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                    <TextBlock Text="Title" Width="255" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                    <TextBlock Text="Description" Width="255"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                    <TextBlock Text="Deadline" Width="250"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                    <TextBlock Text="Priority" Width="150"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                    <TextBlock Text="State" Width="100"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridView.HeaderTemplate>
                     </GridView>
                     <ScrollViewer
                             ScrollViewer.VerticalScrollBarVisibility="Auto" Height="320">
-                        <GridView x:Name="ListaNota">
+                        <GridView x:Name="ListaPendientes">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="local:Pendientes" >
                                     <StackPanel Orientation="Horizontal"  Margin="15,5,0,0">
-                                        <TextBlock x:Name="TituloNota" Text="{x:Bind Titulo}" Width="320" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{x:Bind Descripcion}" Width="500" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind Titulo}" Width="255" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind Descripcion}" Width="255" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind FechaLimite}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind Prioridad}" Width="150" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind Estado}" Width="100" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
@@ -202,34 +208,61 @@
 
                 <!--definicion parte baja-->
                 <StackPanel Grid.Row="1">
-                    <Grid MinHeight="100">
+                    <Grid MinHeight="150">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="800"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
                         <!--CONTROL DE PAGINACION VA AQUI-->
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center" MinHeight="100">
+                        <StackPanel Grid.Column="3" VerticalAlignment="Center" MinHeight="100">
 
 
                         </StackPanel>
 
                         <!--boton crear pendiente-->
-                        <StackPanel Grid.Column="2" VerticalAlignment="Center" MinHeight="100" HorizontalAlignment="Center" Width="125">
+                        <StackPanel Grid.Column="4" VerticalAlignment="Center" MinHeight="100" HorizontalAlignment="Center" Width="125">
 
-                            <Button x:Name="btn_Add"  Width="87" HorizontalAlignment="Center" Background="#FF63A2AC"  CornerRadius="1000" Height="78" >
+                            <Button x:Name="btn_AddPendiente"  Width="87" HorizontalAlignment="Center" Background="#FF63A2AC"  CornerRadius="1000" Height="78" >
                                 <Image   MinHeight="64" VerticalAlignment="Center"  HorizontalAlignment="Left" Source="/Assets/mas.png" Height="64" Width="64" FocusVisualPrimaryBrush="White"/>
                             </Button>
                         </StackPanel>
                         <!--boton poner pendiente como realizado-->
-                        <StackPanel Grid.Column="3" VerticalAlignment="Center" MinHeight="100">
+                        <StackPanel Grid.Column="5" VerticalAlignment="Center" MinHeight="100">
 
-                            <Button Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                            <Button x:Name="btn_PendienteRealizado" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
                                 <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/marca-de-verificacion-para-verificacion.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
                             </Button>
                         </StackPanel>
+                        
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center" MinHeight="100">
+
+                            <Button x:Name="btn_verPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                                <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/ver.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
+                            </Button>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" MinHeight="100">
+
+                            <Button  x:Name="btn_EditPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                                <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/editar.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
+                            </Button>
+
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="2" VerticalAlignment="Center" MinHeight="100">
+
+                            <Button x:Name="btn_DelPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                                <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/basura.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
+                            </Button>
+
+                        </StackPanel>
+
                     </Grid>
 
 
