@@ -74,15 +74,16 @@
 
                         <!--ordenar-->
                         <StackPanel Grid.Column="2" MinHeight="30"  VerticalAlignment="Center" Height="99" >
-                            <ComboBox CornerRadius="10" x:Name="comboBox" Width=" 250" Foreground="Black" BorderThickness="1,1,1,1"  Header="Select task type" FontSize="25" Background="#FFC5C5C5" >
+                            <ComboBox SelectedIndex="2" CornerRadius="10" x:Name="cB_TipoTask" Width=" 250" Foreground="Black" BorderThickness="1,1,1,1"  Header="Select task type" FontSize="25" Background="#FFC5C5C5" SelectionChanged="cB_TipoTask_SelectionChanged" >
                                 <ComboBoxItem Content="Pending tasks" Foreground="Black" FontSize="25" Background="White"/>
-                                <ComboBoxItem Content="Completed tasks" Foreground="Black" FontSize="25" Background="White"/>
+                                <ComboBoxItem Content="Done tasks" Foreground="Black" FontSize="25" Background="White"/>
+                                <ComboBoxItem Content="No filter" Foreground="Black" FontSize="25" Background="White"/>
                             </ComboBox>
                         </StackPanel>
 
                         <!--filtrar-->
                         <StackPanel Grid.Column="3" MinHeight="30" VerticalAlignment="Center" Height="99" >
-                            <ComboBox CornerRadius="10" x:Name="comboBox2" Width=" 250" Foreground="Black" BorderThickness="1,1,1,1" Header="Sort by"  HorizontalAlignment="Left" FontSize="25" Background="#FFC5C5C5">
+                            <ComboBox CornerRadius="10" x:Name="cB_SortBy" Width=" 250" Foreground="Black" BorderThickness="1,1,1,1" Header="Sort by"  HorizontalAlignment="Left" FontSize="25" Background="#FFC5C5C5">
                                 <ComboBoxItem Content="Importance" Foreground="Black" FontSize="25" Background="White"/>
                             </ComboBox>
                         </StackPanel>
@@ -126,19 +127,19 @@
                     </GridView>
                     <ScrollViewer
                             ScrollViewer.VerticalScrollBarVisibility="Auto" Height="320">
-                        <GridView x:Name="ListaPendientes">
-                            <GridView.ItemTemplate>
+                        <ListView x:Name="ListaPendientes">
+                            <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local:Pendientes" >
                                     <StackPanel Orientation="Horizontal"  Margin="15,5,0,0">
                                         <TextBlock Text="{x:Bind Titulo}" Width="255" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
                                         <TextBlock Text="{x:Bind Descripcion}" Width="255" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
                                         <TextBlock Text="{x:Bind FechaLimite}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{x:Bind Prioridad}" Width="150" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
-                                        <TextBlock Text="{x:Bind Estado}" Width="100" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind PrioridadString}" Width="150" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{x:Bind EstadoString}" Width="100" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
                                     </StackPanel>
                                 </DataTemplate>
-                            </GridView.ItemTemplate>
-                        </GridView>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </ScrollViewer>
                     <!--ABRE COMPONENTE PENDIENTES-->
                     <!--<StackPanel Height="150" Width="500" CornerRadius="20">

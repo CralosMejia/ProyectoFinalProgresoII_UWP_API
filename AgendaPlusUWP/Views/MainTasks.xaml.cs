@@ -62,10 +62,21 @@ namespace AgendaPlusUWP.Views
             //se deserializa el contenido para formatear de acuerdo a la interfaz
             var resultado = JsonConvert.DeserializeObject<List<Pendientes>>(content);
 
-           // resultadoAPI = resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
+            // resultadoAPI = resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
 
-            
+
+            //PUEDE SERVIR PARA CUANDO SE SELECCIONA EL PENDIENTE
+            //foreach(Pendientes item in ListaPendientes.Items)
+            //{
+            //    ListViewItem lvi = ListaPendientes.ContainerFromItem(item) as ListViewItem;
+            //    if(lvi != null && lvi.IsSelected)
+            //    {
+
+            //    }
+            //}
             ListaPendientes.ItemsSource = resultado;
+
+            ActualizarLista();
 
 
             resultadoAPI = resultado;
@@ -74,6 +85,16 @@ namespace AgendaPlusUWP.Views
 
         }
 
+        private void ActualizarLista() {
+
+           var pendientes = ListaPendientes.Items;
+
+            foreach(Pendientes item in pendientes)
+            {
+                item.calcularEstado();
+                item.calcularPrioridad();
+            }
+        }
 
         private async void DisplayDeleteFileDialog()
         {
@@ -119,7 +140,39 @@ namespace AgendaPlusUWP.Views
 
                 }
             }
+
+        private void cB_TipoTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
+
+            if (comboBoxItem == null) return;
+
+            var content = comboBoxItem.Content as string;
+
             
+            if(content != null && content.Equals("Pending tasks"))
+            {
+                List<Pendientes> resultado = resultadoAPI.Where(x => !x.Estado).ToList();
+
+                ListaPendientes.ItemsSource = resultado;
+
+            }
+            else if (content != null && content.Equals("Done tasks"))
+            {
+
+                List<Pendientes> resultado = resultadoAPI.Where(x => x.Estado).ToList();
+
+                ListaPendientes.ItemsSource = resultado;
+
+            }else if (content.Equals("No filter"))
+            {
+                llenarAsync();
+            }
+            else
+            {
+                llenarAsync();
+            }
         }
+    }
     
 }
