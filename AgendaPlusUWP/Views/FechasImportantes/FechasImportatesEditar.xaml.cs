@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
@@ -19,22 +18,21 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace AgendaPlusUWP.Views.Notes
+namespace AgendaPlusUWP.Views.FechasImportantes
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NotesEdit : Page
+    public sealed partial class FechasImportatesEditar : Page
     {
         private static int userID;
-        private static int notaID;
-        private static Nota nota;
+        private static int fechaID;
+        private static FechasImportante fecha;
 
-
-        public NotesEdit()
+        public FechasImportatesEditar()
         {
             userID = 1;
-            notaID = 1;
+            fechaID = 1;
             this.InitializeComponent();
             inizializarAPI();
         }
@@ -55,29 +53,29 @@ namespace AgendaPlusUWP.Views.Notes
 
             var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
 
-            nota = resultado.FirstOrDefault(x => x.UsuarioID == userID).Notas.ToList().Find(x=>x.NotaID == notaID);
+            fecha = resultado.FirstOrDefault(x => x.UsuarioID == userID).FechasImportantes.ToList().Find(x => x.FechasImportantesID == fechaID);
 
-            textBoxTitle.Text = nota.Titulo.ToString();
-            textBoxDescription.Text=nota.Descripcion.ToString();
+            textBoxTitle.Text = fecha.Titulo.ToString();
+            textBoxDescription.Text = fecha.Descripcion.ToString();
+            DatePickerFecha.Date = fecha.FechaLimite;
 
         }
 
-        private async void editarNota(object sender, RoutedEventArgs e)
+        private async void editarFecha(object sender, RoutedEventArgs e)
         {
             if (validarTitulo(textBoxTitle.Text) && validarDescripcion(textBoxDescription.Text))
             {
-                
-                nota.Titulo = textBoxTitle.Text;
-                nota.Descripcion = textBoxDescription.Text;
-                nota.Usuario = null;
+
+                fecha.Titulo = textBoxTitle.Text;
+                fecha.Descripcion = textBoxDescription.Text;
+                fecha.FechaLimite = DatePickerFecha.Date.Value.DateTime;
+                fecha.Usuario = null;
 
                 var httpHandler = new HttpClientHandler();
                 var client = new HttpClient(httpHandler);
-                var json = JsonConvert.SerializeObject(nota);
+                var json = JsonConvert.SerializeObject(fecha);
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/notas/{nota.NotaID}",content);
-
-
+                HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/fechasimportantes/{fecha.FechasImportantesID}", content);
 
             }
             else
@@ -86,8 +84,6 @@ namespace AgendaPlusUWP.Views.Notes
             }
 
         }
-
-
 
         private Boolean validarTitulo(string a)
         {

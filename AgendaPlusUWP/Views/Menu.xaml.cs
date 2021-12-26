@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Views.Notes;
+﻿using AgendaPlusUWP.Views.FechasImportantes;
+using AgendaPlusUWP.Views.Notes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,7 +36,7 @@ namespace AgendaPlusUWP.Views
             throw new Exception("Error al cargar la página" + e.SourcePageType.FullName);
         }
 
-        private void inizializarPanel(String a= "")
+        private void inizializarPanel(String a= "FechasImportatesEditar")
         {
             switch (a)
             {
@@ -44,6 +45,15 @@ namespace AgendaPlusUWP.Views
                     break;
                 case "NotesEdit":
                     ContentFrame.Navigate(typeof(NotesEdit));
+                    break;
+                case "FechasImportantesMain":
+                    ContentFrame.Navigate(typeof(FechasImportantesMain));
+                    break;
+                case "FechasImportantesCreate":
+                    ContentFrame.Navigate(typeof(FechasImportantesCreate));
+                    break;
+                case "FechasImportatesEditar":
+                    ContentFrame.Navigate(typeof(FechasImportatesEditar));
                     break;
                 default:
                     ContentFrame.Navigate(typeof(NotesMain));

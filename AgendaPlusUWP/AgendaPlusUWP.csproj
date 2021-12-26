@@ -128,6 +128,18 @@
     <Compile Include="Models\Pendiente.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ConfiguracionAbout\Configurations.xaml.cs">
+      <DependentUpon>Configurations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FechasImportantes\FechasImportantesCreate.xaml.cs">
+      <DependentUpon>FechasImportantesCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FechasImportantes\FechasImportantesMain.xaml.cs">
+      <DependentUpon>FechasImportantesMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FechasImportantes\FechasImportatesEditar.xaml.cs">
+      <DependentUpon>FechasImportatesEditar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -179,6 +191,22 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ConfiguracionAbout\Configurations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FechasImportantes\FechasImportantesCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FechasImportantes\FechasImportantesMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FechasImportantes\FechasImportatesEditar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Menu.xaml">
       <SubType>Designer</SubType>
