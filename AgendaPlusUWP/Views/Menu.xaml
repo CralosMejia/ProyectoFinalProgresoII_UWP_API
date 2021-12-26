@@ -106,17 +106,17 @@
 
 
                 <StackPanel Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <Button Background="#0C1C39">
+                    <Button Background="#0C1C39" IsEnabled="False" >
                         <Image Source="/Assets/Icons/agenda.png"/>
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button Background="#0C1C39">
+                    <Button Background="#0C1C39" Click="Button_About">
                         <Image Source="/Assets/Icons/information-button.png" Width="50" Height="50"/>
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button Background="#0C1C39">
+                    <Button Background="#0C1C39" Click="Button_Configurations">
                         <Image Source="/Assets/Icons/configuracion (1).png" Width="50" Height="50"/>
                     </Button>
                 </StackPanel>

@@ -23,9 +23,10 @@
 
                 <TextBlock Text="Configurations" Foreground="Black" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
 
-                <StackPanel Grid.Row="1" Width="500" Height="400" Background="#FFE7E9EE" BorderBrush="Black" BorderThickness="2,3,3,3" CornerRadius="20" >
+                <StackPanel Grid.Row="1" Width="500" Height="460" Background="#FFE7E9EE" BorderBrush="Black" BorderThickness="2,3,3,3" CornerRadius="20" >
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -37,13 +38,14 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Text="Change password" FontSize="30" Foreground="#7B7171" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0"/>
-                        <TextBlock Grid.Row="1" Text="Password" FontSize="24" Foreground="#7B7171" Margin="30,20,0,0"/>
-                        <TextBox  x:Name="TextBoxPassword" Grid.Row="2" Width="400" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="24" PlaceholderForeground="Black" BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" HorizontalAlignment="Left" Margin="29,0,0,0"/>
-                        <TextBlock x:Name="textBoxErrorPassword" Grid.Row="3" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" />
-                        <TextBlock Grid.Row="4" Text="Confirm Password" FontSize="24" Foreground="#7B7171" Margin="30,20,0,0" SelectionChanged="TextBlock_SelectionChanged"/>
-                        <TextBox x:Name="TextBoxConfirmPassword"  Grid.Row="5" Width="400" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="24" PlaceholderForeground="Black" BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" HorizontalAlignment="Left" Margin="29,0,0,0"/>
-                        <TextBlock x:Name="textBoxErrorConfirmPassword" Grid.Row="6" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" />
-                        <Button Grid.Row="7" Width="200" Content="Change" FontSize="20" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" HorizontalAlignment="Center" Margin="0,25,0,0" Click="cambiarContraseña">
+                        <TextBlock x:Name="textBoxErrorGeneral" Grid.Row="1" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" TextWrapping="Wrap" />
+                        <TextBlock Grid.Row="2" Text="Password" FontSize="24" Foreground="#7B7171" Margin="30,20,0,0"/>
+                        <PasswordBox  x:Name="textBoxPassword" Grid.Row="3" Width="400" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="24"  BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" HorizontalAlignment="Left" Margin="29,0,0,0" />
+                        <TextBlock x:Name="textBoxErrorPassword" Grid.Row="4" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" TextWrapping="Wrap" />
+                        <TextBlock Grid.Row="5" Text="Confirm Password" FontSize="24" Foreground="#7B7171" Margin="30,20,0,0"/>
+                        <PasswordBox x:Name="textBoxConfirmPassword"  Grid.Row="6" Width="400" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="24" BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" HorizontalAlignment="Left" Margin="29,0,0,0"/>
+                        <TextBlock x:Name="textBoxErrorConfirmPassword" Grid.Row="7" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" TextWrapping="Wrap"/>
+                        <Button Grid.Row="8" Width="200" Content="Change" FontSize="20" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" HorizontalAlignment="Center" Margin="0,25,0,0" Click="cambiarContraseña">
                             <Button.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF63A2AC" Offset="0.026"/>
@@ -79,28 +81,30 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.ColumnSpan="3" Text="Change avatar" FontSize="30" Foreground="#7B7171" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0"/>
-                        <RadioButton Grid.Column="0" Grid.Row="1" Margin="0,15,0,0">
+                        <TextBlock Grid.ColumnSpan="3" Grid.Row="1" x:Name="textBoxCambiarAvatar" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <RadioButton x:Name="rb1" Grid.Column="0" Grid.Row="2" Margin="0,15,0,0" Checked="rb_Checked">
                             <Image Source="/Assets/Avatar/avatar.png" Width="100" Height="100"/>
                         </RadioButton>
-                        <RadioButton Grid.Column="1" Grid.Row="1" Margin="0,15,0,0">
+                        <RadioButton x:Name="rb2" Grid.Column="1" Grid.Row="2" Margin="0,15,0,0" Checked="rb_Checked">
                             <Image Source="/Assets/Avatar/avatar1.png" Width="100" Height="100"/>
                         </RadioButton>
-                        <RadioButton Grid.Column="2" Grid.Row="1" Margin="0,15,0,0">
+                        <RadioButton x:Name="rb3" Grid.Column="2" Grid.Row="2" Margin="0,15,0,0" Checked="rb_Checked">
                             <Image Source="/Assets/Avatar/avatar2.png" Width="100" Height="100"/>
                         </RadioButton>
-                        <RadioButton Grid.Column="0" Grid.Row="2" Margin="0,15,0,0">
+                        <RadioButton x:Name="rb4" Grid.Column="0" Grid.Row="3" Margin="0,15,0,0" Checked="rb_Checked">
                             <Image Source="/Assets/Avatar/avatar3.png" Width="100" Height="100"/>
                         </RadioButton>
-                        <RadioButton Grid.Column="1" Grid.Row="2" Margin="0,15,0,0">
+                        <RadioButton x:Name="rb5" Grid.Column="1" Grid.Row="3" Margin="0,15,0,0" Checked="rb_Checked">
                             <Image Source="/Assets/Avatar/avatar4.png" Width="100" Height="100"/>
                         </RadioButton>
-                        <RadioButton Grid.Column="2" Grid.Row="2" Margin="0,15,0,0">
+                        <RadioButton x:Name="rb6" Grid.Column="2" Grid.Row="3" Margin="0,15,0,0" Checked="rb_Checked">
                             <Image Source="/Assets/Avatar/avatar5.png" Width="100" Height="100"/>
                         </RadioButton>
-                        <Button Grid.Row="3" Grid.ColumnSpan="3" Width="200" Content="Change" FontSize="20" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" HorizontalAlignment="Center" Margin="0,25,0,0">
+                        <Button Grid.Row="4" Grid.ColumnSpan="3" Width="200" Content="Change" FontSize="20" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" HorizontalAlignment="Center" Margin="0,25,0,0" Click="cambiarAvatar">
                             <Button.Background>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FF63A2AC" Offset="0.026"/>

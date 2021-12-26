@@ -92,9 +92,9 @@
                                     <GridView.ItemTemplate>
                                         <DataTemplate x:DataType="localModel:FechasImportante">
                                             <StackPanel Orientation="Horizontal"  Margin="15,5,0,0">
-                                                <TextBlock x:Name="TituloNota" Text="{x:Bind Titulo}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
-                                                <TextBlock Text="{x:Bind Descripcion}" Width="500" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
-                                                <TextBlock Text="{x:Bind FechaLimite}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16"/>
+                                                <TextBlock x:Name="TituloNota" Text="{x:Bind Titulo}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Bind Descripcion}" Width="500" Foreground="#726868" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Bind FechaLimite}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </GridView.ItemTemplate>
