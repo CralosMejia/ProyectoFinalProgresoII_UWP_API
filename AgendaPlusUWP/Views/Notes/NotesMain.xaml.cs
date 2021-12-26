@@ -31,9 +31,17 @@ namespace AgendaPlusUWP.Views.Notes
 
         public  NotesMain()
         {
-            userID = 1;
             this.InitializeComponent();
             inizializarAPI();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string IDstr = e.Parameter.ToString();
+
+            userID = Int32.Parse(IDstr);
+
+            base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()
@@ -77,6 +85,7 @@ namespace AgendaPlusUWP.Views.Notes
         private  void crearNota(object sender, RoutedEventArgs e)
         {
             Frame.Content = null;
+            Frame.Navigate(typeof(NotesCreate), userID);
         }
 
         private async void borrarNota(object sender, RoutedEventArgs e)
@@ -87,12 +96,26 @@ namespace AgendaPlusUWP.Views.Notes
             {
                 nota.Usuario = null;
 
-                var httpHandler = new HttpClientHandler();
-                var client = new HttpClient(httpHandler);
-                var json = JsonConvert.SerializeObject(nota);
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.DeleteAsync($"https://localhost:44304/api/notas/{nota.NotaID}");
-                inizializarAPI();
+                ContentDialog noWifiDialog = new ContentDialog
+                {
+                    Title = "Advertencia",
+                    Content = "estas seguro de que quieres borrar la nota",
+                    CloseButtonText = "Cancelar",
+                    PrimaryButtonText = "Borrar"
+                };
+
+                ContentDialogResult result = await noWifiDialog.ShowAsync();
+                string resultSTR = result.ToString();
+
+                if (resultSTR.Equals("Primary"))
+                {
+                    var httpHandler = new HttpClientHandler();
+                    var client = new HttpClient(httpHandler);
+                    var json = JsonConvert.SerializeObject(nota);
+                    var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await client.DeleteAsync($"https://localhost:44304/api/notas/{nota.NotaID}");
+                    inizializarAPI();
+                }
             }
         }
     }

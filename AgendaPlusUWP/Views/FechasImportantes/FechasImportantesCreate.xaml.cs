@@ -36,6 +36,15 @@ namespace AgendaPlusUWP.Views.FechasImportantes
             DatePickerFecha.Date = DateTime.Today;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string IDstr = e.Parameter.ToString();
+
+            userID = Int32.Parse(IDstr);
+
+            base.OnNavigatedTo(e);
+        }
+
         private async void crearFecha(object sender, RoutedEventArgs e)
         {
             if (validarTitulo(textBoxTitle.Text) && validarDescripcion(textBoxDescription.Text))
@@ -47,6 +56,9 @@ namespace AgendaPlusUWP.Views.FechasImportantes
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
                 await httpClient.PostAsync("https://localhost:44304/api/fechasimportantes", content);
+
+                Frame.Content = null;
+                Frame.Navigate(typeof(FechasImportantesMain), userID);
             }
             else
             {

@@ -31,9 +31,17 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
 
         public Configurations()
         {
-            userID = 1;
             this.InitializeComponent();
             inizializarAPI();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string IDstr = e.Parameter.ToString();
+
+            userID = Int32.Parse(IDstr);
+
+            base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()

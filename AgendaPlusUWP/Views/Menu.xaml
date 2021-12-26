@@ -44,32 +44,16 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Menu parte superior parte de links-->
-                <StackPanel Grid.Column="0">
-                    <Grid MinHeight="100">
-                        <!--Menu parte superior parte de links definicion de la grilla-->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
+                <NavigationView Grid.Column="0" x:Name="NavView"   PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Foreground="{x:Null}" Background="#FF63A2AC" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked">
 
-                        <!--Definicion individual del menu de la parte superior-->
-                        <StackPanel Grid.Column="0" MinHeight="30"  VerticalAlignment="Center">
-                            <NavigationViewItem Icon="AllApps" Content="Tasks" Tag="apps" FontSize="25" HorizontalAlignment="Center" Foreground="#FF020000" />
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" MinHeight="30"  VerticalAlignment="Center">
-                            <NavigationViewItem Icon="Admin" Content="Contacts" Tag="apps" FontSize="25" HorizontalAlignment="Left" Foreground="#FF020000"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="2" MinHeight="30"  VerticalAlignment="Center">
-                            <NavigationViewItem Icon="Document" Content="Notes" Tag="apps" FontSize="25" HorizontalAlignment="Left" Foreground="#FF020000"  />
-                        </StackPanel>
-                        <StackPanel Grid.Column="3" MinHeight="30"  VerticalAlignment="Center">
-                            <NavigationViewItem Icon="Calendar" Content="Important Dates" Tag="apps" FontSize="25" HorizontalAlignment="Left" Foreground="#FF020000" />
-                        </StackPanel>
-
-                    </Grid>
-                </StackPanel>
+                    <NavigationView.MenuItems >
+                        <NavigationViewItem  Icon="AllApps" Content="Tasks" Tag="pendientes" FontSize="25" Foreground="#FF020000" Background="#FF63A2AC" Width="176"/>
+                        <NavigationViewItem  Icon="Admin" Content="Contacts" Tag="contactos" FontSize="25" Foreground="#FF020000" Background="#FF63A2AC"  Width="178"/>
+                        <NavigationViewItem  Icon="Document" Content="Notes" Tag="notas" FontSize="25" Foreground="#FF020000" Background="#FF63A2AC"  Width="144"/>
+                        <NavigationViewItem  Icon="Calendar" Content="Important Dates" Tag="fechas" FontSize="25" Foreground="#FF020000" Background="#FF63A2AC" Width="260" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    </NavigationView.MenuItems>
+                    <!--</Grid>-->
+                </NavigationView>
 
                 <!--Menu parte superior parte de la foto de perfil-->
                 <StackPanel Grid.Column="1">
@@ -82,10 +66,10 @@
 
                         <!--Menu parte superior parte de la foto de perfil y username-->
                         <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <Image Source="/Assets/Avatar/avatar4.png" MaxWidth="70" MaxHeight="70" MinWidth="50" MinHeight="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Image x:Name="AvatarIMG" Source="/Assets/Avatar/avatar4.png" MaxWidth="70" MaxHeight="70" MinWidth="50" MinHeight="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="48">
-                            <TextBlock Text="UserName" FontSize="36" Foreground="#111" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="16,0,0,0"/>
+                            <TextBlock x:Name="userName" Text="UserName" FontSize="36" Foreground="#111" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="16,0,0,0"/>
                         </StackPanel>
 
                     </Grid>

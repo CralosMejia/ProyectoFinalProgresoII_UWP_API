@@ -30,8 +30,16 @@ namespace AgendaPlusUWP.Views.Notes
 
         public NotesCreate()
         {
-            userID = 1;
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string IDstr = e.Parameter.ToString();
+
+            userID = Int32.Parse(IDstr);
+
+            base.OnNavigatedTo(e);
         }
 
         private async void crearNota(object sender, RoutedEventArgs e)
@@ -44,7 +52,10 @@ namespace AgendaPlusUWP.Views.Notes
                 HttpClient httpClient = new HttpClient();
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-                await httpClient.PostAsync("https://localhost:44304/api/notas", content);              
+                await httpClient.PostAsync("https://localhost:44304/api/notas", content);
+
+                Frame.Content = null;
+                Frame.Navigate(typeof(NotesMain), userID);
             }
             else
             {

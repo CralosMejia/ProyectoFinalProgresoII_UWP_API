@@ -109,7 +109,7 @@
 
                         <!--Boton crear-->
                         <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                            <Button Width="68" Height="68" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="50" HorizontalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Foreground="{x:Null}">
+                            <Button Width="68" Height="68" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="50" HorizontalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Foreground="{x:Null}" Click="crearFecha">
                                 <Button.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#FF63A2AC" Offset="0.026"/>
