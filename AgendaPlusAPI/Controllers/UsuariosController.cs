@@ -12,17 +12,17 @@ using AgendaPlusAPI.Models;
 
 namespace AgendaPlusAPI.Controllers
 {
-    public class UsuarioController : ApiController
+    public class UsuariosController : ApiController
     {
         private BaseDeDatos db = new BaseDeDatos();
 
-        // GET: api/Usuario
+        // GET: api/Usuarios
         public IQueryable<Usuario> GetUsuarios()
         {
             return db.Usuarios;
         }
 
-        // GET: api/Usuario/5
+        // GET: api/Usuarios/5
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult GetUsuario(int id)
         {
@@ -35,7 +35,7 @@ namespace AgendaPlusAPI.Controllers
             return Ok(usuario);
         }
 
-        // PUT: api/Usuario/5
+        // PUT: api/Usuarios/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUsuario(int id, Usuario usuario)
         {
@@ -70,7 +70,7 @@ namespace AgendaPlusAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Usuario
+        // POST: api/Usuarios
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult PostUsuario(Usuario usuario)
         {
@@ -85,7 +85,7 @@ namespace AgendaPlusAPI.Controllers
             return CreatedAtRoute("DefaultApi", new { id = usuario.UsuarioID }, usuario);
         }
 
-        // DELETE: api/Usuario/5
+        // DELETE: api/Usuarios/5
         [ResponseType(typeof(Usuario))]
         public IHttpActionResult DeleteUsuario(int id)
         {

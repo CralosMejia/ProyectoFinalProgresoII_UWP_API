@@ -1,0 +1,138 @@
+﻿<Page
+    x:Class="AgendaPlusUWP.Views.Menu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AgendaPlusUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:localModel="using:AgendaPlusUWP.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <!--Grilla principal-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <!--Color de la Grilla Principal-->
+        <Border Background="#0C1C39" Grid.RowSpan="2"/>
+        <Border Grid.Column="2" Grid.Row="0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Background="#FFFF"/>
+
+
+
+        <!--Menu Parte Superior-->
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <Grid  MinHeight="100">
+                <!--Definicion de la grilla menu parte superior-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Menu parte superior parte de links-->
+                <StackPanel Grid.Column="0">
+                    <Grid MinHeight="100">
+                        <!--Menu parte superior parte de links definicion de la grilla-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Definicion individual del menu de la parte superior-->
+                        <StackPanel Grid.Column="0" MinHeight="30"  VerticalAlignment="Center">
+                            <NavigationViewItem Icon="AllApps" Content="Tasks" Tag="apps" FontSize="25" HorizontalAlignment="Center" Foreground="#FF020000" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" MinHeight="30"  VerticalAlignment="Center">
+                            <NavigationViewItem Icon="Admin" Content="Contacts" Tag="apps" FontSize="25" HorizontalAlignment="Left" Foreground="#FF020000"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" MinHeight="30"  VerticalAlignment="Center">
+                            <NavigationViewItem Icon="Document" Content="Notes" Tag="apps" FontSize="25" HorizontalAlignment="Left" Foreground="#FF020000"  />
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" MinHeight="30"  VerticalAlignment="Center">
+                            <NavigationViewItem Icon="Calendar" Content="Important Dates" Tag="apps" FontSize="25" HorizontalAlignment="Left" Foreground="#FF020000" />
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+
+                <!--Menu parte superior parte de la foto de perfil-->
+                <StackPanel Grid.Column="1">
+                    <Grid MinHeight="100">
+                        <!--Menu parte superior parte de la fotot de perfil definicion de la grilla-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Menu parte superior parte de la foto de perfil y username-->
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Image Source="/Assets/Avatar/avatar4.png" MaxWidth="70" MaxHeight="70" MinWidth="50" MinHeight="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="48">
+                            <TextBlock Text="UserName" FontSize="36" Foreground="#111" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="16,0,0,0"/>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+
+        <!--Side bar-->
+        <StackPanel Grid.Column="0" Grid.RowSpan="2" Orientation="Vertical" VerticalAlignment="Stretch" Height="auto" >
+            <Grid  HorizontalAlignment="Stretch"  MaxHeight="800" MinHeight="720" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+
+                <StackPanel Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Button Background="#0C1C39">
+                        <Image Source="/Assets/Icons/agenda.png"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Background="#0C1C39">
+                        <Image Source="/Assets/Icons/information-button.png" Width="50" Height="50"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Background="#0C1C39">
+                        <Image Source="/Assets/Icons/configuracion (1).png" Width="50" Height="50"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Background="#0C1C39">
+                        <Image Source="/Assets/Icons/log-out.png" Width="50" Height="50"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <!--Contenido Principal-->
+        <ScrollViewer Grid.Column="1" Grid.Row="1">
+            <Frame x:Name="ContentFrame"  IsTabStop="True" NavigationFailed="ContentFrame_NavigationFailed" Padding="1">
+
+            </Frame>
+        </ScrollViewer>
+    </Grid>
+</Page>

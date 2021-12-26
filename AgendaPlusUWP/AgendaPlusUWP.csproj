@@ -122,7 +122,24 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contacto.cs" />
+    <Compile Include="Models\FechasImportante.cs" />
+    <Compile Include="Models\Nota.cs" />
+    <Compile Include="Models\Pendiente.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Notes\NotesCreate.xaml.cs">
+      <DependentUpon>NotesCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Notes\NotesEdit.xaml.cs">
+      <DependentUpon>NotesEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Notes\NotesMain.xaml.cs">
+      <DependentUpon>NotesMain.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -130,6 +147,21 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Avatar\avatar.png" />
+    <Content Include="Assets\Avatar\avatar1.png" />
+    <Content Include="Assets\Avatar\avatar2.png" />
+    <Content Include="Assets\Avatar\avatar3.png" />
+    <Content Include="Assets\Avatar\avatar4.png" />
+    <Content Include="Assets\Avatar\avatar5.png" />
+    <Content Include="Assets\Icons\agenda.png" />
+    <Content Include="Assets\Icons\configuracion %281%29.png" />
+    <Content Include="Assets\Icons\editar.png" />
+    <Content Include="Assets\Icons\eliminar.png" />
+    <Content Include="Assets\Icons\information-button.png" />
+    <Content Include="Assets\Icons\log-out.png" />
+    <Content Include="Assets\Icons\mas.png" />
+    <Content Include="Assets\Icons\paginacion.png" />
+    <Content Include="Assets\Icons\vidrio-de-aumento.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -148,16 +180,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Notes\NotesCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Notes\NotesEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Notes\NotesMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client">
+      <Version>5.2.7</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
