@@ -45,7 +45,7 @@
                 </Grid.ColumnDefinitions>
 
 
-                <NavigationView Grid.Column="0" x:Name="NavView"  ItemInvoked="NavView_ItemInvoked"  PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" Background="#FF63A2AC" Margin="0,0,10,0" >
+                <NavigationView Grid.Column="0" x:Name="NavView" Loaded="NavView_Loaded"  ItemInvoked="NavView_ItemInvoked"  PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" Background="#FF63A2AC" Margin="0,0,10,0" >
 
                     <NavigationView.MenuItems >
                         <NavigationViewItem  Icon="AllApps" Content="Tasks" Tag="pendientes" FontSize="25" Foreground="#FF020000" Background="#FF63A2AC" Width="176"/>
@@ -103,7 +103,7 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="63" Width="70">
-                    <Button x:Name="btn_Info" Click="btn_Info_Click" Background="#0C1C39">
+                    <Button x:Name="btn_Info" Background="#0C1C39">
                         <Image Source="/Assets/information-button.png" Width="50" Height="50"/>
                     </Button>
                 </StackPanel>

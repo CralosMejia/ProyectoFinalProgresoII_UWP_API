@@ -26,21 +26,21 @@ namespace AgendaPlusUWP.Views
     public sealed partial class MainPage : Page
     {
 
-        private static int userID;
+        private int userID;
         private static Usuarios user;
 
         public MainPage()
         {
             userID = 1;
-            
             this.InitializeComponent();
+            inizializarAPI();
         }
 
         private async void inizializarAPI()
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
+            request.RequestUri = new Uri("https://localhost:44386/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 
@@ -69,11 +69,9 @@ namespace AgendaPlusUWP.Views
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
 
-
             if (args.InvokedItemContainer != null)
             {
-                var navItemTag = args.InvokedItemContainer.Tag.ToString();
-                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+                ContentFrame.Navigate(typeof(MainTasks), userID);
 
             }
         }
@@ -108,14 +106,19 @@ namespace AgendaPlusUWP.Views
             // Only navigate if the selected page isn't currently loaded.
             if (!(_page is null) && !Type.Equals(preNavPageType, _page))
             {
-                ContentFrame.Navigate(_page, null, transitionInfo);
+                ContentFrame.Navigate(_page, userID);
             }
         }
 
-        private void btn_Info_Click(object sender, RoutedEventArgs e)
+        private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            //ContentFrame.Navigate(typeof(ejemplo), null);
-
+            //navegar por defecto a pagina principal pendientes
+            //NavView.SelectedItem = NavView.MenuItems[0];
+            
+           // ContentFrame.Navigate(typeof(MainTasks), userID);
+                       
         }
+
+
     }
 }

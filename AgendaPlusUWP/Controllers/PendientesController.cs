@@ -11,21 +11,17 @@ using Windows.UI.Xaml.Controls;
 
 namespace AgendaPlusUWP.Controllers
 {
-        class PendientesController
+    class PendientesController
     {
-        public async Task<List<Pendientes>> getTasks(int userID)
+        public static async Task<List<Pendientes>> getTasks(int userID)
         {
-
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
 
-            //definir todos los atributos del request
-
-            request.RequestUri = new Uri("https://localhost:44386/api/usuarios");
+            request.RequestUri = new Uri("https://localhost:44386/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 
-            //asignar cliente
             var client = new HttpClient(httpHandler);
 
             //usar palabra claver await con funciones async 
@@ -34,28 +30,9 @@ namespace AgendaPlusUWP.Controllers
 
             string content = await response.Content.ReadAsStringAsync();
 
-            //se necesita instalar por NuGet JSON
-            //se deserializa el contenido para formatear de acuerdo a la interfaz
             var resultado = JsonConvert.DeserializeObject<List<Usuarios>>(content);
 
             return resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
-
-
-            //PUEDE SERVIR PARA CUANDO SE SELECCIONA EL PENDIENTE
-            //foreach(Pendientes item in ListaPendientes.Items)
-            //{
-            //    ListViewItem lvi = ListaPendientes.ContainerFromItem(item) as ListViewItem;
-            //    if(lvi != null && lvi.IsSelected)
-            //    {
-
-            //    }
-            //}
-
-
-
-
-            //ListaPendientes.ItemsSource = resultadoAPI;
-
         }
 
         public async Task postTask(Pendientes pendiente)
