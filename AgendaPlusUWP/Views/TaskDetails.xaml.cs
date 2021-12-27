@@ -46,9 +46,42 @@ namespace AgendaPlusUWP.Views
             userID = Int32.Parse(lista[0]);
             pendienteID = Int32.Parse(lista[1]);
 
-            //inizializarAPI();
+            llenarDatos();
 
             base.OnNavigatedTo(e);
+        }
+
+        private async void llenarDatos()
+        {
+            List<Pendientes> resultado = await PendientesController.getTasks(userID); ;
+
+            task = resultado.Find(x => x.PendienteID == pendienteID);
+
+            txtTitle.Text = task.Titulo.ToString();
+            txtDesc.Text = task.Titulo.ToString();
+
+            calendarioDT.SelectedDate = task.FechaLimite;
+
+            if (task.Prioridad == 1)
+            {
+                cB_Priority.SelectedIndex = 0;
+            }
+            else if (task.Prioridad == 2)
+            {
+                cB_Priority.SelectedIndex = 1;
+
+            }
+            else if (task.Prioridad == 3)
+            {
+                cB_Priority.SelectedIndex = 2;
+            }
+
+        }
+
+        private void btn_Back_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = null;
+            Frame.Navigate(typeof(MainTasks), userID);
         }
     }
 }

@@ -48,11 +48,11 @@
                         </Grid.RowDefinitions>
                         <!--TITULO-->
                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                            <TextBox Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="txtTitle" Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left"/>
                         </StackPanel>
                         <!--DESCRIPCION-->
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBox Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="txtDesc" Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left"/>
                         </StackPanel>
 
 
@@ -73,17 +73,17 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <TextBlock x:Name="txtDead" Text="Deadline" Foreground="Black" FontSize="25"  HorizontalAlignment="Left">
+                                    <TextBlock Text="Deadline" Foreground="Black" FontSize="25"  HorizontalAlignment="Left">
 
                                     </TextBlock>
                                     <!--AQUI VAN LAS FECHAS Y HORA-->
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <DatePicker x:Name="datePicker" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black"/>
+                                    <DatePicker x:Name="calendarioDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="3" VerticalAlignment="Center">
-                                    <TimePicker x:Name="timePicker" Width="404" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" Foreground="Black"/>
+                                    <TimePicker x:Name="tiempoDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" Foreground="Black"/>
                                 </StackPanel>
                             </Grid>
 
@@ -112,7 +112,7 @@
 
                                 <!--COMBOBOX DE PRIORIDADES-->
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <ComboBox Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375">
+                                    <ComboBox x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375" SelectionChanged="cB_Priority_SelectionChanged">
                                         <ComboBoxItem Content="Severe"/>
                                         <ComboBoxItem Content="Important"/>
                                         <ComboBoxItem Content="Not important"/>
@@ -123,7 +123,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Width="314">
-                            <Button  MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Edit" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310">
+                            <Button x:Name="btn_Edit" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Edit" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310" Click="btn_Edit_Click">
 
 
                             </Button>

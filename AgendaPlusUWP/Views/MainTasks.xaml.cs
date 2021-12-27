@@ -64,23 +64,24 @@ namespace AgendaPlusUWP.Views
             }
         }
 
-       
 
-        private void ActualizarLista() {
 
-           var pendientes = ListaPendientes.Items;
+        private void ActualizarLista()
+        {
 
-            foreach(Pendientes item in pendientes)
+            var pendientes = ListaPendientes.Items;
+
+            foreach (Pendientes item in pendientes)
             {
                 item.calcularEstado();
                 item.calcularPrioridad();
-                
+
             }
 
-            
+
         }
 
-        
+
 
         private void buscar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -172,7 +173,8 @@ namespace AgendaPlusUWP.Views
         {
             var item = (((Pendientes)args.Item));
 
-             args.ItemContainer.Background = new SolidColorBrush(HexToColor(item.ColorPrioridad));
+            if(item.ColorPrioridad != null)
+                args.ItemContainer.Background = new SolidColorBrush(HexToColor(item.ColorPrioridad));
                                 
         }
 
@@ -255,6 +257,7 @@ namespace AgendaPlusUWP.Views
             private void btn_verPendiente_Click(object sender, RoutedEventArgs e)
         {
             Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+            
 
             if (task != null)
             {
@@ -289,6 +292,7 @@ namespace AgendaPlusUWP.Views
                 if (resultSTR.Equals("Primary"))
                 {
                     PendientesController.deleteTask(task);
+                    llenarAsync();
                     llenarAsync();
                 }
             }

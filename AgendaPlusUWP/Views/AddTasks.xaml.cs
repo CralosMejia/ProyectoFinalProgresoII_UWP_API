@@ -26,8 +26,6 @@ namespace AgendaPlusUWP.Views
     {
         private static int userID;
 
-        private static DateTime dateTime;
-
         private static int i;
 
         public AddTasks()
@@ -74,9 +72,14 @@ namespace AgendaPlusUWP.Views
                     FechaLimite = calendarioDL.Date.DateTime
                 };
 
+                newTask.calcularPrioridad();
+                newTask.calcularEstado();
+
                 PendientesController.postTask(newTask);
 
-                
+
+                Frame.Content = null;
+                Frame.Navigate(typeof(MainTasks), userID);
             }
           
 

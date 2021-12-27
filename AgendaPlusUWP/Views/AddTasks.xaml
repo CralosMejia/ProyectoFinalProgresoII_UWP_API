@@ -113,7 +113,7 @@
                                 <ComboBox x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375" SelectionChanged="cB_Priority_SelectionChanged" FontSize="25">
                                     <ComboBoxItem Content="Severe"/>
                                     <ComboBoxItem Content="Important"/>
-                                    <ComboBoxItem Content="Not important"/>
+                                    <ComboBoxItem Content="Normal"/>
                                 </ComboBox>
                             </StackPanel>
 

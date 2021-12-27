@@ -46,11 +46,11 @@
                         </Grid.RowDefinitions>
                         <!--TITULO-->
                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                            <TextBox Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <TextBox x:Name="txtTitle" Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left" IsEnabled="False"/>
                         </StackPanel>
                         <!--DESCRIPCION-->
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBox Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left" IsEnabled="False"/>
+                            <TextBox x:Name="txtDesc" Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left" IsEnabled="False"/>
                         </StackPanel>
 
 
@@ -77,7 +77,7 @@
                                     <!--AQUI VAN LAS FECHAS Y HORA-->
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <DatePicker x:Name="datePicker" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black" />
+                                    <DatePicker x:Name="calendarioDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black" />
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="3" VerticalAlignment="Center">
@@ -103,14 +103,14 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <TextBlock x:Name="txtPriority" Text="Priority" Foreground="Black" FontSize="25"  HorizontalAlignment="Left">
+                                    <TextBlock Text="Priority" Foreground="Black" FontSize="25"  HorizontalAlignment="Left">
 
                                     </TextBlock>
                                 </StackPanel>
 
                                 <!--COMBOBOX DE PRIORIDADES-->
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <ComboBox Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="488">
+                                    <ComboBox x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="488">
                                         <ComboBoxItem Content="Severe"/>
                                         <ComboBoxItem Content="Important"/>
                                         <ComboBoxItem Content="Not important"/>
@@ -121,7 +121,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Width="314">
-                            <Button  MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Edit" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310">
+                            <Button  x:Name="btn_Back" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Back" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310" Click="btn_Back_Click">
 
 
                             </Button>

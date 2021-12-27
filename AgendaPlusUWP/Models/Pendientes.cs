@@ -11,9 +11,7 @@ namespace AgendaPlusUWP.Models
 {
     class Pendientes
     {
-     
-
-        [Key]
+         [Key]
         public int PendienteID { get; set; }
 
         public int UsuarioID { get; set; }
