@@ -36,6 +36,8 @@ namespace AgendaPlusUWP.Views
 
         private static int userID=1;
 
+        private static Pendientes t;
+
         public MainTasks()
         {
            this.InitializeComponent();
@@ -303,16 +305,27 @@ namespace AgendaPlusUWP.Views
         }
 
         //cambiar estado del pendiente a realizado (se realiza aqui o en editarTask)
-        private void btn_PendienteRealizado_Click(object sender, RoutedEventArgs e)
+        private  async void btn_PendienteRealizado_Click(object sender, RoutedEventArgs e)
         {
             Pendientes editedTask = (Pendientes)ListaPendientes.SelectedItem;
 
             if (editedTask != null && !editedTask.Estado)
             {
-                editedTask.Estado = true;
-               
-                PendientesController.putTask(editedTask);
+                List<Pendientes> resultado =  await PendientesController.getTasks(userID);
 
+                t = resultado.Find(x => x.PendienteID == editedTask.PendienteID);
+
+                t.Titulo = editedTask.Titulo;
+                t.Descripcion = editedTask.Descripcion;
+                t.Prioridad = editedTask.Prioridad;
+                t.FechaLimite = editedTask.FechaLimite;
+                t.Usuarios = null;
+                t.Estado = true;
+                                    
+                              
+                PendientesController.putTask(t);
+
+                llenarAsync();
                 llenarAsync();
             }
             else if(editedTask == null)

@@ -98,6 +98,7 @@ namespace AgendaPlusUWP.Views
                 task.Prioridad = i;
                 task.FechaLimite = calendarioDT.Date.DateTime;
                 task.Estado = false;
+                task.Usuarios = null;
 
                 PendientesController.putTask(task);
 
