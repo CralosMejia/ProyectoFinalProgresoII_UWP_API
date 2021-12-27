@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -9,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -85,6 +87,8 @@ namespace AgendaPlusUWP.Views
 
         }
 
+       
+
         private void ActualizarLista() {
 
            var pendientes = ListaPendientes.Items;
@@ -93,33 +97,13 @@ namespace AgendaPlusUWP.Views
             {
                 item.calcularEstado();
                 item.calcularPrioridad();
+                
             }
+
+            
         }
 
-        private async void DisplayDeleteFileDialog()
-        {
-            ContentDialog deleteFileDialog = new ContentDialog
-            {
-                Title = "Delete task permanently?",
-                Content = "If you delete this fitask, you won't be able to recover it. Do you want to delete it?",
-                PrimaryButtonText = "Delete",
-                CloseButtonText = "Cancel"
-            };
-
-            ContentDialogResult result = await deleteFileDialog.ShowAsync();
-
-            // Delete the file if the user clicked the primary button.
-            /// Otherwise, do nothing.
-            if (result == ContentDialogResult.Primary)
-            {
-                // Delete the file.
-            }
-            else
-            {
-                // The user clicked the CLoseButton, pressed ESC, Gamepad B, or the system back button.
-                // Do nothing.
-            }
-        }
+        
 
         private void buscar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -204,6 +188,55 @@ namespace AgendaPlusUWP.Views
                 llenarAsync();
             }
       
+        }
+
+   
+        private void ListaPendientes_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            var item = (((Pendientes)args.Item));
+
+             args.ItemContainer.Background = new SolidColorBrush(HexToColor(item.ColorPrioridad));
+                                
+        }
+
+        //metodo que convierte un string a hexadecimal 
+        public static Color HexToColor(string hexColor)
+        {
+           
+            if (hexColor.IndexOf('#') != -1)
+            {
+                hexColor = hexColor.Replace("#", "");
+            }
+
+            if (hexColor.Length == 6)
+            {
+                hexColor = "FF" + hexColor;
+            }
+
+            //100 % — FF  //50 % — 80
+            //95 % — F2  //45 % — 73
+            //90 % — E6  //40 % — 66
+            //85 % — D9  //30 % — 4D
+            //80 % — CC     //25 % — 40
+            //75 % — BF  //20 % — 33
+            //70 % — B3  //15 % — 26
+            //65 % — A6  //10 % — 1A
+            //60 % — 99  //5 % — 0D
+            //55 % — 8C  //0 % — 00
+
+            byte alpha = 0;
+            byte red = 0;
+            byte green = 0;
+            byte blue = 0;
+
+            if (hexColor.Length == 8)
+            {
+                alpha = byte.Parse(hexColor.Substring(0, 2), NumberStyles.AllowHexSpecifier);
+                red = byte.Parse(hexColor.Substring(2, 2), NumberStyles.AllowHexSpecifier);
+                green = byte.Parse(hexColor.Substring(4, 2), NumberStyles.AllowHexSpecifier);
+                blue = byte.Parse(hexColor.Substring(6, 2), NumberStyles.AllowHexSpecifier);
+            }
+            return Color.FromArgb(alpha, red, green, blue);
         }
 
         //private void mantenerFiltrado (object sender, object sender2, SelectionChangedEventArgs e, SelectionChangedEventArgs e1)

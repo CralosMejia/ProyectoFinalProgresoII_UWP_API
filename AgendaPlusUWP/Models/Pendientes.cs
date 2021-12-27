@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 
 namespace AgendaPlusUWP.Models
 {
@@ -41,14 +43,17 @@ namespace AgendaPlusUWP.Models
             if (Prioridad == 1)
             {
                 PrioridadString = "Severe";
+                ColorPrioridad = "FF2D00";
             }
             else if (Prioridad == 2)
             {
                 PrioridadString = "Important";
+                ColorPrioridad = "FF5935"; 
             }
             else if (Prioridad == 3)
             {
                 PrioridadString = "Normal";
+                ColorPrioridad = "FF9882"; 
             }
 
 
@@ -69,5 +74,7 @@ namespace AgendaPlusUWP.Models
                 EstadoString = "Error";
             }
         }
+
+      
     }
 }
