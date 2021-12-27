@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Models;
+﻿using AgendaPlusUWP.Controllers;
+using AgendaPlusUWP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,17 +46,13 @@ namespace AgendaPlusUWP.Views.FechasImportantes
             base.OnNavigatedTo(e);
         }
 
-        private async void crearFecha(object sender, RoutedEventArgs e)
+        private  void crearFecha(object sender, RoutedEventArgs e)
         {
             if (validarTitulo(textBoxTitle.Text) && validarDescripcion(textBoxDescription.Text))
             {
                 FechasImportante fecha = new FechasImportante() { Titulo = textBoxTitle.Text, Descripcion = textBoxDescription.Text, UsuarioID = userID , FechaLimite= DatePickerFecha.Date.Value.DateTime };
 
-                var json = JsonConvert.SerializeObject(fecha);
-                HttpClient httpClient = new HttpClient();
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-                await httpClient.PostAsync("https://localhost:44304/api/fechasimportantes", content);
+                FechasImportantesController.postFecha(fecha);
 
                 Frame.Content = null;
                 Frame.Navigate(typeof(FechasImportantesMain), userID);

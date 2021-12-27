@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Models;
+﻿using AgendaPlusUWP.Controllers;
+using AgendaPlusUWP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -33,36 +34,40 @@ namespace AgendaPlusUWP.Views.Notes
 
         public NotesEdit()
         {
-            userID = 1;
-            notaID = 1;
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            List<string> lista = new List<string>();
+
+            string paramStr =e.Parameter.ToString();
+
+            paramStr = paramStr.Replace("(", string.Empty);
+            paramStr = paramStr.Replace(")", string.Empty);
+
+            lista = paramStr.Split(",").ToList();
+
+            userID = Int32.Parse(lista[0]);
+            notaID = Int32.Parse(lista[1]);
+
             inizializarAPI();
+
+            base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
+            List<Nota> resultado= await NotasController.getNota(userID); ;
 
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            string content = await response.Content.ReadAsStringAsync();
-
-            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
-
-            nota = resultado.FirstOrDefault(x => x.UsuarioID == userID).Notas.ToList().Find(x=>x.NotaID == notaID);
+            nota = resultado.Find(x=>x.NotaID == notaID);
 
             textBoxTitle.Text = nota.Titulo.ToString();
             textBoxDescription.Text=nota.Descripcion.ToString();
 
         }
 
-        private async void editarNota(object sender, RoutedEventArgs e)
+        private void editarNota(object sender, RoutedEventArgs e)
         {
             if (validarTitulo(textBoxTitle.Text) && validarDescripcion(textBoxDescription.Text))
             {
@@ -71,13 +76,10 @@ namespace AgendaPlusUWP.Views.Notes
                 nota.Descripcion = textBoxDescription.Text;
                 nota.Usuario = null;
 
-                var httpHandler = new HttpClientHandler();
-                var client = new HttpClient(httpHandler);
-                var json = JsonConvert.SerializeObject(nota);
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/notas/{nota.NotaID}",content);
+                NotasController.putNota(nota);
 
-
+                Frame.Content = null;
+                Frame.Navigate(typeof(NotesMain), userID);
 
             }
             else

@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Models;
+﻿using AgendaPlusUWP.Controllers;
+using AgendaPlusUWP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -42,17 +43,13 @@ namespace AgendaPlusUWP.Views.Notes
             base.OnNavigatedTo(e);
         }
 
-        private async void crearNota(object sender, RoutedEventArgs e)
+        private  void crearNota(object sender, RoutedEventArgs e)
         {
             if (validarTitulo(textBoxTitle.Text) && validarDescripcion(textBoxDescription.Text))
             {
                 Nota nota = new Nota() { Titulo= textBoxTitle.Text , Descripcion= textBoxDescription.Text, UsuarioID=userID};
 
-                var json = JsonConvert.SerializeObject(nota);
-                HttpClient httpClient = new HttpClient();
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-                await httpClient.PostAsync("https://localhost:44304/api/notas", content);
+                NotasController.postNota(nota);
 
                 Frame.Content = null;
                 Frame.Navigate(typeof(NotesMain), userID);

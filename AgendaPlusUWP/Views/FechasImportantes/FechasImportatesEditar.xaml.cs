@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Models;
+﻿using AgendaPlusUWP.Controllers;
+using AgendaPlusUWP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,29 +32,33 @@ namespace AgendaPlusUWP.Views.FechasImportantes
 
         public FechasImportatesEditar()
         {
-            userID = 1;
-            fechaID = 1;
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            List<string> lista = new List<string>();
+
+            string paramStr = e.Parameter.ToString();
+
+            paramStr = paramStr.Replace("(", string.Empty);
+            paramStr = paramStr.Replace(")", string.Empty);
+
+            lista = paramStr.Split(",").ToList();
+
+            userID = Int32.Parse(lista[0]);
+            fechaID = Int32.Parse(lista[1]);
+
             inizializarAPI();
+
+            base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
+            List<FechasImportante> resultado = await FechasImportantesController.getFecha(userID);
 
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            string content = await response.Content.ReadAsStringAsync();
-
-            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
-
-            fecha = resultado.FirstOrDefault(x => x.UsuarioID == userID).FechasImportantes.ToList().Find(x => x.FechasImportantesID == fechaID);
+            fecha = resultado.Find(x => x.FechasImportantesID == fechaID);
 
             textBoxTitle.Text = fecha.Titulo.ToString();
             textBoxDescription.Text = fecha.Descripcion.ToString();
@@ -61,7 +66,7 @@ namespace AgendaPlusUWP.Views.FechasImportantes
 
         }
 
-        private async void editarFecha(object sender, RoutedEventArgs e)
+        private void editarFecha(object sender, RoutedEventArgs e)
         {
             if (validarTitulo(textBoxTitle.Text) && validarDescripcion(textBoxDescription.Text))
             {
@@ -71,12 +76,10 @@ namespace AgendaPlusUWP.Views.FechasImportantes
                 fecha.FechaLimite = DatePickerFecha.Date.Value.DateTime;
                 fecha.Usuario = null;
 
-                var httpHandler = new HttpClientHandler();
-                var client = new HttpClient(httpHandler);
-                var json = JsonConvert.SerializeObject(fecha);
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/fechasimportantes/{fecha.FechasImportantesID}", content);
+                FechasImportantesController.putNota(fecha);
 
+                Frame.Content = null;
+                Frame.Navigate(typeof(FechasImportantesMain), userID);
             }
             else
             {

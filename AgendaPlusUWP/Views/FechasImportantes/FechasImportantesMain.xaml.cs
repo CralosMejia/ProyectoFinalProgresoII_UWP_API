@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Models;
+﻿using AgendaPlusUWP.Controllers;
+using AgendaPlusUWP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,6 @@ namespace AgendaPlusUWP.Views.FechasImportantes
         public FechasImportantesMain()
         {
             this.InitializeComponent();
-            inizializarAPI();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -41,26 +41,14 @@ namespace AgendaPlusUWP.Views.FechasImportantes
 
             userID = Int32.Parse(IDstr);
 
+            inizializarAPI();
+
             base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            string content = await response.Content.ReadAsStringAsync();
-
-            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
-
-            resultadoAPI = resultado.FirstOrDefault(x => x.UsuarioID == userID).FechasImportantes.ToList();
+            resultadoAPI = await FechasImportantesController.getFecha(userID);
 
             ListaFechasImportantes.ItemsSource = resultadoAPI;
         }
@@ -78,6 +66,23 @@ namespace AgendaPlusUWP.Views.FechasImportantes
                 List<FechasImportante> resultado = resultadoAPI.Where(x => x.Titulo.ToUpper().Contains(palabra)).ToList();
 
                 ListaFechasImportantes.ItemsSource = resultado;
+            }
+        }
+
+        private void crearFecha(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = null;
+            Frame.Navigate(typeof(FechasImportantesCreate), userID);
+        }
+
+        private void editarFecha(object sender, RoutedEventArgs e)
+        {
+            FechasImportante fecha = (FechasImportante)ListaFechasImportantes.SelectedItem;
+
+            if (fecha != null)
+            {
+                Frame.Content = null;
+                Frame.Navigate(typeof(FechasImportatesEditar), (userID, fecha.FechasImportantesID));
             }
         }
 
@@ -103,20 +108,11 @@ namespace AgendaPlusUWP.Views.FechasImportantes
                 if (resultSTR.Equals("Primary"))
                 {
 
-                    var httpHandler = new HttpClientHandler();
-                    var client = new HttpClient(httpHandler);
-                    var json = JsonConvert.SerializeObject(fecha);
-                    var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.DeleteAsync($"https://localhost:44304/api/fechasimportantes/{fecha.FechasImportantesID}");
+                    FechasImportantesController.deleteFecha(fecha);
+                    inizializarAPI();
                     inizializarAPI();
                 }
             }
-        }
-
-        private void crearFecha(object sender, RoutedEventArgs e)
-        {
-            Frame.Content = null;
-            Frame.Navigate(typeof(FechasImportantesCreate), userID);
         }
     }
 }

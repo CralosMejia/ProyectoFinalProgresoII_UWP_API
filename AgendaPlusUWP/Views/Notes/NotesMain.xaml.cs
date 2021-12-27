@@ -1,4 +1,5 @@
 ﻿using AgendaPlusUWP.Models;
+using AgendaPlusUWP.Controllers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,6 @@ namespace AgendaPlusUWP.Views.Notes
         public  NotesMain()
         {
             this.InitializeComponent();
-            inizializarAPI();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -41,26 +41,13 @@ namespace AgendaPlusUWP.Views.Notes
 
             userID = Int32.Parse(IDstr);
 
+            inizializarAPI();
             base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
-
-            var client = new HttpClient(httpHandler);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            string content = await response.Content.ReadAsStringAsync();
-
-            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
-
-            resultadoAPI = resultado.FirstOrDefault(x => x.UsuarioID == userID).Notas.ToList();
+            resultadoAPI = await NotasController.getNota(userID);
 
             ListaNota.ItemsSource = resultadoAPI;
         }
@@ -88,6 +75,17 @@ namespace AgendaPlusUWP.Views.Notes
             Frame.Navigate(typeof(NotesCreate), userID);
         }
 
+        private void editarNota(object sender, RoutedEventArgs e)
+        {
+            Nota nota = (Nota)ListaNota.SelectedItem;
+
+            if (nota != null)
+            {
+                Frame.Content = null;
+                Frame.Navigate(typeof(NotesEdit), (userID, nota.NotaID));
+            }
+        }
+
         private async void borrarNota(object sender, RoutedEventArgs e)
         {
             Nota nota = (Nota)ListaNota.SelectedItem;
@@ -109,14 +107,12 @@ namespace AgendaPlusUWP.Views.Notes
 
                 if (resultSTR.Equals("Primary"))
                 {
-                    var httpHandler = new HttpClientHandler();
-                    var client = new HttpClient(httpHandler);
-                    var json = JsonConvert.SerializeObject(nota);
-                    var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.DeleteAsync($"https://localhost:44304/api/notas/{nota.NotaID}");
+                    NotasController.deleteNota(nota);
+                    inizializarAPI();
                     inizializarAPI();
                 }
             }
         }
+
     }
 }
