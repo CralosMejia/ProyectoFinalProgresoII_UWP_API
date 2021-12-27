@@ -71,7 +71,8 @@ namespace AgendaPlusUWP.Views
 
             if (args.InvokedItemContainer != null)
             {
-                ContentFrame.Navigate(typeof(MainTasks), userID);
+                var navItemTag = args.InvokedItemContainer.Tag.ToString();
+                NavView_Navigate(navItemTag, userID);
 
             }
         }
@@ -91,7 +92,7 @@ namespace AgendaPlusUWP.Views
 
 
 
-        private void NavView_Navigate(string navItemTag, Windows.UI.Xaml.Media.Animation.NavigationTransitionInfo transitionInfo)
+        private void NavView_Navigate(string navItemTag, int userID)
         {
             Type _page = null;
 
