@@ -9,6 +9,7 @@ namespace AgendaPlusUWP.Models
 {
     class Usuario
     {
+         
         public int UsuarioID { get; set; }
 
         [Required]
@@ -25,6 +26,13 @@ namespace AgendaPlusUWP.Models
 
         public string Avatar { get; set; }
 
-        
+        public virtual ICollection<Contacto> Contactos { get; set; }
+
+        public virtual ICollection<FechasImportante> FechasImportantes { get; set; }
+
+        public virtual ICollection<Nota> Notas { get; set; }
+
+        public virtual ICollection<Pendiente> Pendientes { get; set; }
     }
 }
+

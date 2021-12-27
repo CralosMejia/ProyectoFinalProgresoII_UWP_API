@@ -57,7 +57,7 @@
                                 <TextBlock Text="Confirm Password" Margin="492,214,57,131" FontSize="25" Foreground="#FF7E7E7E"></TextBlock>
                             </StackPanel>
                             <StackPanel>
-                                <PasswordBox Margin="448,252,34,79" Width="334" Height="33"></PasswordBox>
+                                <PasswordBox x:Name="textBoxConfirmPassword" Margin="448,252,34,79" Width="334" Height="33"></PasswordBox>
                             </StackPanel>
                             <StackPanel>
                                 <Button Height="41" Width="176" Margin="0,331,0,0" VerticalAlignment="Top" Content="Register Now" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_Click">

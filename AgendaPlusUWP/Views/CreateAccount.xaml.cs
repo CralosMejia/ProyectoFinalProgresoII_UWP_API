@@ -1,4 +1,5 @@
 ﻿using AgendaPlusUWP.Models;
+using AgendaPlusUWP.Controlers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -33,14 +34,18 @@ namespace AgendaPlusUWP.Views
             
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Usuario usuario = new Usuario() { NombreUsuario = textboxUsername.Text, Correo = textboxEmail.Text, Contrasena = textboxPassword.ToString() };
+            Usuario usuario = new Usuario() 
+            { NombreUsuario = textboxUsername.Text, Correo = textboxEmail.Text, 
+             Contrasena = textboxPassword.Password, 
+             ConfirmarContrasena = textBoxConfirmPassword.Password, 
+             Avatar = "https://i.ibb.co/v1QQ7Kd/profile.png" 
+            };
 
-            var json = JsonConvert.SerializeObject(usuario);
-            HttpClient httpClient = new HttpClient();
-            var content = new StringContent(json,System.TextEncoding.UTF8, "application/json");
-            await httpClient.PostAsync("https://localhost:44386/api/usuario", content);
+            UsuarioController.postTask(usuario);
+
+            Frame.Navigate(typeof(Login));
 
         }
 

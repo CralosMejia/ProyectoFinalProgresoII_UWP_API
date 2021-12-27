@@ -116,6 +116,11 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controlers\UsuarioController.cs" />
+    <Compile Include="Models\Contacto.cs" />
+    <Compile Include="Models\FechasImportante.cs" />
+    <Compile Include="Models\Nota.cs" />
+    <Compile Include="Models\Pendiente.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="System\TextEncoding.cs" />
     <Compile Include="Views\App.xaml.cs">
