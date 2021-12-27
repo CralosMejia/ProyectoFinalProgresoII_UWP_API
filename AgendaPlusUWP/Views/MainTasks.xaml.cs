@@ -133,7 +133,6 @@ namespace AgendaPlusUWP.Views
                 else
                 {
 
-
                     List<Pendientes> resultado = resultadoAPI.Where(x => x.Titulo.ToUpper().Contains(palabra)).ToList();
 
                     ListaPendientes.ItemsSource = resultado;
@@ -168,11 +167,97 @@ namespace AgendaPlusUWP.Views
             {
                 llenarAsync();
             }
-            else
+          
+        }
+
+        private void cB_SortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
+
+            if (comboBoxItem == null) return;
+
+            var content = comboBoxItem.Content as string;
+
+
+            if (content != null && content.Equals("Importance") && cB_TipoTask.SelectedIndex==2)
+            {
+                List<Pendientes> resultado = resultadoAPI.OrderBy(x => x.Prioridad).ToList();
+
+                ListaPendientes.ItemsSource = resultado;
+
+            }else if(content != null && content.Equals("Importance") && cB_TipoTask.SelectedIndex == 0)
+            {
+                List<Pendientes> resultado = resultadoAPI.Where(x => !x.Estado).ToList();
+                resultado.OrderBy(x => x.Prioridad);
+
+                ListaPendientes.ItemsSource = resultado;
+
+            }else if (content != null && content.Equals("Importance") && cB_TipoTask.SelectedIndex == 1)
+            {
+                List<Pendientes> resultado = resultadoAPI.Where(x => x.Estado).ToList();
+                resultado.OrderBy(x => x.Prioridad);
+
+                ListaPendientes.ItemsSource = resultado;
+            }
+            else if (content.Equals("No filter"))
             {
                 llenarAsync();
             }
+      
         }
+
+        //private void mantenerFiltrado (object sender, object sender2, SelectionChangedEventArgs e, SelectionChangedEventArgs e1)
+        //{
+        //    var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
+
+        //    if (comboBoxItem == null) return;
+
+        //    var content = comboBoxItem.Content as string;
+
+
+        //    var comboBoxItem1 = e1.AddedItems[0] as ComboBoxItem;
+
+        //    if (comboBoxItem1 == null) return;
+
+        //    var content1 = comboBoxItem1.Content as string;
+
+        //    switch (content + content1)
+        //    {
+        //        case ("Pending tasks" + "Importance"):
+
+        //            List<Pendientes> resultado = resultadoAPI.Where(x => !x.Estado) .ToList();
+
+        //            resultado.OrderBy(x => x.Prioridad);
+
+        //            ListaPendientes.ItemsSource = resultado;
+        //            break;
+        //        case ("Done tasks" + "Importance"):
+
+        //            List<Pendientes> resultado2 = resultadoAPI.Where(x => !x.Estado).ToList();
+
+        //            resultado2.OrderBy(x => x.Prioridad);
+
+        //            ListaPendientes.ItemsSource = resultado2;
+        //            break;
+        //        case ("No filter" + "No filter"):
+
+        //            llenarAsync();
+
+        //            break;
+        //        case ("No filter" + "Importance"):
+
+        //            List<Pendientes> resultado3 = resultadoAPI.OrderBy(x => x.Prioridad).ToList();
+
+        //            ListaPendientes.ItemsSource = resultado3;
+
+        //            break;
+
+
+
+        //    }
+
+        //}
+
     }
     
 }
