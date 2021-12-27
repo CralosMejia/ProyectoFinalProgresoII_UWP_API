@@ -174,11 +174,9 @@
     </Compile>
     <Compile Include="Models\BaseDeDatos.cs" />
     <Compile Include="Models\Contacto.cs" />
-    <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\FechasImportante.cs" />
     <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Pendiente.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
