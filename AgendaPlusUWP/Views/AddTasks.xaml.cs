@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AgendaPlusUWP.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +23,8 @@ namespace AgendaPlusUWP.Views
     /// </summary>
     public sealed partial class AddTasks : Page
     {
+        private PendientesController controlador = new PendientesController();
+
         public AddTasks()
         {
             this.InitializeComponent();
@@ -29,7 +32,7 @@ namespace AgendaPlusUWP.Views
 
         private void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
     }
 }

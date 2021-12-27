@@ -44,11 +44,11 @@
                     </Grid.RowDefinitions>
                     <!--TITULO-->
                     <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                        <TextBox Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txt_Title" Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left"/>
                     </StackPanel>
                     <!--DESCRIPCION-->
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                        <TextBox Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txt_Description" Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left"/>
                     </StackPanel>
 
 
@@ -108,7 +108,7 @@
 
                             <!--COMBOBOX DE PRIORIDADES-->
                             <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                <ComboBox Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375">
+                                <ComboBox x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375">
                                     <ComboBoxItem Content="Severe"/>
                                     <ComboBoxItem Content="Important"/>
                                     <ComboBoxItem Content="Not important"/>

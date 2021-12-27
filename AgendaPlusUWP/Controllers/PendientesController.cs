@@ -16,7 +16,7 @@ namespace AgendaPlusUWP.Controllers
 
         private static List<Usuarios> resultadoAPI;
 
-        private async Task crearPendienteAsync(int UsuarioID, string Titulo, string Descripcion, DateTime FechaLimite, string ColorPrioridad, string StringPrioridad, string StringEstado, bool Estado, int Prioridad)
+        public async Task crearPendienteAsync(int UsuarioID, string Titulo, string Descripcion, DateTime FechaLimite, string ColorPrioridad, string StringPrioridad, string StringEstado, bool Estado, int Prioridad)
         {
             Pendientes pendiente = new Pendientes() { Titulo = Titulo, Descripcion = Descripcion, UsuarioID = UsuarioID, ColorPrioridad = ColorPrioridad , Prioridad= Prioridad
             , Estado = Estado, EstadoString = StringEstado, FechaLimite = FechaLimite, PrioridadString = StringPrioridad};
@@ -28,7 +28,7 @@ namespace AgendaPlusUWP.Controllers
             await httpClient.PostAsync("https://localhost:44386/api/pendientes", content);
         }
 
-        private async void borrarNota(ListView ListaPendientes)
+        public async void borrarNota(ListView ListaPendientes)
         {
             Pendientes pendiente = (Pendientes)ListaPendientes.SelectedItem;
 
@@ -107,7 +107,7 @@ namespace AgendaPlusUWP.Controllers
 
         }
 
-        private void ActualizarLista(ListView ListaPendientes)
+        public void ActualizarLista(ListView ListaPendientes)
         {
 
             var pendientes = ListaPendientes.Items;
@@ -120,7 +120,7 @@ namespace AgendaPlusUWP.Controllers
         }
 
 
-        private async void editarPendiente(Pendientes pendiente,int UserId,string Titulo, string Descripcion, DateTime FechaLimite, 
+        public async void editarPendiente(Pendientes pendiente,int UserId,string Titulo, string Descripcion, DateTime FechaLimite, 
             string ColorPrioridad, string StringPrioridad, string StringEstado, bool Estado, int Prioridad
             ,bool validarTitulo, bool validarDescripcion, bool validarFecha, bool validarPrioridad, bool validarEstado, Frame frame)
         {
