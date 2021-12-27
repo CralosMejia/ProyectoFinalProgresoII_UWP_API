@@ -25,14 +25,69 @@ namespace AgendaPlusUWP.Views
     {
         private PendientesController controlador = new PendientesController();
 
+        private int i = 0;
+        private DateTime dateTime;
+
         public AddTasks()
         {
             this.InitializeComponent();
+            dateSelector.SelectedDate = new DateTimeOffset(new DateTime(2022, 1, 1));
+            dateSelector.MinYear = new DateTimeOffset(new DateTime(2022, 1, 1));
+            dateSelector.MaxYear = new DateTimeOffset(new DateTime(2030, 1, 1));
+
+            timeSelector.SelectedTime = new TimeSpan(12,00,00);
         }
 
-        private void btn_AddTask_Click(object sender, RoutedEventArgs e)
+        private async void btn_AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            if(validarCampos())
+            await controlador.crearPendienteAsync(1, txt_Title.Text.ToString(),txt_Description.Text.ToString(),dateTime, false , i);
+          
+
+        }
+
+        private bool validarCampos()
+        {
+            if (!txt_Title.ToString().Equals(null) && !txt_Description.ToString().Equals(null) && !(cB_Priority.SelectedIndex == -1) && timeSelector.SelectedTime
+                != null && dateSelector.SelectedDate != null)
+                return true;
+            else
+                return false;
+        }
+
+        private void obtenerFecha()
+        {
+            //validar
+                        
+            DateTime fecha = Convert.ToDateTime (dateSelector.ToString());
+            DateTime hora = Convert.ToDateTime(timeSelector.ToString());
+
+            dateTime= fecha.AddHours(hora.Hour).AddMinutes(hora.Minute).AddSeconds(hora.Second);
+
+        }
+
+        private void cB_Priority_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
+            var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
+
+            if (comboBoxItem == null) return;
+
+            var content = comboBoxItem.Content as string;
+
+            if(content != null && content.Equals("Severe"))
+            {
+               i = 1;
+            }else if (content != null && content.Equals("Important"))
+            {
+                i = 2;
+            }
+            else if (content != null && content.Equals("Normal"))
+            {
+                i = 3;
+            }
+        
+
         }
     }
 }

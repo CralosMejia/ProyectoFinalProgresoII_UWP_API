@@ -234,7 +234,7 @@
                         <!--boton crear pendiente-->
                         <StackPanel Grid.Column="4" VerticalAlignment="Center" MinHeight="100" HorizontalAlignment="Center" Width="125">
 
-                            <Button x:Name="btn_AddPendiente"  Width="87" HorizontalAlignment="Center" Background="#FF63A2AC"  CornerRadius="1000" Height="78" >
+                            <Button x:Name="btn_AddPendiente"  Width="87" HorizontalAlignment="Center" Background="#FF63A2AC"  CornerRadius="1000" Height="78" Click="btn_AddPendiente_Click" >
                                 <Image   MinHeight="64" VerticalAlignment="Center"  HorizontalAlignment="Left" Source="/Assets/mas.png" Height="64" Width="64" FocusVisualPrimaryBrush="White"/>
                             </Button>
                         </StackPanel>

@@ -13,53 +13,7 @@ namespace AgendaPlusUWP.Controllers
 {
         class PendientesController
     {
-
-        private static List<Usuarios> resultadoAPI;
-
-        public async Task crearPendienteAsync(int UsuarioID, string Titulo, string Descripcion, DateTime FechaLimite, string ColorPrioridad, string StringPrioridad, string StringEstado, bool Estado, int Prioridad)
-        {
-            Pendientes pendiente = new Pendientes() { Titulo = Titulo, Descripcion = Descripcion, UsuarioID = UsuarioID, ColorPrioridad = ColorPrioridad , Prioridad= Prioridad
-            , Estado = Estado, EstadoString = StringEstado, FechaLimite = FechaLimite, PrioridadString = StringPrioridad};
-
-            var json = JsonConvert.SerializeObject(pendiente);
-            HttpClient httpClient = new HttpClient();
-            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-
-            await httpClient.PostAsync("https://localhost:44386/api/pendientes", content);
-        }
-
-        public async void borrarNota(ListView ListaPendientes)
-        {
-            Pendientes pendiente = (Pendientes)ListaPendientes.SelectedItem;
-
-            if (pendiente != null)
-            {
-                pendiente.Usuarios = null;
-
-                ContentDialog noWifiDialog = new ContentDialog
-                {
-                    Title = "Delete task permanently?",
-                    Content = "If you delete this fitask, you won't be able to recover it. Do you want to delete it?",
-                    PrimaryButtonText = "Delete",
-                    CloseButtonText = "Cancel"
-                };
-
-                ContentDialogResult result = await noWifiDialog.ShowAsync();
-                string resultSTR = result.ToString();
-
-                if (resultSTR.Equals("Primary"))
-                {
-                    var httpHandler = new HttpClientHandler();
-                    var client = new HttpClient(httpHandler);
-                    var json = JsonConvert.SerializeObject(pendiente);
-                    var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = await client.DeleteAsync($"https://localhost:44304/api/notas/{pendiente.PendienteID}");
-                    llenarAsync(pendiente.UsuarioID,ListaPendientes);
-                }
-            }
-        }
-
-        public async void llenarAsync(int userID, ListView ListaPendientes)
+        public async Task<List<Pendientes>> getTasks(int userID)
         {
 
             var httpHandler = new HttpClientHandler();
@@ -84,7 +38,7 @@ namespace AgendaPlusUWP.Controllers
             //se deserializa el contenido para formatear de acuerdo a la interfaz
             var resultado = JsonConvert.DeserializeObject<List<Usuarios>>(content);
 
-            // resultadoAPI = resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
+            return resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
 
 
             //PUEDE SERVIR PARA CUANDO SE SELECCIONA EL PENDIENTE
@@ -96,58 +50,43 @@ namespace AgendaPlusUWP.Controllers
 
             //    }
             //}
-            ListaPendientes.ItemsSource = resultado;
-
-            ActualizarLista(ListaPendientes);
 
 
-            resultadoAPI = resultado;
+
 
             //ListaPendientes.ItemsSource = resultadoAPI;
 
         }
 
-        public void ActualizarLista(ListView ListaPendientes)
+        public async Task postTask(Pendientes pendiente)
         {
+  
+            var json = JsonConvert.SerializeObject(pendiente);
+            HttpClient httpClient = new HttpClient();
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            var pendientes = ListaPendientes.Items;
-
-            foreach (Pendientes item in pendientes)
-            {
-                item.calcularEstado();
-                item.calcularPrioridad();
-            }
+            await httpClient.PostAsync("https://localhost:44386/api/pendientes", content);
         }
+                              
+                
 
-
-        public async void editarPendiente(Pendientes pendiente,int UserId,string Titulo, string Descripcion, DateTime FechaLimite, 
-            string ColorPrioridad, string StringPrioridad, string StringEstado, bool Estado, int Prioridad
-            ,bool validarTitulo, bool validarDescripcion, bool validarFecha, bool validarPrioridad, bool validarEstado, Frame frame)
+        public async void putPendiente(Pendientes pendiente)
         {
-            if (validarTitulo && validarDescripcion && validarFecha && validarPrioridad && validarEstado)
-            {
-
-                pendiente.Titulo =Titulo;
-                pendiente.Descripcion = Descripcion;
-                pendiente.Usuarios = null;
-                pendiente.FechaLimite = FechaLimite;
-                pendiente.Prioridad = Prioridad;
-                pendiente.Estado = Estado;
-
-                var httpHandler = new HttpClientHandler();
-                var client = new HttpClient(httpHandler);
-                var json = JsonConvert.SerializeObject(pendiente);
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/notas/{pendiente.PendienteID}", content);
-
-                frame.Content = null;
-                frame.Navigate(typeof(MainTasks), UserId);
-
-            }
-           
+            var httpHandler = new HttpClientHandler();
+            var client = new HttpClient(httpHandler);
+            var json = JsonConvert.SerializeObject(pendiente);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/notas/{pendiente.PendienteID}", content);
 
         }
 
-
+        public async void deleteTask(Pendientes pendiente)
+        {
+            var httpHandler = new HttpClientHandler();
+            var client = new HttpClient(httpHandler);
+            var json = JsonConvert.SerializeObject(pendiente);
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            await client.DeleteAsync($"https://localhost:44304/api/notas/{pendiente.PendienteID}");
+        }
     }
 }

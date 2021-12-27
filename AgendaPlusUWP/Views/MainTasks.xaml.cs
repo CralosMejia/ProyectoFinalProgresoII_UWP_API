@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AgendaPlusUWP.Controllers;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,6 +33,8 @@ namespace AgendaPlusUWP.Views
 
         private static List<Pendientes> resultadoAPI;
 
+        private static int userID;
+
         public MainTasks()
         {
             llenarAsync();
@@ -39,52 +42,19 @@ namespace AgendaPlusUWP.Views
         }
 
 
-        public async void llenarAsync(int userID = 1)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-       
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
+            string IDstr = e.Parameter.ToString();
 
-            //definir todos los atributos del request
+            userID = Int32.Parse(IDstr);
 
-            request.RequestUri = new Uri("https://localhost:44386/api/pendientes");
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
+            llenarAsync();
+            base.OnNavigatedTo(e);
+        }
 
-            //asignar cliente
-            var client = new HttpClient(httpHandler);
-
-            //usar palabra claver await con funciones async 
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            string content = await response.Content.ReadAsStringAsync();
-
-            //se necesita instalar por NuGet JSON
-            //se deserializa el contenido para formatear de acuerdo a la interfaz
-            var resultado = JsonConvert.DeserializeObject<List<Pendientes>>(content);
-
-            // resultadoAPI = resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
-
-
-            //PUEDE SERVIR PARA CUANDO SE SELECCIONA EL PENDIENTE
-            //foreach(Pendientes item in ListaPendientes.Items)
-            //{
-            //    ListViewItem lvi = ListaPendientes.ContainerFromItem(item) as ListViewItem;
-            //    if(lvi != null && lvi.IsSelected)
-            //    {
-
-            //    }
-            //}
-            ListaPendientes.ItemsSource = resultado;
-
-            ActualizarLista();
-
-
-            resultadoAPI = resultado;
-
-            //ListaPendientes.ItemsSource = resultadoAPI;
-
+        public async void llenarAsync()
+        {       
+           resultadoAPI = await PendientesController
         }
 
        
@@ -213,17 +183,7 @@ namespace AgendaPlusUWP.Views
                 hexColor = "FF" + hexColor;
             }
 
-            //100 % — FF  //50 % — 80
-            //95 % — F2  //45 % — 73
-            //90 % — E6  //40 % — 66
-            //85 % — D9  //30 % — 4D
-            //80 % — CC     //25 % — 40
-            //75 % — BF  //20 % — 33
-            //70 % — B3  //15 % — 26
-            //65 % — A6  //10 % — 1A
-            //60 % — 99  //5 % — 0D
-            //55 % — 8C  //0 % — 00
-
+    
             byte alpha = 0;
             byte red = 0;
             byte green = 0;
@@ -239,58 +199,10 @@ namespace AgendaPlusUWP.Views
             return Color.FromArgb(alpha, red, green, blue);
         }
 
-        //private void mantenerFiltrado (object sender, object sender2, SelectionChangedEventArgs e, SelectionChangedEventArgs e1)
-        //{
-        //    var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
-
-        //    if (comboBoxItem == null) return;
-
-        //    var content = comboBoxItem.Content as string;
-
-
-        //    var comboBoxItem1 = e1.AddedItems[0] as ComboBoxItem;
-
-        //    if (comboBoxItem1 == null) return;
-
-        //    var content1 = comboBoxItem1.Content as string;
-
-        //    switch (content + content1)
-        //    {
-        //        case ("Pending tasks" + "Importance"):
-
-        //            List<Pendientes> resultado = resultadoAPI.Where(x => !x.Estado) .ToList();
-
-        //            resultado.OrderBy(x => x.Prioridad);
-
-        //            ListaPendientes.ItemsSource = resultado;
-        //            break;
-        //        case ("Done tasks" + "Importance"):
-
-        //            List<Pendientes> resultado2 = resultadoAPI.Where(x => !x.Estado).ToList();
-
-        //            resultado2.OrderBy(x => x.Prioridad);
-
-        //            ListaPendientes.ItemsSource = resultado2;
-        //            break;
-        //        case ("No filter" + "No filter"):
-
-        //            llenarAsync();
-
-        //            break;
-        //        case ("No filter" + "Importance"):
-
-        //            List<Pendientes> resultado3 = resultadoAPI.OrderBy(x => x.Prioridad).ToList();
-
-        //            ListaPendientes.ItemsSource = resultado3;
-
-        //            break;
-
-
-
-        //    }
-
-        //}
-
+        private void btn_AddPendiente_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddTasks), userID);
+        }
     }
     
 }
