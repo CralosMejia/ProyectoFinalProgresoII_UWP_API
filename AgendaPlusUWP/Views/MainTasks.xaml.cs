@@ -211,6 +211,17 @@ namespace AgendaPlusUWP.Views
             this.Frame.Content = null;
             Frame.Navigate(typeof(AddTasks), userID);
         }
+
+        private void btn_EditPendiente_Click(object sender, RoutedEventArgs e)
+        {
+            Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+
+            if(task != null)
+            {
+                Frame.Content = null;
+                Frame.Navigate(typeof(EditTasks), (userID, task.PendienteID));
+            } 
+        }
     }
     
 }

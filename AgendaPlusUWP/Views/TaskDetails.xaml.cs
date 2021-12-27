@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgendaPlusUWP.Models;
+using AgendaPlusUWP.Controllers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +24,31 @@ namespace AgendaPlusUWP.Views
     /// </summary>
     public sealed partial class TaskDetails : Page
     {
+        private static int userID;
+        private static int pendienteID;
+        private static Pendientes task;
         public TaskDetails()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            List<string> lista = new List<string>();
+
+            string paramStr = e.Parameter.ToString();
+
+            paramStr = paramStr.Replace("(", string.Empty);
+            paramStr = paramStr.Replace(")", string.Empty);
+
+            lista = paramStr.Split(",").ToList();
+
+            userID = Int32.Parse(lista[0]);
+            pendienteID = Int32.Parse(lista[1]);
+
+            //inizializarAPI();
+
+            base.OnNavigatedTo(e);
         }
     }
 }

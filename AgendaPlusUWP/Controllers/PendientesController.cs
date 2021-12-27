@@ -35,7 +35,7 @@ namespace AgendaPlusUWP.Controllers
             return resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
         }
 
-        public async Task postTask(Pendientes pendiente)
+        public static async void postTask(Pendientes pendiente)
         {
   
             var json = JsonConvert.SerializeObject(pendiente);
@@ -44,16 +44,16 @@ namespace AgendaPlusUWP.Controllers
 
             await httpClient.PostAsync("https://localhost:44386/api/pendientes", content);
         }
-                              
-                
 
-        public async void putPendiente(Pendientes pendiente)
+
+
+        public static async void putTask(Pendientes pendiente)
         {
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(pendiente);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/notas/{pendiente.PendienteID}", content);
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:44386/api/pendientes/{pendiente.PendienteID}", content);
 
         }
 
@@ -63,7 +63,7 @@ namespace AgendaPlusUWP.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(pendiente);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            await client.DeleteAsync($"https://localhost:44304/api/notas/{pendiente.PendienteID}");
+            await client.DeleteAsync($"https://localhost:44386/api/pendientes/{pendiente.PendienteID}");
         }
     }
 }

@@ -60,10 +60,11 @@ namespace AgendaPlusUWP.Views
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
+            //aqui se cambiaria segun la pagina a la que se desee navegar
             ("pendientes", typeof(MainTasks)),
-            ("contactos", typeof(AddTasks)),
-            ("notas", typeof(EditTasks)),
-            ("fechas", typeof(TaskDetails)),
+            ("contactos", null),
+            ("notas", null),
+            ("fechas", null),
         };
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

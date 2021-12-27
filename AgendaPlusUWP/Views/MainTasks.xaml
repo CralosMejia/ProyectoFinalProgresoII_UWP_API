@@ -225,12 +225,6 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
-                        <!--CONTROL DE PAGINACION VA AQUI-->
-                        <StackPanel Grid.Column="3" VerticalAlignment="Center" MinHeight="100">
-
-
-                        </StackPanel>
-
                         <!--boton crear pendiente-->
                         <StackPanel Grid.Column="4" VerticalAlignment="Center" MinHeight="100" HorizontalAlignment="Center" Width="125">
 
@@ -256,7 +250,7 @@
 
                         <StackPanel Grid.Column="1" VerticalAlignment="Center" MinHeight="100">
 
-                            <Button  x:Name="btn_EditPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                            <Button  x:Name="btn_EditPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" Click="btn_EditPendiente_Click" >
                                 <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/editar.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
                             </Button>
 
