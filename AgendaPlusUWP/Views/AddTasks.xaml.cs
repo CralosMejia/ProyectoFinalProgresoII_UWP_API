@@ -51,15 +51,17 @@ namespace AgendaPlusUWP.Views
         /// <returns> bool </returns>
         private void setearValoresPorDefecto()
         {
-            dateSelector.SelectedDate = new DateTimeOffset(new DateTime(2022, 1, 1));
-            dateSelector.MinYear = new DateTimeOffset(new DateTime(2022, 1, 1));
-            dateSelector.MaxYear = new DateTimeOffset(new DateTime(2030, 1, 1));
+            calendarioDL.SelectedDate = new DateTimeOffset(new DateTime(2022, 1, 1));
+            calendarioDL.MinYear = new DateTimeOffset(new DateTime(2022, 1, 1));
+            calendarioDL.MaxYear = new DateTimeOffset(new DateTime(2030, 1, 1));
 
-            timeSelector.SelectedTime = new TimeSpan(12, 00, 00);
+            tiempoDL.SelectedTime = new TimeSpan(12, 00, 00);
         }
 
         private  void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
+            //DateTime tiempo = Convert.ToDateTime(tiempoDL.ToString());
+
             if (validarCampos())
             {
                 Pendientes newTask = new Pendientes()
@@ -69,7 +71,7 @@ namespace AgendaPlusUWP.Views
                     UsuarioID = userID,
                     Estado = false,
                     Prioridad = i,
-                    FechaLimite = dateTime
+                    FechaLimite = calendarioDL.Date.DateTime
                 };
 
                 PendientesController.postTask(newTask);
@@ -86,8 +88,8 @@ namespace AgendaPlusUWP.Views
         /// <returns> bool </returns>
         private bool validarCampos()
         {
-            if (!txt_Title.ToString().Equals(null) && !txt_Description.ToString().Equals(null) && !(cB_Priority.SelectedIndex == -1) && timeSelector.SelectedTime
-                != null && dateSelector.SelectedDate != null)
+            if (!txt_Title.ToString().Equals(null) && !txt_Description.ToString().Equals(null) && !(cB_Priority.SelectedIndex == -1) && tiempoDL.SelectedTime
+                != null && calendarioDL.SelectedDate != null)
                 return true;
             else
                 return false;
@@ -97,15 +99,18 @@ namespace AgendaPlusUWP.Views
         /// metodo que retorna la fecha concatenada
         /// </summary>
         /// <returns> void </returns>
-        private void obtenerFecha()
-        {
+        //private void obtenerFecha()
+        //{
 
-            DateTime fecha = Convert.ToDateTime (dateSelector.ToString());
-            DateTime hora = Convert.ToDateTime(timeSelector.ToString());
+        //    DateTime fecha = Convert.ToDateTime (calendarioDL.ToString());
+        //    DateTime hora = Convert.ToDateTime(tiempoDL.ToString());
 
-            dateTime= fecha.AddHours(hora.Hour).AddMinutes(hora.Minute).AddSeconds(hora.Second);
+            
 
-        }
+
+        //    dateTime= fecha.AddHours(hora.Hour).AddMinutes(hora.Minute).AddSeconds(hora.Second);
+             
+        //}
 
         private void cB_Priority_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -131,5 +136,6 @@ namespace AgendaPlusUWP.Views
 
 
         }
+
     }
 }

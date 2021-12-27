@@ -34,7 +34,7 @@ namespace AgendaPlusUWP.Views
 
         private static List<Pendientes> resultadoAPI;
 
-        private static int userID;
+        private static int userID=1;
 
         public MainTasks()
         {
@@ -46,9 +46,9 @@ namespace AgendaPlusUWP.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string IDstr = e.Parameter.ToString();
+            //string IDstr = e.Parameter.ToString();
 
-            userID = Int32.Parse(IDstr);
+            //userID = Int32.Parse(IDstr);
               
 
             base.OnNavigatedTo(e);
@@ -220,8 +220,106 @@ namespace AgendaPlusUWP.Views
             {
                 Frame.Content = null;
                 Frame.Navigate(typeof(EditTasks), (userID, task.PendienteID));
-            } 
+            }
+            else
+            {
+                mostrarCuadroDeDialogo();
+            }
+        }
+
+
+        private async void mostrarCuadroDeDialogo()
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "No selection",
+                Content = "You have not selected any task, try again.",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
+        }
+
+          private async void mostrarCuadroDeDialogoCambiarEstado()
+            {
+                ContentDialog dialogo = new ContentDialog
+                {
+                    Title = "Task already done",
+                    Content = "You have already done this task.",
+                    CloseButtonText = "Ok"
+                };
+
+                ContentDialogResult result = await dialogo.ShowAsync();
+            }
+
+            private void btn_verPendiente_Click(object sender, RoutedEventArgs e)
+        {
+            Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+
+            if (task != null)
+            {
+                Frame.Content = null;
+                Frame.Navigate(typeof(TaskDetails), (userID, task.PendienteID));
+            }
+            else
+            {
+                mostrarCuadroDeDialogo();
+            }
+        }
+
+        private async void btn_DelPendiente_Click(object sender, RoutedEventArgs e)
+        {
+            Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+
+            if (task != null)
+            {
+                task.Usuarios = null;
+
+                ContentDialog dialogo = new ContentDialog
+                {
+                    Title = "Delete task permanently?",
+                    Content = "If you delete this task, you won't be able to recover it. Do you want to delete it?",
+                    CloseButtonText = "Cancel",
+                    PrimaryButtonText = "Delete"
+                };
+
+                ContentDialogResult result = await dialogo.ShowAsync();
+                string resultSTR = result.ToString();
+
+                if (resultSTR.Equals("Primary"))
+                {
+                    PendientesController.deleteTask(task);
+                    llenarAsync();
+                }
+            }
+            else
+            {
+                mostrarCuadroDeDialogo();
+            }
+        }
+
+        //cambiar estado del pendiente a realizado (se realiza aqui o en editarTask)
+        private void btn_PendienteRealizado_Click(object sender, RoutedEventArgs e)
+        {
+            Pendientes editedTask = (Pendientes)ListaPendientes.SelectedItem;
+
+            if (editedTask != null && !editedTask.Estado)
+            {
+                editedTask.Estado = true;
+               
+                PendientesController.putTask(editedTask);
+
+                llenarAsync();
+            }
+            else if(editedTask == null)
+            {
+                mostrarCuadroDeDialogo();
+            }
+            else
+            {
+                mostrarCuadroDeDialogoCambiarEstado();
+            }
         }
     }
-    
+        
 }

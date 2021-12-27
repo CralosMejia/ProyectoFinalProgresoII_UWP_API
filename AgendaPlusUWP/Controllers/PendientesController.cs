@@ -57,7 +57,7 @@ namespace AgendaPlusUWP.Controllers
 
         }
 
-        public async void deleteTask(Pendientes pendiente)
+        public static async void deleteTask(Pendientes pendiente)
         {
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);

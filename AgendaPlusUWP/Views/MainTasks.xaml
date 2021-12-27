@@ -235,14 +235,14 @@
                         <!--boton poner pendiente como realizado-->
                         <StackPanel Grid.Column="5" VerticalAlignment="Center" MinHeight="100">
 
-                            <Button x:Name="btn_PendienteRealizado" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                            <Button x:Name="btn_PendienteRealizado" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" Click="btn_PendienteRealizado_Click" >
                                 <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/marca-de-verificacion-para-verificacion.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
                             </Button>
                         </StackPanel>
                         
                         <StackPanel Grid.Column="0" VerticalAlignment="Center" MinHeight="100">
 
-                            <Button x:Name="btn_verPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                            <Button x:Name="btn_verPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" Click="btn_verPendiente_Click" >
                                 <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/ver.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
                             </Button>
 
@@ -258,7 +258,7 @@
                         
                         <StackPanel Grid.Column="2" VerticalAlignment="Center" MinHeight="100">
 
-                            <Button x:Name="btn_DelPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" >
+                            <Button x:Name="btn_DelPendiente" Width="87" HorizontalAlignment="Center" Background="#FF63A2AC" CornerRadius="1000" Height="78" Click="btn_DelPendiente_Click" >
                                 <Image VerticalAlignment="Center"  HorizontalAlignment="Center" Source="/Assets/basura.png" MinHeight="64" FocusVisualPrimaryBrush="White" Height="68"></Image>
                             </Button>
 
