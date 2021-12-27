@@ -30,6 +30,7 @@ namespace AgendaPlusUWP.Views
     public sealed partial class MainTasks : Page
     {
 
+        private PendientesController controlador = new PendientesController();
 
         private static List<Pendientes> resultadoAPI;
 
@@ -37,7 +38,7 @@ namespace AgendaPlusUWP.Views
 
         public MainTasks()
         {
-            llenarAsync();
+           
             this.InitializeComponent();
         }
 
@@ -52,9 +53,11 @@ namespace AgendaPlusUWP.Views
             base.OnNavigatedTo(e);
         }
 
-        public async void llenarAsync()
-        {       
-           resultadoAPI = await PendientesController
+        private async void llenarAsync()
+        {
+            resultadoAPI = await controlador.getTasks(userID);
+
+            ListaPendientes.ItemsSource = resultadoAPI;
         }
 
        
@@ -201,6 +204,7 @@ namespace AgendaPlusUWP.Views
 
         private void btn_AddPendiente_Click(object sender, RoutedEventArgs e)
         {
+            this.Frame.Content = null;
             Frame.Navigate(typeof(AddTasks), userID);
         }
     }

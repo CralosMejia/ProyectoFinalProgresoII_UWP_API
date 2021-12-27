@@ -25,7 +25,7 @@ namespace AgendaPlusUWP.Views
     {
         private PendientesController controlador = new PendientesController();
 
-        private int i = 0;
+       // private int i = 0;
         private DateTime dateTime;
 
         public AddTasks()
@@ -38,10 +38,10 @@ namespace AgendaPlusUWP.Views
             timeSelector.SelectedTime = new TimeSpan(12,00,00);
         }
 
-        private async void btn_AddTask_Click(object sender, RoutedEventArgs e)
+        private  void btn_AddTask_Click(object sender, RoutedEventArgs e)
         {
-            if(validarCampos())
-            await controlador.crearPendienteAsync(1, txt_Title.Text.ToString(),txt_Description.Text.ToString(),dateTime, false , i);
+            //if(validarCampos())
+            //await controlador.crearPendienteAsync(1, txt_Title.Text.ToString(),txt_Description.Text.ToString(),dateTime, false , i);
           
 
         }
@@ -69,23 +69,23 @@ namespace AgendaPlusUWP.Views
         private void cB_Priority_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
-            var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
+            //var comboBoxItem = e.AddedItems[0] as ComboBoxItem;
 
-            if (comboBoxItem == null) return;
+            //if (comboBoxItem == null) return;
 
-            var content = comboBoxItem.Content as string;
+            //var content = comboBoxItem.Content as string;
 
-            if(content != null && content.Equals("Severe"))
-            {
-               i = 1;
-            }else if (content != null && content.Equals("Important"))
-            {
-                i = 2;
-            }
-            else if (content != null && content.Equals("Normal"))
-            {
-                i = 3;
-            }
+            //if(content != null && content.Equals("Severe"))
+            //{
+            //   i = 1;
+            //}else if (content != null && content.Equals("Important"))
+            //{
+            //    i = 2;
+            //}
+            //else if (content != null && content.Equals("Normal"))
+            //{
+            //    i = 3;
+            //}
         
 
         }

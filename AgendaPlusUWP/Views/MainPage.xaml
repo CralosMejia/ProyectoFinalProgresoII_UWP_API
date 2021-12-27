@@ -45,7 +45,7 @@
                 </Grid.ColumnDefinitions>
 
 
-                <NavigationView Grid.Column="0" x:Name="NavView" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked"  PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" Background="#FF63A2AC" Margin="0,0,10,0" >
+                <NavigationView Grid.Column="0" x:Name="NavView"  ItemInvoked="NavView_ItemInvoked"  PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" Background="#FF63A2AC" Margin="0,0,10,0" >
 
                     <NavigationView.MenuItems >
                         <NavigationViewItem  Icon="AllApps" Content="Tasks" Tag="pendientes" FontSize="25" Foreground="#FF020000" Background="#FF63A2AC" Width="176"/>
@@ -77,7 +77,7 @@
                             <Image Source="/Assets/perfil.png" MaxWidth="70" MaxHeight="70" MinWidth="50" MinHeight="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="48">
-                            <TextBlock Text="UserName" FontSize="36" Foreground="#111" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="16,0,0,0"/>
+                            <TextBlock x:Name="userName" Text="UserName" FontSize="36" Foreground="#111" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="16,0,0,0"/>
                         </StackPanel>
 
                     </Grid>
