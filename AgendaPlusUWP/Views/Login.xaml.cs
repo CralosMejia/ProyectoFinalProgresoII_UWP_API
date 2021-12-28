@@ -1,4 +1,5 @@
 ﻿using System;
+using AgendaPlusUWP.Controlers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AgendaPlusUWP.Models;
+using System.Threading.Tasks;
 
 // La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,18 +27,29 @@ namespace AgendaPlusUWP.Views
     public sealed partial class Login : Page
     {
 
-        CreateAccount createAccount = new CreateAccount();
+        public int userID = 1;
+
+        string resultado;
+
+        
 
         public Login()
         {
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void inizializarAPIAsync()
         {
-            if (validarCorreo(textboxCorreo.Text) && validarCorreo(textboxContrasena.Password)){
-                    
-                
+            resultado = await UsuarioController.getUsuario(userID);
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (validarCorreo(textboxCorreo.Text) && validarCorreo(textboxContrasena.Password) && validarUsuario())
+            {
+
+                Frame.Navigate(typeof(MainPage));
 
             }
         }
@@ -64,12 +78,28 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textboxErrorContrasena.Text = "El campo username es requerido";
+                textboxErrorContrasena.Text = "El campo Password es requerido";
                 return false;
             }
 
             textboxErrorContrasena.Text = "";
             return true;
         }
+
+
+        private Boolean validarUsuario()
+        {
+            inizializarAPIAsync();
+            if(resultado == null || resultado.Equals(""))
+            {
+                textBoxErrorLogin.Text = "Las creedenciales no coinciden";
+                return false;
+            }
+
+            textBoxErrorLogin.Text = "";
+            return true;
+        }
+
+        
     }
 }

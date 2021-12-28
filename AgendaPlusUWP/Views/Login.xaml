@@ -50,7 +50,7 @@
                     <TextBlock Foreground="#FF666666" Text="Password" FontSize="25" Margin="434,435,715,243"></TextBlock>
                     <PasswordBox x:Name="textboxContrasena" Margin="430,468,506,222" Width="344"/>
                         <TextBlock x:Name="textboxErrorContrasena"  Margin="431,501,0,0" FontSize="9" FocusVisualPrimaryBrush="#FFACAAAA" Foreground="Red" > </TextBlock>
-                    <Button Height="41" Width="176" Margin="514,518,0,0" VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold">
+                    <Button Height="41" Width="176" Margin="514,518,0,0" VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold" Click="Button_Click_2">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFB9C2F7"/>
@@ -58,6 +58,7 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
+                        <TextBlock x:Name="textBoxErrorLogin" Margin="539,568,0,0" Foreground="Red" ></TextBlock>
                     <TextBlock Margin="446,597,672,88" Text="Don't have an account?" Foreground="Black" FontSize="15"></TextBlock>
                     <Button Content="Register Now" Margin="617,590,0,0" VerticalAlignment="Top" Background="#FFDEDEDE" BorderBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" Foreground="#FF30AFD4" FontWeight="Bold" Click="Button_Click_1"/>
                 </Grid>

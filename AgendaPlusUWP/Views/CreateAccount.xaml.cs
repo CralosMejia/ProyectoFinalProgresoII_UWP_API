@@ -112,7 +112,7 @@ namespace AgendaPlusUWP.Views
 
         private Boolean validarPasswords(string a)
         {
-            if (textBoxConfirmPassword.Equals(textboxPassword))
+            if (!textBoxConfirmPassword.Password.Equals(textboxPassword.Password))
             {
                 textBoxErrorPasswords.Text = "Las contrasenias no coinciden";
                 return false;

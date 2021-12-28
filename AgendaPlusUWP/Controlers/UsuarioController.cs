@@ -23,7 +23,7 @@ namespace AgendaPlusUWP.Controlers
             await httpClient.PostAsync("https://localhost:44386/api/usuario", content);
         }
 
-        
+
 
         //public static async void putTask(Usuario usuario)
         //{
@@ -35,27 +35,28 @@ namespace AgendaPlusUWP.Controlers
 
         //}
 
-        //public static async void getTasks(int userID)
-        //{
-        //    var httpHandler = new HttpClientHandler();
-        //    var request = new HttpRequestMessage();
+        public static async Task<String> getUsuario (int userID)
+        {
+            var httpHandler = new HttpClientHandler();
+            var request = new HttpRequestMessage();
 
-        //    //request.RequestUri = new Uri("https://localhost:44386/api/usuario");
-        //    request.Method = HttpMethod.Get;
-        //    request.Headers.Add("Accept", "application/json");
+            request.RequestUri = new Uri("https://localhost:44386/api/usuario");
+            request.Method = HttpMethod.Get;
+            request.Headers.Add("Accept", "application/json");
 
-        //    var client = new HttpClient(httpHandler);
+            var client = new HttpClient(httpHandler);
 
-        //    //usar palabra claver await con funciones async 
+            //usar palabra claver await con funciones async 
 
-        //    HttpResponseMessage response = await client.SendAsync(request);
+            HttpResponseMessage response = await client.SendAsync(request);
 
-        //    string content = await response.Content.ReadAsStringAsync();
+            string content = await response.Content.ReadAsStringAsync();
 
-        //    var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
+            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
 
-            
-        //}
+            return resultado.FirstOrDefault(x => x.UsuarioID == userID).ToString();
+        }
+        
 
 
 
