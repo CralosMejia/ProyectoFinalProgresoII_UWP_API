@@ -78,6 +78,14 @@ namespace AgendaPlusUWP.Views
                 cB_Priority.SelectedIndex = 2;
             }
 
+            if (task.Estado)
+            {
+                estado.SelectedIndex = 0;
+            }
+            else if (!task.Estado)
+            {
+                estado.SelectedIndex = 1;
+            }
         }
 
         private bool validarCampos()
@@ -97,7 +105,21 @@ namespace AgendaPlusUWP.Views
                 task.Descripcion = txtDesc.Text;
                 task.Prioridad = i;
                 task.FechaLimite = calendarioDT.Date.DateTime;
-                task.Estado = false;
+                //task.Estado = false;
+
+                if (estado.SelectedIndex == 0)
+                {
+                    task.Estado = true;
+                }
+                else if (estado.SelectedIndex == 1)
+                {
+                    task.Estado = false;
+                }
+                else
+                {
+                    task.Estado = false;
+                }
+
                 task.Usuarios = null;
 
                 PendientesController.putTask(task);

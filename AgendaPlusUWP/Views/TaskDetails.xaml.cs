@@ -60,20 +60,30 @@ namespace AgendaPlusUWP.Views
             txtTitle.Text = task.Titulo.ToString();
             txtDesc.Text = task.Descripcion.ToString();
 
-            calendarioDT.SelectedDate = task.FechaLimite;
+            calendarioDT.Text = task.FechaLimite.ToString();
+
+            
 
             if (task.Prioridad == 1)
             {
-                cB_Priority.SelectedIndex = 0;
+                cB_Priority.Text = "Severe";
             }
             else if (task.Prioridad == 2)
             {
-                cB_Priority.SelectedIndex = 1;
+                cB_Priority.Text = "Important";
 
             }
             else if (task.Prioridad == 3)
             {
-                cB_Priority.SelectedIndex = 2;
+                cB_Priority.Text = "Normal";
+            }
+
+            if (task.Estado)
+            {
+                estado.Text = "Done";
+            }else if (!task.Estado)
+            {
+                estado.Text = "Pending";
             }
 
         }

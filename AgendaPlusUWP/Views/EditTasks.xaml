@@ -66,6 +66,7 @@
                                     <ColumnDefinition Width="120"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <StackPanel Grid.Column="0" VerticalAlignment="Center">
@@ -81,10 +82,18 @@
                                     <!--AQUI VAN LAS FECHAS Y HORA-->
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <DatePicker x:Name="calendarioDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black"/>
+                                    <DatePicker x:Name="calendarioDT" Width="355" HorizontalAlignment="Right" FontSize="25" Foreground="Black"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" VerticalAlignment="Center">
+                                    <TextBlock  Width="111" Text="State" HorizontalAlignment="Right" FontSize="25" Foreground="Black" Height="41" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="4" VerticalAlignment="Center">
+                                    <ComboBox x:Name="estado" Width="350" PlaceholderText="Change state" HorizontalAlignment="Center" FontSize="25"  Height="46">
+                                        <ComboBoxItem Content="Done"/>
+                                        <ComboBoxItem Content="Pending"/>
+                                    </ComboBox>
                                 </StackPanel>
 
-                                <StackPanel Grid.Column="3" VerticalAlignment="Center"/>
                             </Grid>
 
                         </StackPanel>
@@ -112,7 +121,7 @@
 
                                 <!--COMBOBOX DE PRIORIDADES-->
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <ComboBox x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375" SelectionChanged="cB_Priority_SelectionChanged">
+                                    <ComboBox PlaceholderText="Select priority" FontSize="25" x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="375" SelectionChanged="cB_Priority_SelectionChanged">
                                         <ComboBoxItem Content="Severe"/>
                                         <ComboBoxItem Content="Important"/>
                                         <ComboBoxItem Content="Normal"/>

@@ -47,11 +47,11 @@
                         <!--TITULO-->
                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
                             <!--<TextBox x:Name="txtTitle" Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left" IsEnabled="False"/>-->
-                            <TextBox x:Name="txtTitle" IsEnabled="False" PlaceholderText="Title"  HorizontalAlignment="Left"  Background="#FFE7E9EE" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="0,0,0,3"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0"/>
+                            <TextBox x:Name="txtTitle" IsEnabled="False" Background="#FFE7E9EE" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="0,0,0,3"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0"/>
                         </StackPanel>
                         <!--DESCRIPCION-->
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBox x:Name="txtDesc" IsEnabled="False" Grid.Row="2" PlaceholderText="Description"  HorizontalAlignment="Left"  Background="White" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="2,2,2,2"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0" TextWrapping="Wrap" Height="245" Width="998" CornerRadius="12"/>
+                            <TextBox x:Name="txtDesc" IsEnabled="False" Grid.Row="2"   HorizontalAlignment="Left"  Background="White" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="2,2,2,2"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0" TextWrapping="Wrap" Height="245" Width="998" CornerRadius="12"/>
                         </StackPanel>
 
 
@@ -61,6 +61,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="65"/>
                                     <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
@@ -78,10 +79,15 @@
                                     <!--AQUI VAN LAS FECHAS Y HORA-->
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <DatePicker x:Name="calendarioDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black" />
+                                    <TextBox IsEnabled="False" x:Name="calendarioDT" Width="360" HorizontalAlignment="Right" FontSize="25" Foreground="Black" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" VerticalAlignment="Center">
+                                    <TextBlock  Width="146" Text="Current state" HorizontalAlignment="Right" FontSize="25" Foreground="Black" Height="41" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="4" VerticalAlignment="Center">
+                                    <TextBox  IsEnabled="False" x:Name="estado" Width="350" Text="Null" HorizontalAlignment="Center" FontSize="25"  Height="46"/>
                                 </StackPanel>
 
-                                <StackPanel Grid.Column="3" VerticalAlignment="Center"/>
                             </Grid>
 
                         </StackPanel>
@@ -109,11 +115,8 @@
 
                                 <!--COMBOBOX DE PRIORIDADES-->
                                 <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                    <ComboBox x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="488">
-                                        <ComboBoxItem Content="Severe"/>
-                                        <ComboBoxItem Content="Important"/>
-                                        <ComboBoxItem Content="Not important"/>
-                                    </ComboBox>
+                                    <TextBox IsEnabled="False" x:Name="cB_Priority" Foreground="Black" Background="Gray" HorizontalAlignment="Left" Width="488" Height="44" FontSize="25"/>
+
                                 </StackPanel>
 
                             </Grid>
@@ -125,12 +128,6 @@
 
                             </Button>-->
                             <Button  Width="300" Content="Back" FontSize="25" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" Click="btn_Back_Click">
-                                <Button.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
                                 <Button.Resources>
                                     <ResourceDictionary>
                                         <ResourceDictionary.ThemeDictionaries>
@@ -144,7 +141,17 @@
                                         </ResourceDictionary.ThemeDictionaries>
                                     </ResourceDictionary>
                                 </Button.Resources>
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
                             </Button>
+                            <!--<Button  x:Name="btn_Back" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Back" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310" Click="btn_Back_Click">
+
+
+                            </Button>-->
                         </StackPanel>
                     </Grid>
 
