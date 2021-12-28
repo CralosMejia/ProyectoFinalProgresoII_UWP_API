@@ -34,24 +34,92 @@ namespace AgendaPlusUWP.Views
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
-            Usuario usuario = new Usuario() 
-            { NombreUsuario = textboxUsername.Text, Correo = textboxEmail.Text, 
-             Contrasena = textboxPassword.Password, 
-             ConfirmarContrasena = textBoxConfirmPassword.Password, 
-             Avatar = "https://i.ibb.co/v1QQ7Kd/profile.png" 
-            };
 
-            UsuarioController.postTask(usuario);
+            if (validarPassword(textboxPassword.Password) && validarEmail(textboxEmail.Text) && validarUsername(textboxUsername.Text) && validarConfirmarPassword(textBoxConfirmPassword.Password) && validarPasswords(textBoxConfirmPassword.Password)){
 
-            Frame.Navigate(typeof(Login));
+                Usuario usuario = new Usuario()
+                { NombreUsuario = textboxUsername.Text, Correo = textboxEmail.Text,
+                    Contrasena = textboxPassword.Password,
+                    ConfirmarContrasena = textBoxConfirmPassword.Password,
+                    Avatar = "https://i.ibb.co/v1QQ7Kd/profile.png"
+                };
+
+                UsuarioController.postUsuario(usuario);
+
+                Frame.Navigate(typeof(Login));
+
+            }
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));
+        }
+
+
+        // Validaciones 
+        private Boolean validarUsername (string a)
+        {
+            if(a==null || a.Equals(""))
+            {
+                textboxErrorUsername.Text = "El campo username es requerido";
+                return false;
+            }
+
+            textboxErrorUsername.Text = "";
+            return true;
+        }
+
+        private Boolean validarPassword(string a)
+        {
+            if (a == null || a.Equals(""))
+            {
+                textboxErrorPassword.Text = "El campo password es requerido";
+                return false;
+            }
+
+            textboxErrorPassword.Text = "";
+            return true;
+        }
+
+        private Boolean validarEmail(string a)
+        {
+            if (a == null || a.Equals(""))
+            {
+                textboxErrorEmail.Text = "El campo Email es requerido";
+                return false;
+            }
+
+            textboxErrorEmail.Text = "";
+            return true;
+        }
+
+        private Boolean validarConfirmarPassword(string a)
+        {
+            if (a == null || a.Equals(""))
+            {
+                textBoxErrorConfirmPassword.Text = "El campo Confirm Password es requerido";
+                return false;
+            }
+
+            textBoxErrorConfirmPassword.Text = "";
+            return true;
+        }
+
+        private Boolean validarPasswords(string a)
+        {
+            if (textBoxConfirmPassword.Equals(textboxPassword))
+            {
+                textBoxErrorPasswords.Text = "Las contrasenias no coinciden";
+                return false;
+            }
+
+            textBoxErrorPasswords.Text = "";
+            return true;
         }
     }
 }

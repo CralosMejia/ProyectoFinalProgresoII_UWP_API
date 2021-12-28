@@ -33,12 +33,43 @@ namespace AgendaPlusUWP.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (validarCorreo(textboxCorreo.Text) && validarCorreo(textboxContrasena.Password)){
+                    
+                
 
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CreateAccount));
+        }
+
+
+        //Validaciones
+
+        private Boolean validarCorreo(string a)
+        {
+            if (a == null || a.Equals(""))
+            {
+                textboxErrorCorreo.Text = "El campo Email es requerido";
+                return false;
+            }
+
+            textboxErrorCorreo.Text = " ";
+            return true;
+        }
+
+        private Boolean validarContrasena(string a)
+        {
+            if (a == null || a.Equals(""))
+            {
+                textboxErrorContrasena.Text = "El campo username es requerido";
+                return false;
+            }
+
+            textboxErrorContrasena.Text = "";
+            return true;
         }
     }
 }

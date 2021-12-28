@@ -15,7 +15,7 @@ namespace AgendaPlusUWP.Models
         [Required]
         public string NombreUsuario { get; set; }
 
-        [Required]
+        [EmailAddress]
         public string Correo { get; set; }
 
         [Required]

@@ -13,7 +13,7 @@ namespace AgendaPlusUWP.Controlers
 {
     class UsuarioController
     {
-        public static async void postTask(Usuario usuario)
+        public static async void postUsuario(Usuario usuario)
         {
 
             var json = JsonConvert.SerializeObject(usuario);
@@ -23,7 +23,7 @@ namespace AgendaPlusUWP.Controlers
             await httpClient.PostAsync("https://localhost:44386/api/usuario", content);
         }
 
-
+        
 
         //public static async void putTask(Usuario usuario)
         //{

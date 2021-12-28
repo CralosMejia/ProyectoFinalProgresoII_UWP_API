@@ -45,9 +45,11 @@
                 <Grid>
                     <Rectangle Margin="400,324,480,49" Fill="#FFDEDEDE" Width="393" Height="330" RadiusY="8" RadiusX="8"></Rectangle>
                     <TextBlock Foreground="#FF666666" Text="Email" FontSize="25" Margin="434,360,780,324"></TextBlock>
-                    <TextBox Margin="430,395,506,290" Height="33"/>
+                    <TextBox x:Name="textboxCorreo" Margin="430,395,506,290" Height="33"/>
+                        <TextBlock x:Name="textboxErrorCorreo" FocusVisualPrimaryBrush="#FF020202" Foreground="Red" Margin="430,427,0,0" FontSize="9" > </TextBlock>
                     <TextBlock Foreground="#FF666666" Text="Password" FontSize="25" Margin="434,435,715,243"></TextBlock>
-                    <PasswordBox Margin="430,468,506,222" Width="344"/>
+                    <PasswordBox x:Name="textboxContrasena" Margin="430,468,506,222" Width="344"/>
+                        <TextBlock x:Name="textboxErrorContrasena"  Margin="431,501,0,0" FontSize="9" FocusVisualPrimaryBrush="#FFACAAAA" Foreground="Red" > </TextBlock>
                     <Button Height="41" Width="176" Margin="514,518,0,0" VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
