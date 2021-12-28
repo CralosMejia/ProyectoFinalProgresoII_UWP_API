@@ -92,6 +92,7 @@ namespace AgendaPlusUWP.Views.Notes
 
             if (nota != null)
             {
+
                 nota.Usuario = null;
 
                 ContentDialog noWifiDialog = new ContentDialog
@@ -108,8 +109,12 @@ namespace AgendaPlusUWP.Views.Notes
                 if (resultSTR.Equals("Primary"))
                 {
                     NotasController.deleteNota(nota);
-                    inizializarAPI();
-                    inizializarAPI();
+
+                    ListaNota.ItemsSource = null;
+
+                    resultadoAPI.Remove(nota);
+
+                    ListaNota.ItemsSource = resultadoAPI;
                 }
             }
         }

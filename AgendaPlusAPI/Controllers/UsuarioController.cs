@@ -12,7 +12,7 @@ using AgendaPlusAPI.Models;
 
 namespace AgendaPlusAPI.Controllers
 {
-    public class UsuariosController : ApiController
+    public class UsuarioController : ApiController
     {
         private BaseDeDatos db = new BaseDeDatos();
 

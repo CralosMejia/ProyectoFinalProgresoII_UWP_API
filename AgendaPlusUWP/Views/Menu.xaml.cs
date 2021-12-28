@@ -52,7 +52,7 @@ namespace AgendaPlusUWP.Views
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
+            request.RequestUri = new Uri("https://localhost:44304/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 

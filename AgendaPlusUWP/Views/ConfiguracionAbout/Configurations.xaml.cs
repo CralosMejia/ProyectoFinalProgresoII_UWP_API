@@ -48,7 +48,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuarios");
+            request.RequestUri = new Uri("https://localhost:44304/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 
@@ -84,7 +84,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
                         var client = new HttpClient(httpHandler);
                         var json = JsonConvert.SerializeObject(user);
                         var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                        HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/usuarios/{user.UsuarioID}", content);
+                        HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/usuario/{user.UsuarioID}", content);
 
                         textBoxErrorGeneral.Text = "la contraseña se modifico con exito";
                     }
@@ -193,7 +193,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(user);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/usuarios/{user.UsuarioID}", content);
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/usuario/{user.UsuarioID}", content);
         }
 
         private void rb_Checked(object sender, RoutedEventArgs e)

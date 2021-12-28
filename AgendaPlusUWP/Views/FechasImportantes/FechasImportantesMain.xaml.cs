@@ -107,10 +107,14 @@ namespace AgendaPlusUWP.Views.FechasImportantes
 
                 if (resultSTR.Equals("Primary"))
                 {
-
                     FechasImportantesController.deleteFecha(fecha);
-                    inizializarAPI();
-                    inizializarAPI();
+
+
+                    ListaFechasImportantes.ItemsSource = null;
+
+                    resultadoAPI.Remove(fecha);
+
+                    ListaFechasImportantes.ItemsSource = resultadoAPI;
                 }
             }
         }
