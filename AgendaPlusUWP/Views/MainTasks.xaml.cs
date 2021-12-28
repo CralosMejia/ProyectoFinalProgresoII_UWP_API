@@ -333,8 +333,13 @@ namespace AgendaPlusUWP.Views
                               
                 PendientesController.putTask(t);
 
+                ListaPendientes.ItemsSource = null;
+
+                resultadoAPI.Remove(editedTask);
+
+                ListaPendientes.ItemsSource = resultadoAPI;
                 llenarAsync();
-                llenarAsync();
+
             }
             else if(editedTask == null)
             {

@@ -79,6 +79,18 @@ namespace AgendaPlusUWP.Views
 
                 Frame.Content = null;
                 Frame.Navigate(typeof(MainTasks), userID);
+
+            }else if (!validarTitulo())
+            {
+                mostrarCuadroDeDialogoErrorTitulo();
+            }
+            else if (!validarDescripcion())
+            {
+                mostrarCuadroDeDialogoErrorDesc();
+            }
+            else
+            {
+                mostrarCuadroDeDialogoError();
             }
           
 
@@ -90,28 +102,71 @@ namespace AgendaPlusUWP.Views
         /// <returns> bool </returns>
         private bool validarCampos()
         {
-            if (!txt_Title.ToString().Equals(null) && !txt_Description.ToString().Equals(null) && !(cB_Priority.SelectedIndex == -1) && calendarioDL.SelectedDate != null)
+            if (validarTitulo() && validarDescripcion() && !(cB_Priority.SelectedIndex == -1) && calendarioDL.SelectedDate != null)
                 return true;
             else
                 return false;
         }
 
-        /// <summary>
-        /// metodo que retorna la fecha concatenada
-        /// </summary>
-        /// <returns> void </returns>
-        //private void obtenerFecha()
-        //{
+        private async void mostrarCuadroDeDialogoError()
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Error",
+                Content = "Some fields may have not been filled",
+                CloseButtonText = "Ok"
+            };
 
-        //    DateTime fecha = Convert.ToDateTime (calendarioDL.ToString());
-        //    DateTime hora = Convert.ToDateTime(tiempoDL.ToString());
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
+        }
 
-            
+        private async void mostrarCuadroDeDialogoErrorTitulo()
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Error",
+                Content = "Please fill title field",
+                CloseButtonText = "Ok"
+            };
 
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
+        }
 
-        //    dateTime= fecha.AddHours(hora.Hour).AddMinutes(hora.Minute).AddSeconds(hora.Second);
-             
-        //}
+        private async void mostrarCuadroDeDialogoErrorDesc()
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "Error",
+                Content = "Please fill description field",
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
+        }
+
+        private bool validarTitulo()
+        {
+            if (txt_Title.Text.ToString().Equals(""))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool validarDescripcion()
+        {
+            if (txt_Description.Text.ToString().Equals(""))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         private void cB_Priority_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
