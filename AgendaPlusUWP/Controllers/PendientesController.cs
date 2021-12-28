@@ -13,7 +13,7 @@ namespace AgendaPlusUWP.Controllers
 {
     class PendientesController
     {
-        public static async Task<List<Pendientes>> getTasks(int userID)
+        public static async Task<List<Pendiente>> getTasks(int userID)
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
@@ -30,12 +30,12 @@ namespace AgendaPlusUWP.Controllers
 
             string content = await response.Content.ReadAsStringAsync();
 
-            var resultado = JsonConvert.DeserializeObject<List<Usuarios>>(content);
+            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
 
             return resultado.FirstOrDefault(x => x.UsuarioID == userID).Pendientes.ToList();
         }
 
-        public static async void postTask(Pendientes pendiente)
+        public static async void postTask(Pendiente pendiente)
         {
   
             var json = JsonConvert.SerializeObject(pendiente);
@@ -47,7 +47,7 @@ namespace AgendaPlusUWP.Controllers
 
 
 
-        public static async void putTask(Pendientes pendiente)
+        public static async void putTask(Pendiente pendiente)
         {
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
@@ -57,7 +57,7 @@ namespace AgendaPlusUWP.Controllers
 
         }
 
-        public static async void deleteTask(Pendientes pendiente)
+        public static async void deleteTask(Pendiente pendiente)
         {
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);

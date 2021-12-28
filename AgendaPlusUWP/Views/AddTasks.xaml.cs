@@ -53,7 +53,6 @@ namespace AgendaPlusUWP.Views
             calendarioDL.MinYear = new DateTimeOffset(new DateTime(2022, 1, 1));
             calendarioDL.MaxYear = new DateTimeOffset(new DateTime(2030, 1, 1));
 
-            tiempoDL.SelectedTime = new TimeSpan(12, 00, 00);
         }
 
         private  void btn_AddTask_Click(object sender, RoutedEventArgs e)
@@ -62,7 +61,7 @@ namespace AgendaPlusUWP.Views
 
             if (validarCampos())
             {
-                Pendientes newTask = new Pendientes()
+                Pendiente newTask = new Pendiente()
                 {
                     Titulo = txt_Title.Text,
                     Descripcion = txt_Description.Text,
@@ -91,8 +90,7 @@ namespace AgendaPlusUWP.Views
         /// <returns> bool </returns>
         private bool validarCampos()
         {
-            if (!txt_Title.ToString().Equals(null) && !txt_Description.ToString().Equals(null) && !(cB_Priority.SelectedIndex == -1) && tiempoDL.SelectedTime
-                != null && calendarioDL.SelectedDate != null)
+            if (!txt_Title.ToString().Equals(null) && !txt_Description.ToString().Equals(null) && !(cB_Priority.SelectedIndex == -1) && calendarioDL.SelectedDate != null)
                 return true;
             else
                 return false;

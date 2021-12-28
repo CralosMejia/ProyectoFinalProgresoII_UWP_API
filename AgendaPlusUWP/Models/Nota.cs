@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AgendaPlusUWP.Models
 {
-    class FechasImportantes
+    class Nota
     {
-        public int FechasImportantesID { get; set; }
+
+        [Key]
+        public int NotaID { get; set; }
 
         public int UsuarioID { get; set; }
 
@@ -16,8 +19,6 @@ namespace AgendaPlusUWP.Models
 
         public string Descripcion { get; set; }
 
-        public DateTime FechaLimite { get; set; }
-
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuarios { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Media;
 
 namespace AgendaPlusUWP.Models
 {
-    class Pendientes
+    class Pendiente
     {
          [Key]
         public int PendienteID { get; set; }
@@ -30,7 +30,7 @@ namespace AgendaPlusUWP.Models
 
         public bool Estado { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuarios { get; set; }
 
         public string PrioridadString { get; set; }
 

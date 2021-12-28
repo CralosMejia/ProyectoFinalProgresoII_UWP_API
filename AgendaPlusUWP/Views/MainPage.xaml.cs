@@ -27,7 +27,7 @@ namespace AgendaPlusUWP.Views
     {
 
         private int userID;
-        private static Usuarios user;
+        private static Usuario user;
 
         public MainPage()
         {
@@ -50,13 +50,14 @@ namespace AgendaPlusUWP.Views
 
             string content = await response.Content.ReadAsStringAsync();
 
-            var resultado = JsonConvert.DeserializeObject<List<Usuarios>>(content);
+            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
 
             user = resultado.FirstOrDefault(x => x.UsuarioID == userID);
 
             userName.Text = user.NombreUsuario.ToString();
             //rutaAvatar();
         }
+
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
@@ -121,6 +122,9 @@ namespace AgendaPlusUWP.Views
                        
         }
 
-
+        private void btn_Home_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(MainTasks), userID);
+        }
     }
 }

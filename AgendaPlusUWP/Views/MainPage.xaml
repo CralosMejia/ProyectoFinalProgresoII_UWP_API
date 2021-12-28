@@ -98,7 +98,7 @@
 
 
                 <StackPanel Grid.Row="0">
-                    <Button Background="#0C1C39"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Button x:Name="btn_Home" Background="#0C1C39"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btn_Home_Click">
                         <Image Source="/Assets/agenda.png" Width="76" Height="78"/>
                     </Button>
                 </StackPanel>

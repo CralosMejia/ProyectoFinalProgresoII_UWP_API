@@ -48,11 +48,13 @@
                         </Grid.RowDefinitions>
                         <!--TITULO-->
                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                            <TextBox x:Name="txtTitle" Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left"/>
+                            <!--<TextBox x:Name="txtTitle" Foreground="Black" Text="Title" Width="1185" FontSize="60" Height="109" Background="White" HorizontalAlignment="Left"/>-->
+                            <TextBox x:Name="txtTitle" Grid.Row="0" PlaceholderText="Title"  HorizontalAlignment="Left"  Background="#FFE7E9EE" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="0,0,0,3"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0"/>
                         </StackPanel>
                         <!--DESCRIPCION-->
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBox x:Name="txtDesc" Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left"/>
+                            <!--<TextBox x:Name="txtDesc" Foreground="Black" Text="Description" Width="1185" FontSize="45" Height="222" Background="White" HorizontalAlignment="Left"/>-->
+                            <TextBox x:Name="txtDesc" Grid.Row="2" PlaceholderText="Description"  HorizontalAlignment="Left"  Background="White" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="2,2,2,2"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0" TextWrapping="Wrap" Height="245" Width="998" CornerRadius="12"/>
                         </StackPanel>
 
 
@@ -82,9 +84,7 @@
                                     <DatePicker x:Name="calendarioDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25" Foreground="Black"/>
                                 </StackPanel>
 
-                                <StackPanel Grid.Column="3" VerticalAlignment="Center">
-                                    <TimePicker x:Name="tiempoDT" Width="404" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="25" Foreground="Black"/>
-                                </StackPanel>
+                                <StackPanel Grid.Column="3" VerticalAlignment="Center"/>
                             </Grid>
 
                         </StackPanel>
@@ -123,11 +123,31 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Width="314">
-                            <Button x:Name="btn_Edit" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Edit" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310" Click="btn_Edit_Click">
+                            <!--<Button x:Name="btn_Edit" MinWidth="300" Background="#FF63A2AC" CornerRadius="15" Content="Edit" FontSize="25" HorizontalAlignment="Center" Foreground="White" Width="310" Click="btn_Edit_Click">
 
 
+                            </Button>-->
+                            <Button  Width="300" Content="Edit" FontSize="25" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" Click="btn_Edit_Click">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                                <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
                             </Button>
-
                         </StackPanel>
                     </Grid>
 

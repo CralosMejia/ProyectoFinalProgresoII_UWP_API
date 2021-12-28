@@ -32,11 +32,11 @@ namespace AgendaPlusUWP.Views
 
        
 
-        private static List<Pendientes> resultadoAPI;
+        private static List<Pendiente> resultadoAPI;
 
         private static int userID=1;
 
-        private static Pendientes t;
+        private static Pendiente t;
 
         public MainTasks()
         {
@@ -73,7 +73,7 @@ namespace AgendaPlusUWP.Views
 
             var pendientes = ListaPendientes.Items;
 
-            foreach (Pendientes item in pendientes)
+            foreach (Pendiente item in pendientes)
             {
                 item.calcularEstado();
                 item.calcularPrioridad();
@@ -97,7 +97,7 @@ namespace AgendaPlusUWP.Views
                 else
                 {
 
-                    List<Pendientes> resultado = resultadoAPI.Where(x => x.Titulo.ToUpper().Contains(palabra)).ToList();
+                    List<Pendiente> resultado = resultadoAPI.Where(x => x.Titulo.ToUpper().Contains(palabra)).ToList();
 
                     ListaPendientes.ItemsSource = resultado;
 
@@ -115,7 +115,7 @@ namespace AgendaPlusUWP.Views
             
             if(content != null && content.Equals("Pending tasks"))
             {
-                List<Pendientes> resultado = resultadoAPI.Where(x => !x.Estado).ToList();
+                List<Pendiente> resultado = resultadoAPI.Where(x => !x.Estado).ToList();
 
                 ListaPendientes.ItemsSource = resultado;
 
@@ -123,7 +123,7 @@ namespace AgendaPlusUWP.Views
             else if (content != null && content.Equals("Done tasks"))
             {
 
-                List<Pendientes> resultado = resultadoAPI.Where(x => x.Estado).ToList();
+                List<Pendiente> resultado = resultadoAPI.Where(x => x.Estado).ToList();
 
                 ListaPendientes.ItemsSource = resultado;
 
@@ -145,20 +145,20 @@ namespace AgendaPlusUWP.Views
 
             if (content != null && content.Equals("Importance") && cB_TipoTask.SelectedIndex==2)
             {
-                List<Pendientes> resultado = resultadoAPI.OrderBy(x => x.Prioridad).ToList();
+                List<Pendiente> resultado = resultadoAPI.OrderBy(x => x.Prioridad).ToList();
 
                 ListaPendientes.ItemsSource = resultado;
 
             }else if(content != null && content.Equals("Importance") && cB_TipoTask.SelectedIndex == 0)
             {
-                List<Pendientes> resultado = resultadoAPI.Where(x => !x.Estado).ToList();
+                List<Pendiente> resultado = resultadoAPI.Where(x => !x.Estado).ToList();
                 resultado.OrderBy(x => x.Prioridad);
 
                 ListaPendientes.ItemsSource = resultado;
 
             }else if (content != null && content.Equals("Importance") && cB_TipoTask.SelectedIndex == 1)
             {
-                List<Pendientes> resultado = resultadoAPI.Where(x => x.Estado).ToList();
+                List<Pendiente> resultado = resultadoAPI.Where(x => x.Estado).ToList();
                 resultado.OrderBy(x => x.Prioridad);
 
                 ListaPendientes.ItemsSource = resultado;
@@ -173,14 +173,18 @@ namespace AgendaPlusUWP.Views
    
         private void ListaPendientes_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
-            var item = (((Pendientes)args.Item));
+            var item = (((Pendiente)args.Item));
 
             if(item.ColorPrioridad != null)
                 args.ItemContainer.Background = new SolidColorBrush(HexToColor(item.ColorPrioridad));
                                 
         }
 
-        //metodo que convierte un string a hexadecimal 
+        /// <summary>
+        /// metodo que permite convertir un string a hexadecimal
+        /// </summary>
+        /// <param name="hexColor"></param>
+        /// <returns>Color</returns>
         public static Color HexToColor(string hexColor)
         {
            
@@ -218,7 +222,7 @@ namespace AgendaPlusUWP.Views
 
         private void btn_EditPendiente_Click(object sender, RoutedEventArgs e)
         {
-            Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+            Pendiente task = (Pendiente)ListaPendientes.SelectedItem;
 
             if(task != null)
             {
@@ -258,7 +262,7 @@ namespace AgendaPlusUWP.Views
 
             private void btn_verPendiente_Click(object sender, RoutedEventArgs e)
         {
-            Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+            Pendiente task = (Pendiente)ListaPendientes.SelectedItem;
             
 
             if (task != null)
@@ -274,7 +278,7 @@ namespace AgendaPlusUWP.Views
 
         private async void btn_DelPendiente_Click(object sender, RoutedEventArgs e)
         {
-            Pendientes task = (Pendientes)ListaPendientes.SelectedItem;
+            Pendiente task = (Pendiente)ListaPendientes.SelectedItem;
 
             if (task != null)
             {
@@ -294,8 +298,12 @@ namespace AgendaPlusUWP.Views
                 if (resultSTR.Equals("Primary"))
                 {
                     PendientesController.deleteTask(task);
-                    llenarAsync();
-                    llenarAsync();
+
+                    ListaPendientes.ItemsSource = null;
+
+                    resultadoAPI.Remove(task);
+
+                    ListaPendientes.ItemsSource = resultadoAPI;
                 }
             }
             else
@@ -307,11 +315,11 @@ namespace AgendaPlusUWP.Views
         //cambiar estado del pendiente a realizado (se realiza aqui o en editarTask)
         private  async void btn_PendienteRealizado_Click(object sender, RoutedEventArgs e)
         {
-            Pendientes editedTask = (Pendientes)ListaPendientes.SelectedItem;
+            Pendiente editedTask = (Pendiente)ListaPendientes.SelectedItem;
 
             if (editedTask != null && !editedTask.Estado)
             {
-                List<Pendientes> resultado =  await PendientesController.getTasks(userID);
+                List<Pendiente> resultado =  await PendientesController.getTasks(userID);
 
                 t = resultado.Find(x => x.PendienteID == editedTask.PendienteID);
 

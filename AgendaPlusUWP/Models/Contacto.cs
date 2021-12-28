@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AgendaPlusUWP.Models
 {
-    class Contactos
+    class Contacto
     {
 
         [Key]
@@ -21,6 +21,6 @@ namespace AgendaPlusUWP.Models
 
         public string TelefonoContacto { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuarios { get; set; }
     }
 }

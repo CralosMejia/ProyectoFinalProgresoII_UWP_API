@@ -26,7 +26,7 @@ namespace AgendaPlusUWP.Views
     {
         private static int userID;
         private static int pendienteID;
-        private static Pendientes task;
+        private static Pendiente task;
         public TaskDetails()
         {
             this.InitializeComponent();
@@ -53,12 +53,12 @@ namespace AgendaPlusUWP.Views
 
         private async void llenarDatos()
         {
-            List<Pendientes> resultado = await PendientesController.getTasks(userID); ;
+            List<Pendiente> resultado = await PendientesController.getTasks(userID); ;
 
             task = resultado.Find(x => x.PendienteID == pendienteID);
 
             txtTitle.Text = task.Titulo.ToString();
-            txtDesc.Text = task.Titulo.ToString();
+            txtDesc.Text = task.Descripcion.ToString();
 
             calendarioDT.SelectedDate = task.FechaLimite;
 

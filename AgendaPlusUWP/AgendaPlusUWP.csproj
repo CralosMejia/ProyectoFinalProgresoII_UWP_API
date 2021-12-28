@@ -120,11 +120,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\PendientesController.cs" />
-    <Compile Include="Models\Contactos.cs" />
-    <Compile Include="Models\FechasImportantes.cs" />
-    <Compile Include="Models\Notas.cs" />
-    <Compile Include="Models\Pendientes.cs" />
-    <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="Models\Contacto.cs" />
+    <Compile Include="Models\FechaImportante.cs" />
+    <Compile Include="Models\Nota.cs" />
+    <Compile Include="Models\Pendiente.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AddTasks.xaml.cs">
       <DependentUpon>AddTasks.xaml</DependentUpon>
@@ -157,7 +157,7 @@
     <Content Include="Assets\log-out.png" />
     <Content Include="Assets\lupa %282%29.png" />
     <Content Include="Assets\lupa.png" />
-    <Content Include="Assets\marca-de-verificacion-para-verificacion.png" />
+    <Content Include="Assets\verificar.png" />
     <Content Include="Assets\marca-de-verificacion.png" />
     <Content Include="Assets\mas %282%29.png" />
     <Content Include="Assets\mas.png" />
