@@ -17,6 +17,7 @@ namespace AgendaPlusUWP.Models
         [Required]
         public string NombreUsuario { get; set; }
 
+        [EmailAddress]
         [Required]
         public string Correo { get; set; }
 
@@ -32,7 +33,7 @@ namespace AgendaPlusUWP.Models
         public virtual ICollection<Contacto> Contactos { get; set; }
 
         public virtual ICollection<FechasImportante> FechasImportantes { get; set; }
-       
+
         public virtual ICollection<FechaImportante> FechasImportantes { get; set; }
 
 
@@ -42,3 +43,4 @@ namespace AgendaPlusUWP.Models
         public virtual ICollection<Pendiente> Pendientes { get; set; }
     }
 }
+
