@@ -34,9 +34,6 @@ namespace AgendaPlusUWP.Models
 
         public virtual ICollection<FechasImportante> FechasImportantes { get; set; }
 
-        public virtual ICollection<FechaImportante> FechasImportantes { get; set; }
-
-
         public virtual ICollection<Nota> Notas { get; set; }
 
    
