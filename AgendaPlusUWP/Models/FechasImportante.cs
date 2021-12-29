@@ -7,21 +7,19 @@ using System.Threading.Tasks;
 
 namespace AgendaPlusUWP.Models
 {
-    class Contacto
+    class FechasImportante
     {
-
         [Key]
-        public int ContactoID { get; set; }
+        public int FechasImportantesID { get; set; }
 
         public int UsuarioID { get; set; }
 
-        public string NombreContacto { get; set; }
+        public string Titulo { get; set; }
 
-        public string CorreoContacto { get; set; }
+        public string Descripcion { get; set; }
 
-        public string TelefonoContacto { get; set; }
+        public DateTime FechaLimite { get; set; }
 
         public virtual Usuario Usuario { get; set; }
-        public virtual Usuario Usuarios { get; set; }
     }
 }

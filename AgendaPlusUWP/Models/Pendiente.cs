@@ -74,5 +74,6 @@ namespace AgendaPlusUWP.Models
         }
 
       
+        public virtual Usuario Usuario { get; set; }
     }
 }

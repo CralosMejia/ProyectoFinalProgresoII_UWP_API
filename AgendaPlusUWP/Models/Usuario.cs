@@ -31,10 +31,11 @@ namespace AgendaPlusUWP.Models
   
         public virtual ICollection<Contacto> Contactos { get; set; }
 
+        public virtual ICollection<FechasImportante> FechasImportantes { get; set; }
        
         public virtual ICollection<FechaImportante> FechasImportantes { get; set; }
 
- 
+
         public virtual ICollection<Nota> Notas { get; set; }
 
    

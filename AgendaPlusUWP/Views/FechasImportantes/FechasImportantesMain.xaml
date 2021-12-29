@@ -1,0 +1,183 @@
+﻿<Page
+    x:Class="AgendaPlusUWP.Views.FechasImportantes.FechasImportantesMain"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AgendaPlusUWP.Views.FechasImportantes"
+    xmlns:localModel="using:AgendaPlusUWP.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="#fff">
+            <Grid Height="620" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <!--controladores-->
+                <StackPanel Grid.Row="0">
+                    <Grid Height="100">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                            <TextBlock Text="Important Dates" FocusVisualPrimaryBrush="Black" Foreground="Black" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="textBoxBuscar" PlaceholderText="Search"  HorizontalAlignment="Right" Grid.Column="0" Width="200" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="18" PlaceholderForeground="Black" BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" TextChanged="TextBox_Buscar"/>
+                                <Button Background="#FFF" Grid.Column="1" FocusVisualPrimaryBrush="#FF212020" Foreground="Black">
+                                    <Image Source="/Assets/Icons/vidrio-de-aumento.png" Width="30" Height="30" HorizontalAlignment="Left" Margin="0,0,10,0" FocusVisualPrimaryBrush="Black"/>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <!--Panel principal-->
+                <StackPanel Grid.Row="1" Height="480" Width="1000" BorderBrush="Black" BorderThickness="2,2,2,2" CornerRadius="20" Margin="-6,0,0,0">
+                    <Grid Height="470">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Paneles dinamicos-->
+                        <StackPanel Grid.ColumnSpan="3" Grid.Row="0" Width="980" Height="380" HorizontalAlignment="Left">
+                            <GridView>
+                                <GridView.HeaderTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" Margin="16,5,0,0">
+                                            <TextBlock Text="Titulo" Width="250" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                                            <TextBlock Text="Descripcion" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                                            <TextBlock Text="Fecha limite" Width="250"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridView.HeaderTemplate>
+                            </GridView>
+                            <ScrollViewer
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" Height="320">
+                                <GridView x:Name="ListaFechasImportantes">
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="localModel:FechasImportante">
+                                            <StackPanel Orientation="Horizontal"  Margin="15,5,0,0">
+                                                <TextBlock x:Name="TituloNota" Text="{x:Bind Titulo}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Bind Descripcion}" Width="500" Foreground="#726868" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Bind FechaLimite}" Width="250" Foreground="#726868" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
+                            </ScrollViewer>
+                        </StackPanel>
+
+                        <!--Controles paginacion-->
+                        <StackPanel Grid.ColumnSpan="2" Grid.Row="1" >
+
+                        </StackPanel>
+
+                        <!--Boton crear-->
+                        <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button Width="68" Height="68" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="50" HorizontalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Foreground="{x:Null}" Click="crearFecha">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Image Source="/Assets/Icons/mas.png" Width="42" Height="35" HorizontalAlignment="Center" Margin="8,0,10,0" FocusVisualPrimaryBrush="Black" VerticalAlignment="Center"/>
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                                <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                            <!--boton editar-->
+                            <Button Width="68" Height="68" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="50" HorizontalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Foreground="{x:Null}" VerticalAlignment="Center" Margin="15,0,0,0" Click="editarFecha">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Image Source="/Assets/Icons/editar.png" Width="42" Height="35" HorizontalAlignment="Center" Margin="8,0,10,0" FocusVisualPrimaryBrush="Black" VerticalAlignment="Center"/>
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                                <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                            <!--boton eliminar-->
+                            <Button Width="68" Height="68" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="50" HorizontalAlignment="Center" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Foreground="{x:Null}" VerticalAlignment="Center" Margin="15,0,0,0" Click="borrarNota">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Image Source="/Assets/Icons/eliminar.png" Width="42" Height="35" HorizontalAlignment="Center" Margin="15,0,10,0" FocusVisualPrimaryBrush="Black" VerticalAlignment="Center"/>
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                                <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

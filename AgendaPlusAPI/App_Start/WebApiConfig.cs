@@ -7,11 +7,11 @@ namespace AgendaPlusAPI
 {
     public static class WebApiConfig
     {
+
         public static void Register(HttpConfiguration config)
         {
-
             var json = config.Formatters.JsonFormatter;
-            json.SerializerSettings.PreserveReferencesHandling= Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             // Web API configuration and services
 

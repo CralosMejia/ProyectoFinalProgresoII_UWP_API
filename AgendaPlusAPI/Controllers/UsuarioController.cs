@@ -35,7 +35,7 @@ namespace AgendaPlusAPI.Controllers
             return Ok(usuarios);
         }
 
-        // PUT: api/Usuario/5
+        // PUT: api/Usuarios/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUsuarios(int id, Usuarios usuarios)
         {

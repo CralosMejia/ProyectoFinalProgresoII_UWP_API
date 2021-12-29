@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="AgendaPlusUWP.Views.Notes.NotesEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AgendaPlusUWP.Views.Notes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Grid.Column="1" Grid.Row="1" Padding="30,0,0,0" Background="#fff">
+            <Grid Height="620">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                    <TextBlock Text="Edit Note." FocusVisualPrimaryBrush="Black" Foreground="Black" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Height="400" BorderBrush="Black" BorderThickness="2,2,2,2" CornerRadius="20" Background="#FFE7E9EE" HorizontalAlignment="Stretch" Margin="0,0,30,0">
+                    <Grid HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox x:Name="textBoxTitle" Grid.Row="0" PlaceholderText="Title"  HorizontalAlignment="Left"  Background="#FFE7E9EE" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="0,0,0,3"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0"/>
+                        <TextBlock x:Name="textBoxErrorTitle" Grid.Row="1" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" />
+                        <TextBox x:Name="textBoxDescription" Grid.Row="2" PlaceholderText="Description"  HorizontalAlignment="Right"  Background="White" BorderBrush="#FF020000" FontSize="25" PlaceholderForeground="Black" BorderThickness="2,2,2,2"  Foreground="#FF020202" HorizontalContentAlignment="Stretch" MinWidth="790" Margin="20,20,0,0" TextWrapping="Wrap" Height="245" Width="998" CornerRadius="12"/>
+                        <TextBlock x:Name="textBoxErrorDescription" Grid.Row="3" Text="" Foreground="red" Margin="20,5,0,0" FontSize="16" />
+
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button  Width="300" Content="Edit" FontSize="25" BorderThickness="2,2,2,2"  Foreground="#FF020202" CornerRadius="20" BorderBrush="Black" Click="editarNota">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Resources>
+                            <ResourceDictionary>
+                                <ResourceDictionary.ThemeDictionaries>
+                                    <ResourceDictionary x:Key="Dark">
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                        <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </ResourceDictionary>
+                                </ResourceDictionary.ThemeDictionaries>
+                            </ResourceDictionary>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,4 +1,6 @@
 ﻿using AgendaPlusUWP.Views;
+using AgendaPlusUWP.Views.Notes;
+using AgendaPlusUWP.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
