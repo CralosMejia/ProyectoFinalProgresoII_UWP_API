@@ -123,6 +123,9 @@
     <Compile Include="Models\Pendiente.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="System\TextEncoding.cs" />
+    <Compile Include="Views\AddTasks.xaml.cs">
+      <DependentUpon>AddTasks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,12 @@
     <Compile Include="Views\ConfiguracionAbout\Configurations.xaml.cs">
       <DependentUpon>Configurations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditTasks.xaml.cs">
+      <DependentUpon>EditTasks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FechasImportantes\FechasImportantesCreate.xaml.cs">
       <DependentUpon>FechasImportantesCreate.xaml</DependentUpon>
     </Compile>
@@ -149,6 +158,15 @@
     </Compile>
     <Compile Include="Views\FechasImportantes\FechasImportatesEditar.xaml.cs">
       <DependentUpon>FechasImportatesEditar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainTasks.xaml.cs">
+      <DependentUpon>MainTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -161,6 +179,9 @@
     </Compile>
     <Compile Include="Views\Notes\NotesMain.xaml.cs">
       <DependentUpon>NotesMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskDetails.xaml.cs">
+      <DependentUpon>TaskDetails.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -183,9 +204,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\AddTasks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CreateAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditTasks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
@@ -215,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MainTasks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +263,10 @@
     <Page Include="Views\Notes\NotesMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
