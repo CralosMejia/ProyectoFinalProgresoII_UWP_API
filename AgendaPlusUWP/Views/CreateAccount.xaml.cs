@@ -27,6 +27,9 @@ namespace AgendaPlusUWP.Views
     /// </summary>
     public sealed partial class CreateAccount : Page
     {
+
+        List<Usuario> resultado;
+
         public CreateAccount()
         {
             this.InitializeComponent();
@@ -34,11 +37,18 @@ namespace AgendaPlusUWP.Views
             
         }
 
+        private async void inizializarAPIAsync()
+        {
+            resultado = await UsuarioController.getUsuario();
+
+        }
+
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (validarPassword(textboxPassword.Password) && validarEmail(textboxEmail.Text) && validarUsername(textboxUsername.Text) && validarConfirmarPassword(textBoxConfirmPassword.Password) && validarPasswords(textBoxConfirmPassword.Password)){
+            if (validarPassword(textboxPassword.Password) && validarEmail(textboxEmail.Text) && validarUsername(textboxUsername.Text) && validarConfirmarPassword(textBoxConfirmPassword.Password) && validarPasswords(textBoxConfirmPassword.Password) && validarExistenciaUsername())
+            {
 
                 Usuario usuario = new Usuario()
                 { NombreUsuario = textboxUsername.Text, Correo = textboxEmail.Text,
@@ -66,7 +76,7 @@ namespace AgendaPlusUWP.Views
         {
             if(a==null || a.Equals(""))
             {
-                textboxErrorUsername.Text = "El campo username es requerido";
+                textboxErrorUsername.Text = "Username field is required";
                 return false;
             }
 
@@ -78,7 +88,7 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textboxErrorPassword.Text = "El campo password es requerido";
+                textboxErrorPassword.Text = "The password field is requiredo";
                 return false;
             }
 
@@ -90,7 +100,7 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textboxErrorEmail.Text = "El campo Email es requerido";
+                textboxErrorEmail.Text = "The email field is required";
                 return false;
             }
 
@@ -102,7 +112,7 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textBoxErrorConfirmPassword.Text = "El campo Confirm Password es requerido";
+                textBoxErrorConfirmPassword.Text = "The confirm password field is required";
                 return false;
             }
 
@@ -114,11 +124,27 @@ namespace AgendaPlusUWP.Views
         {
             if (!textBoxConfirmPassword.Password.Equals(textboxPassword.Password))
             {
-                textBoxErrorPasswords.Text = "Las contrasenias no coinciden";
+                textBoxErrorPasswords.Text = "The passwords doesn't match";
                 return false;
             }
 
             textBoxErrorPasswords.Text = "";
+            return true;
+        }
+
+        private Boolean validarExistenciaUsername()
+        {
+            inizializarAPIAsync();
+
+            Usuario UsuarioValidacion = resultado.Find(x => x.Correo.Equals(textboxUsername.Text));
+
+            if (UsuarioValidacion != null)
+            {
+                textboxErrorUsername.Text = "The username already exists";
+                return false;
+            }
+
+            textboxErrorUsername.Text = "";
             return true;
         }
     }

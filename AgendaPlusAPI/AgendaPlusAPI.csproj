@@ -162,28 +162,21 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\ContactosController.cs" />
-    <Compile Include="Controllers\FechasImportantesController.cs" />
+    <Compile Include="Controllers\ContactoController.cs" />
+    <Compile Include="Controllers\FechaImportanteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NotasController.cs" />
-    <Compile Include="Controllers\PendientesController.cs" />
+    <Compile Include="Controllers\NotaController.cs" />
+    <Compile Include="Controllers\PendienteController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseDeDatos.cs" />
-    <Compile Include="Models\Contactos.cs" />
-    <Compile Include="Models\FechasImportantes.cs" />
-    <Compile Include="Models\Notas.cs" />
-    <Compile Include="Models\Pendientes.cs" />
-    <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\FechasImportante.cs" />
     <Compile Include="Models\Nota.cs" />
     <Compile Include="Models\Pendiente.cs" />
-    <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

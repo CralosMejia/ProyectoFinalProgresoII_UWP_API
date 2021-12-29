@@ -6,9 +6,8 @@ namespace AgendaPlusAPI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Notas
+    public partial class Nota
     {
-        [Key]
         public int NotaID { get; set; }
 
         public int UsuarioID { get; set; }
@@ -17,6 +16,6 @@ namespace AgendaPlusAPI.Models
 
         public string Descripcion { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

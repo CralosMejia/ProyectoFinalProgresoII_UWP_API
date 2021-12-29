@@ -12,44 +12,44 @@ using AgendaPlusAPI.Models;
 
 namespace AgendaPlusAPI.Controllers
 {
-    public class ContactosController : ApiController
+    public class PendienteController : ApiController
     {
         private BaseDeDatos db = new BaseDeDatos();
 
-        // GET: api/Contactos
-        public IQueryable<Contactos> GetContactos()
+        // GET: api/Pendiente
+        public IQueryable<Pendiente> GetPendientes()
         {
-            return db.Contactos;
+            return db.Pendientes;
         }
 
-        // GET: api/Contactos/5
-        [ResponseType(typeof(Contactos))]
-        public IHttpActionResult GetContactos(int id)
+        // GET: api/Pendiente/5
+        [ResponseType(typeof(Pendiente))]
+        public IHttpActionResult GetPendiente(int id)
         {
-            Contactos contactos = db.Contactos.Find(id);
-            if (contactos == null)
+            Pendiente pendiente = db.Pendientes.Find(id);
+            if (pendiente == null)
             {
                 return NotFound();
             }
 
-            return Ok(contactos);
+            return Ok(pendiente);
         }
 
-        // PUT: api/Contactos/5
+        // PUT: api/Pendiente/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutContactos(int id, Contactos contactos)
+        public IHttpActionResult PutPendiente(int id, Pendiente pendiente)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != contactos.ContactoID)
+            if (id != pendiente.PendienteID)
             {
                 return BadRequest();
             }
 
-            db.Entry(contactos).State = EntityState.Modified;
+            db.Entry(pendiente).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContactosExists(id))
+                if (!PendienteExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace AgendaPlusAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Contactos
-        [ResponseType(typeof(Contactos))]
-        public IHttpActionResult PostContactos(Contactos contactos)
+        // POST: api/Pendiente
+        [ResponseType(typeof(Pendiente))]
+        public IHttpActionResult PostPendiente(Pendiente pendiente)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Contactos.Add(contactos);
+            db.Pendientes.Add(pendiente);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = contactos.ContactoID }, contactos);
+            return CreatedAtRoute("DefaultApi", new { id = pendiente.PendienteID }, pendiente);
         }
 
-        // DELETE: api/Contactos/5
-        [ResponseType(typeof(Contactos))]
-        public IHttpActionResult DeleteContactos(int id)
+        // DELETE: api/Pendiente/5
+        [ResponseType(typeof(Pendiente))]
+        public IHttpActionResult DeletePendiente(int id)
         {
-            Contactos contactos = db.Contactos.Find(id);
-            if (contactos == null)
+            Pendiente pendiente = db.Pendientes.Find(id);
+            if (pendiente == null)
             {
                 return NotFound();
             }
 
-            db.Contactos.Remove(contactos);
+            db.Pendientes.Remove(pendiente);
             db.SaveChanges();
 
-            return Ok(contactos);
+            return Ok(pendiente);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ContactosExists(int id)
+        private bool PendienteExists(int id)
         {
-            return db.Contactos.Count(e => e.ContactoID == id) > 0;
+            return db.Pendientes.Count(e => e.PendienteID == id) > 0;
         }
     }
 }

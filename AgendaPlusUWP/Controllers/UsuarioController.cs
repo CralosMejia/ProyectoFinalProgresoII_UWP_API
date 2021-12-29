@@ -20,7 +20,7 @@ namespace AgendaPlusUWP.Controlers
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            await httpClient.PostAsync("https://localhost:44386/api/usuario", content);
+            await httpClient.PostAsync("https://localhost:44304/api/usuario", content);
         }
 
 
@@ -35,12 +35,12 @@ namespace AgendaPlusUWP.Controlers
 
         //}
 
-        public static async Task<String> getUsuario (int userID)
+        public static async Task<List<Usuario>> getUsuario()
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
 
-            request.RequestUri = new Uri("https://localhost:44386/api/usuario");
+            request.RequestUri = new Uri("https://localhost:44304/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 
@@ -52,9 +52,8 @@ namespace AgendaPlusUWP.Controlers
 
             string content = await response.Content.ReadAsStringAsync();
 
-            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
+            return  JsonConvert.DeserializeObject<List<Usuario>>(content);
 
-            return resultado.FirstOrDefault(x => x.UsuarioID == userID).ToString();
         }
         
 

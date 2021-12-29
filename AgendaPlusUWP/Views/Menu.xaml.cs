@@ -34,19 +34,19 @@ namespace AgendaPlusUWP.Views
 
         public Menu()
         {
-            userID = 1;
             this.InitializeComponent();
-            inizializarAPI();
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    string IDstr = e.Parameter.ToString();
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string IDstr = e.Parameter.ToString();
 
-        //    userID = Int32.Parse(IDstr);
+            userID = Int32.Parse(IDstr);
 
-        //    base.OnNavigatedTo(e);
-        //}
+            inizializarAPI();
+
+            base.OnNavigatedTo(e);
+        }
 
         private async void inizializarAPI()
         {
@@ -111,6 +111,10 @@ namespace AgendaPlusUWP.Views
             ContentFrame.Navigate(typeof(Configurations), userID);
         }
 
+        private void btn_Home_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(MainTasks), userID);
+        }
 
 
         //------------------------------------navegacion
@@ -122,6 +126,8 @@ namespace AgendaPlusUWP.Views
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
+            ("pendientes", typeof(MainTasks)),
+            ("contactos", null),
             ("notas", typeof(NotesMain)),
             ("fechas", typeof(FechasImportantesMain))
         };
@@ -143,7 +149,7 @@ namespace AgendaPlusUWP.Views
             //navegar por defecto a pagina principal pendientes
             NavView.SelectedItem = NavView.MenuItems[0];
 
-            NavView_Navigate("notas", new Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo());
+            NavView_Navigate("pendientes", new Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo());
         }
 
         

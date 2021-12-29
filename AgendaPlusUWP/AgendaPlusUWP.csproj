@@ -157,9 +157,6 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainTasks.xaml.cs">
       <DependentUpon>MainTasks.xaml</DependentUpon>
     </Compile>
@@ -185,6 +182,42 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\agenda.png" />
+    <Content Include="Assets\agendaBlack.png" />
+    <Content Include="Assets\Avatar\avatar.png" />
+    <Content Include="Assets\Avatar\avatar1.png" />
+    <Content Include="Assets\Avatar\avatar2.png" />
+    <Content Include="Assets\Avatar\avatar3.png" />
+    <Content Include="Assets\Avatar\avatar4.png" />
+    <Content Include="Assets\Avatar\avatar5.png" />
+    <Content Include="Assets\basura.png" />
+    <Content Include="Assets\configuracion %281%29.png" />
+    <Content Include="Assets\editar.png" />
+    <Content Include="Assets\Icons\agenda.png" />
+    <Content Include="Assets\Icons\configuracion %281%29.png" />
+    <Content Include="Assets\Icons\editar.png" />
+    <Content Include="Assets\Icons\eliminar.png" />
+    <Content Include="Assets\Icons\information-button.png" />
+    <Content Include="Assets\Icons\log-out.png" />
+    <Content Include="Assets\Icons\mas.png" />
+    <Content Include="Assets\Icons\paginacion.png" />
+    <Content Include="Assets\Icons\vidrio-de-aumento.png" />
+    <Content Include="Assets\ImageCreators\FotoCaleb.png" />
+    <Content Include="Assets\ImageCreators\FotoVic.jpeg" />
+    <Content Include="Assets\ImageCreators\ImagenCarlos.jpg" />
+    <Content Include="Assets\information-button.png" />
+    <Content Include="Assets\log-out.png" />
+    <Content Include="Assets\lupa %282%29.png" />
+    <Content Include="Assets\lupa.png" />
+    <Content Include="Assets\marca-de-verificacion.png" />
+    <Content Include="Assets\mas %282%29.png" />
+    <Content Include="Assets\mas.png" />
+    <Content Include="Assets\perfil.png" />
+    <Content Include="Assets\reloj-de-pared.png" />
+    <Content Include="Assets\ver.png" />
+    <Content Include="Assets\verificar.png" />
+    <Content Include="Assets\vidrio-de-aumento.png" />
+    <Content Include="Assets\volume-level.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -214,10 +247,6 @@
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ConfiguracionAbout\About.xaml">
       <SubType>Designer</SubType>

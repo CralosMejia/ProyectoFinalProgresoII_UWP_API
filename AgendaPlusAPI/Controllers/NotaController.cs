@@ -12,44 +12,44 @@ using AgendaPlusAPI.Models;
 
 namespace AgendaPlusAPI.Controllers
 {
-    public class PendientesController : ApiController
+    public class NotaController : ApiController
     {
         private BaseDeDatos db = new BaseDeDatos();
 
-        // GET: api/Pendientes
-        public IQueryable<Pendientes> GetPendientes()
+        // GET: api/Nota
+        public IQueryable<Nota> GetNotas()
         {
-            return db.Pendientes;
+            return db.Notas;
         }
 
-        // GET: api/Pendientes/5
-        [ResponseType(typeof(Pendientes))]
-        public IHttpActionResult GetPendientes(int id)
+        // GET: api/Nota/5
+        [ResponseType(typeof(Nota))]
+        public IHttpActionResult GetNota(int id)
         {
-            Pendientes pendientes = db.Pendientes.Find(id);
-            if (pendientes == null)
+            Nota nota = db.Notas.Find(id);
+            if (nota == null)
             {
                 return NotFound();
             }
 
-            return Ok(pendientes);
+            return Ok(nota);
         }
 
-        // PUT: api/Pendientes/5
+        // PUT: api/Nota/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPendientes(int id, Pendientes pendientes)
+        public IHttpActionResult PutNota(int id, Nota nota)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pendientes.PendienteID)
+            if (id != nota.NotaID)
             {
                 return BadRequest();
             }
 
-            db.Entry(pendientes).State = EntityState.Modified;
+            db.Entry(nota).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PendientesExists(id))
+                if (!NotaExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace AgendaPlusAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Pendientes
-        [ResponseType(typeof(Pendientes))]
-        public IHttpActionResult PostPendientes(Pendientes pendientes)
+        // POST: api/Nota
+        [ResponseType(typeof(Nota))]
+        public IHttpActionResult PostNota(Nota nota)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Pendientes.Add(pendientes);
+            db.Notas.Add(nota);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pendientes.PendienteID }, pendientes);
+            return CreatedAtRoute("DefaultApi", new { id = nota.NotaID }, nota);
         }
 
-        // DELETE: api/Pendientes/5
-        [ResponseType(typeof(Pendientes))]
-        public IHttpActionResult DeletePendientes(int id)
+        // DELETE: api/Nota/5
+        [ResponseType(typeof(Nota))]
+        public IHttpActionResult DeleteNota(int id)
         {
-            Pendientes pendientes = db.Pendientes.Find(id);
-            if (pendientes == null)
+            Nota nota = db.Notas.Find(id);
+            if (nota == null)
             {
                 return NotFound();
             }
 
-            db.Pendientes.Remove(pendientes);
+            db.Notas.Remove(nota);
             db.SaveChanges();
 
-            return Ok(pendientes);
+            return Ok(nota);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PendientesExists(int id)
+        private bool NotaExists(int id)
         {
-            return db.Pendientes.Count(e => e.PendienteID == id) > 0;
+            return db.Notas.Count(e => e.NotaID == id) > 0;
         }
     }
 }

@@ -27,9 +27,9 @@ namespace AgendaPlusUWP.Views
     public sealed partial class Login : Page
     {
 
-        public int userID = 1;
+        public int userID;
 
-        string resultado;
+        List<Usuario> resultado;
 
         
 
@@ -40,16 +40,16 @@ namespace AgendaPlusUWP.Views
 
         private async void inizializarAPIAsync()
         {
-            resultado = await UsuarioController.getUsuario(userID);
+            resultado = await UsuarioController.getUsuario();
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (validarCorreo(textboxCorreo.Text) && validarCorreo(textboxContrasena.Password) && validarUsuario())
+            if (validarCorreo(textboxCorreo.Text) && validarContrasena(textboxContrasena.Password) && validarUsuario())
             {
 
-                Frame.Navigate(typeof(MainPage));
+                Frame.Navigate(typeof(Menu),userID);
 
             }
         }
@@ -66,7 +66,7 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textboxErrorCorreo.Text = "El campo Email es requerido";
+                textboxErrorCorreo.Text = "The email field is required";
                 return false;
             }
 
@@ -78,7 +78,7 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textboxErrorContrasena.Text = "El campo Password es requerido";
+                textboxErrorContrasena.Text = "The password field is requiredo";
                 return false;
             }
 
@@ -90,13 +90,17 @@ namespace AgendaPlusUWP.Views
         private Boolean validarUsuario()
         {
             inizializarAPIAsync();
-            if(resultado == null || resultado.Equals(""))
+
+            Usuario UsuarioValidacion = resultado.Find(x => x.Correo.Equals(textboxCorreo.Text) && x.Contrasena.Equals(textboxContrasena.Password));
+
+            if(UsuarioValidacion == null)
             {
-                textBoxErrorLogin.Text = "Las creedenciales no coinciden";
+                textBoxErrorLogin.Text = "The credentials doesn't match";
                 return false;
             }
 
             textBoxErrorLogin.Text = "";
+            userID = UsuarioValidacion.UsuarioID;
             return true;
         }
 

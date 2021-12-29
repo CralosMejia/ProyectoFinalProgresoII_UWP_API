@@ -12,44 +12,44 @@ using AgendaPlusAPI.Models;
 
 namespace AgendaPlusAPI.Controllers
 {
-    public class FechasImportantesController : ApiController
+    public class FechaImportanteController : ApiController
     {
         private BaseDeDatos db = new BaseDeDatos();
 
-        // GET: api/FechasImportantes
-        public IQueryable<FechasImportantes> GetFechasImportantes()
+        // GET: api/FechaImportante
+        public IQueryable<FechasImportante> GetFechasImportantes()
         {
             return db.FechasImportantes;
         }
 
-        // GET: api/FechasImportantes/5
-        [ResponseType(typeof(FechasImportantes))]
-        public IHttpActionResult GetFechasImportantes(int id)
+        // GET: api/FechaImportante/5
+        [ResponseType(typeof(FechasImportante))]
+        public IHttpActionResult GetFechasImportante(int id)
         {
-            FechasImportantes fechasImportantes = db.FechasImportantes.Find(id);
-            if (fechasImportantes == null)
+            FechasImportante fechasImportante = db.FechasImportantes.Find(id);
+            if (fechasImportante == null)
             {
                 return NotFound();
             }
 
-            return Ok(fechasImportantes);
+            return Ok(fechasImportante);
         }
 
-        // PUT: api/FechasImportantes/5
+        // PUT: api/FechaImportante/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutFechasImportantes(int id, FechasImportantes fechasImportantes)
+        public IHttpActionResult PutFechasImportante(int id, FechasImportante fechasImportante)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != fechasImportantes.FechasImportantesID)
+            if (id != fechasImportante.FechasImportantesID)
             {
                 return BadRequest();
             }
 
-            db.Entry(fechasImportantes).State = EntityState.Modified;
+            db.Entry(fechasImportante).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FechasImportantesExists(id))
+                if (!FechasImportanteExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace AgendaPlusAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/FechasImportantes
-        [ResponseType(typeof(FechasImportantes))]
-        public IHttpActionResult PostFechasImportantes(FechasImportantes fechasImportantes)
+        // POST: api/FechaImportante
+        [ResponseType(typeof(FechasImportante))]
+        public IHttpActionResult PostFechasImportante(FechasImportante fechasImportante)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.FechasImportantes.Add(fechasImportantes);
+            db.FechasImportantes.Add(fechasImportante);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = fechasImportantes.FechasImportantesID }, fechasImportantes);
+            return CreatedAtRoute("DefaultApi", new { id = fechasImportante.FechasImportantesID }, fechasImportante);
         }
 
-        // DELETE: api/FechasImportantes/5
-        [ResponseType(typeof(FechasImportantes))]
-        public IHttpActionResult DeleteFechasImportantes(int id)
+        // DELETE: api/FechaImportante/5
+        [ResponseType(typeof(FechasImportante))]
+        public IHttpActionResult DeleteFechasImportante(int id)
         {
-            FechasImportantes fechasImportantes = db.FechasImportantes.Find(id);
-            if (fechasImportantes == null)
+            FechasImportante fechasImportante = db.FechasImportantes.Find(id);
+            if (fechasImportante == null)
             {
                 return NotFound();
             }
 
-            db.FechasImportantes.Remove(fechasImportantes);
+            db.FechasImportantes.Remove(fechasImportante);
             db.SaveChanges();
 
-            return Ok(fechasImportantes);
+            return Ok(fechasImportante);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,7 +110,7 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool FechasImportantesExists(int id)
+        private bool FechasImportanteExists(int id)
         {
             return db.FechasImportantes.Count(e => e.FechasImportantesID == id) > 0;
         }

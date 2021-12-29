@@ -6,18 +6,26 @@ namespace AgendaPlusAPI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class FechasImportantes
+    public partial class Pendiente
     {
-        public int FechasImportantesID { get; set; }
+        public int PendienteID { get; set; }
 
         public int UsuarioID { get; set; }
 
+        [Required]
         public string Titulo { get; set; }
 
+        [Required]
         public string Descripcion { get; set; }
 
         public DateTime FechaLimite { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public int Prioridad { get; set; }
+
+        public string ColorPrioridad { get; set; }
+
+        public bool Estado { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
     }
 }

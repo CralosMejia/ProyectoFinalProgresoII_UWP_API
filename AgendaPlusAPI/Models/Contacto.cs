@@ -6,9 +6,9 @@ namespace AgendaPlusAPI.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Contactos
+    [Table("Contactos")]
+    public partial class Contacto
     {
-        [Key]
         public int ContactoID { get; set; }
 
         public int UsuarioID { get; set; }
@@ -19,6 +19,6 @@ namespace AgendaPlusAPI.Models
 
         public string TelefonoContacto { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

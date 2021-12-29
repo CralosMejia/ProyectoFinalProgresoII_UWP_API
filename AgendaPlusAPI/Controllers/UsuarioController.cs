@@ -17,39 +17,39 @@ namespace AgendaPlusAPI.Controllers
         private BaseDeDatos db = new BaseDeDatos();
 
         // GET: api/Usuario
-        public IQueryable<Usuarios> GetUsuarios()
+        public IQueryable<Usuario> GetUsuarios()
         {
             return db.Usuarios;
         }
 
         // GET: api/Usuario/5
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult GetUsuarios(int id)
+        [ResponseType(typeof(Usuario))]
+        public IHttpActionResult GetUsuario(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            Usuario usuario = db.Usuarios.Find(id);
+            if (usuario == null)
             {
                 return NotFound();
             }
 
-            return Ok(usuarios);
+            return Ok(usuario);
         }
 
-        // PUT: api/Usuarios/5
+        // PUT: api/Usuario/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUsuarios(int id, Usuarios usuarios)
+        public IHttpActionResult PutUsuario(int id, Usuario usuario)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuarios.UsuarioID)
+            if (id != usuario.UsuarioID)
             {
                 return BadRequest();
             }
 
-            db.Entry(usuarios).State = EntityState.Modified;
+            db.Entry(usuario).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace AgendaPlusAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsuariosExists(id))
+                if (!UsuarioExists(id))
                 {
                     return NotFound();
                 }
@@ -71,34 +71,34 @@ namespace AgendaPlusAPI.Controllers
         }
 
         // POST: api/Usuario
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult PostUsuarios(Usuarios usuarios)
+        [ResponseType(typeof(Usuario))]
+        public IHttpActionResult PostUsuario(Usuario usuario)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Usuarios.Add(usuarios);
+            db.Usuarios.Add(usuario);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuarios.UsuarioID }, usuarios);
+            return CreatedAtRoute("DefaultApi", new { id = usuario.UsuarioID }, usuario);
         }
 
         // DELETE: api/Usuario/5
-        [ResponseType(typeof(Usuarios))]
-        public IHttpActionResult DeleteUsuarios(int id)
+        [ResponseType(typeof(Usuario))]
+        public IHttpActionResult DeleteUsuario(int id)
         {
-            Usuarios usuarios = db.Usuarios.Find(id);
-            if (usuarios == null)
+            Usuario usuario = db.Usuarios.Find(id);
+            if (usuario == null)
             {
                 return NotFound();
             }
 
-            db.Usuarios.Remove(usuarios);
+            db.Usuarios.Remove(usuario);
             db.SaveChanges();
 
-            return Ok(usuarios);
+            return Ok(usuario);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,7 +110,7 @@ namespace AgendaPlusAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool UsuariosExists(int id)
+        private bool UsuarioExists(int id)
         {
             return db.Usuarios.Count(e => e.UsuarioID == id) > 0;
         }
