@@ -212,6 +212,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
+  <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -230,11 +231,11 @@
     </Page>
     <Page Include="Views\FechasImportantes\FechasImportantesCreate.xaml">
       <SubType>Designer</SubType>
-    <Content Include="Assets\agenda.png" />
-    <Content Include="Assets\basura.png" />
-    <Content Include="Assets\configuracion %281%29.png" />
-    <Content Include="Assets\editar.png" />
-    <Content Include="Assets\information-button.png" />
+      <Content Include="Assets\agenda.png" />
+      <Content Include="Assets\basura.png" />
+      <Content Include="Assets\configuracion %281%29.png" />
+      <Content Include="Assets\editar.png" />
+      <Content Include="Assets\information-button.png" />
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
