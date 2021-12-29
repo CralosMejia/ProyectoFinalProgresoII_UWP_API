@@ -132,7 +132,7 @@
     <Compile Include="Views\EditTasks.xaml.cs">
       <DependentUpon>EditTasks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPage.xaml.cs">
+    <Compile Include="Views\MainPage.xaml.cs"/>
     <Compile Include="Controllers\FechasImportantesController.cs" />
     <Compile Include="Controllers\NotasController.cs" />
     <Compile Include="MainPage.xaml.cs">
