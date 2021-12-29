@@ -129,9 +129,6 @@
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\FechasImportante.cs" />
     <Compile Include="Models\Nota.cs" />
