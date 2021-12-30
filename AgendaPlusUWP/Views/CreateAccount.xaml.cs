@@ -33,8 +33,9 @@ namespace AgendaPlusUWP.Views
         public CreateAccount()
         {
             this.InitializeComponent();
+            inizializarAPIAsync();
 
-            
+
         }
 
         private async void inizializarAPIAsync()
@@ -134,7 +135,6 @@ namespace AgendaPlusUWP.Views
 
         private Boolean validarExistenciaUsername()
         {
-            inizializarAPIAsync();
 
             Usuario UsuarioValidacion = resultado.Find(x => x.Correo.Equals(textboxUsername.Text));
 

@@ -120,6 +120,7 @@ namespace AgendaPlusUWP.Views
                     task.Estado = false;
                 }
 
+                task.Usuario = null;
                 task.Usuarios = null;
 
                 PendientesController.putTask(task);

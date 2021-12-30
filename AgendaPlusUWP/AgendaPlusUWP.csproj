@@ -116,6 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\FechasImportantesController.cs" />
     <Compile Include="Controllers\NotasController.cs" />
@@ -138,6 +139,15 @@
     </Compile>
     <Compile Include="Views\ConfiguracionAbout\Configurations.xaml.cs">
       <DependentUpon>Configurations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contactos\ContactoCrear.xaml.cs">
+      <DependentUpon>ContactoCrear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contactos\ContactoEditar.xaml.cs">
+      <DependentUpon>ContactoEditar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contactos\ContactoMain.xaml.cs">
+      <DependentUpon>ContactoMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateAccount.xaml.cs">
       <DependentUpon>CreateAccount.xaml</DependentUpon>
@@ -235,6 +245,18 @@
     <Page Include="Views\AddTasks.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Contactos\ContactoCrear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Contactos\ContactoEditar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Contactos\ContactoMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateAccount.xaml">
       <SubType>Designer</SubType>

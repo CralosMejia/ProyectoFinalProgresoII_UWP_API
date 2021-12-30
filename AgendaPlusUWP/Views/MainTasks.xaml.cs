@@ -34,7 +34,7 @@ namespace AgendaPlusUWP.Views
 
         private static List<Pendiente> resultadoAPI;
 
-        private static int userID=1;
+        private static int userID;
 
         private static Pendiente t;
 
@@ -42,16 +42,16 @@ namespace AgendaPlusUWP.Views
         {
            this.InitializeComponent();
 
-           llenarAsync();
         }
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //string IDstr = e.Parameter.ToString();
+            string IDstr = e.Parameter.ToString();
 
-            //userID = Int32.Parse(IDstr);
-              
+            userID = Int32.Parse(IDstr);
+
+           llenarAsync();
 
             base.OnNavigatedTo(e);
         }
@@ -283,6 +283,7 @@ namespace AgendaPlusUWP.Views
             if (task != null)
             {
                 task.Usuarios = null;
+                task.Usuario = null;
 
                 ContentDialog dialogo = new ContentDialog
                 {
@@ -328,16 +329,18 @@ namespace AgendaPlusUWP.Views
                 t.Prioridad = editedTask.Prioridad;
                 t.FechaLimite = editedTask.FechaLimite;
                 t.Usuarios = null;
+                t.Usuario = null;
                 t.Estado = true;
                                     
                               
                 PendientesController.putTask(t);
 
                 ListaPendientes.ItemsSource = null;
+                //resultadoAPI.Remove(editedTask);
 
-                resultadoAPI.Remove(editedTask);
+                //ListaPendientes.ItemsSource = resultadoAPI;
 
-                ListaPendientes.ItemsSource = resultadoAPI;
+                resultadoAPI = null;
                 llenarAsync();
 
             }

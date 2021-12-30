@@ -105,7 +105,7 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Button Background="#0C1C39">
+                    <Button Background="#0C1C39" Click="salir">
                         <Image Source="/Assets/Icons/log-out.png" Width="50" Height="50"/>
                     </Button>
                 </StackPanel>

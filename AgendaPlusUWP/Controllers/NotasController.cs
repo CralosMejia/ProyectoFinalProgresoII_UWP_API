@@ -37,7 +37,7 @@ namespace AgendaPlusUWP.Controllers
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            await httpClient.PostAsync("https://localhost:44304/api/notas", content);
+            await httpClient.PostAsync("https://localhost:44304/api/nota", content);
         }
 
         public static async void putNota(Nota nota)
@@ -46,7 +46,7 @@ namespace AgendaPlusUWP.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(nota);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/notas/{nota.NotaID}", content);
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/nota/{nota.NotaID}", content);
         }
 
 
@@ -56,7 +56,7 @@ namespace AgendaPlusUWP.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(nota);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            await client.DeleteAsync($"https://localhost:44304/api/notas/{nota.NotaID}");
+            await client.DeleteAsync($"https://localhost:44304/api/nota/{nota.NotaID}");
         }
     }
 }

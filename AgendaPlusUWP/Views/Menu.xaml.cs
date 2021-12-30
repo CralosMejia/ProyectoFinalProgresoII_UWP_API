@@ -1,5 +1,6 @@
 ﻿using AgendaPlusUWP.Models;
 using AgendaPlusUWP.Views.ConfiguracionAbout;
+using AgendaPlusUWP.Views.Contactos;
 using AgendaPlusUWP.Views.FechasImportantes;
 using AgendaPlusUWP.Views.Notes;
 using Newtonsoft.Json;
@@ -127,7 +128,7 @@ namespace AgendaPlusUWP.Views
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
         {
             ("pendientes", typeof(MainTasks)),
-            ("contactos", null),
+            ("contactos", typeof(ContactoMain)),
             ("notas", typeof(NotesMain)),
             ("fechas", typeof(FechasImportantesMain))
         };
@@ -172,6 +173,11 @@ namespace AgendaPlusUWP.Views
             {
                 ContentFrame.Navigate(_page, userID, transitionInfo);
             }
+        }
+
+        private void salir(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
         }
     }
 }

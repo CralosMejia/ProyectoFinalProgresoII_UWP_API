@@ -31,17 +31,19 @@ namespace AgendaPlusUWP.Views
 
         List<Usuario> resultado;
 
+        Usuario user;
+
         
 
         public Login()
         {
             this.InitializeComponent();
+            inizializarAPIAsync();
         }
 
         private async void inizializarAPIAsync()
         {
             resultado = await UsuarioController.getUsuario();
-
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -87,20 +89,18 @@ namespace AgendaPlusUWP.Views
         }
 
 
-        private Boolean validarUsuario()
+        private  Boolean validarUsuario()
         {
-            inizializarAPIAsync();
-
-            Usuario UsuarioValidacion = resultado.Find(x => x.Correo.Equals(textboxCorreo.Text) && x.Contrasena.Equals(textboxContrasena.Password));
-
-            if(UsuarioValidacion == null)
+            user = resultado.Find(x => x.Correo.Equals(textboxCorreo.Text) && x.Contrasena.Equals(textboxContrasena.Password));
+            
+            if (user == null)
             {
                 textBoxErrorLogin.Text = "The credentials doesn't match";
                 return false;
             }
 
             textBoxErrorLogin.Text = "";
-            userID = UsuarioValidacion.UsuarioID;
+            userID = user.UsuarioID;
             return true;
         }
 

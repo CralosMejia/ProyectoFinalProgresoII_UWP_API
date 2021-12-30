@@ -1,4 +1,5 @@
-﻿using AgendaPlusUWP.Models;
+﻿using AgendaPlusUWP.Controlers;
+using AgendaPlusUWP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -46,26 +47,16 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
 
         private async void inizializarAPI()
         {
-            var httpHandler = new HttpClientHandler();
-            var request = new HttpRequestMessage();
-            request.RequestUri = new Uri("https://localhost:44304/api/usuario");
-            request.Method = HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
 
-            var client = new HttpClient(httpHandler);
 
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            string content = await response.Content.ReadAsStringAsync();
-
-            var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
+            List<Usuario> resultado =await UsuarioController.getUsuario();
 
             user = resultado.FirstOrDefault(x => x.UsuarioID == userID);
 
 
         }
 
-        private  async void cambiarContraseña(object sender, RoutedEventArgs e)
+        private  void cambiarContraseña(object sender, RoutedEventArgs e)
         {
             if (validarPassword(textBoxPassword.Password) && validarConfirmPassword(textBoxConfirmPassword.Password))
             {
@@ -80,12 +71,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
                         user.Notas = null;
                         user.Pendientes = null;
 
-                        var httpHandler = new HttpClientHandler();
-                        var client = new HttpClient(httpHandler);
-                        var json = JsonConvert.SerializeObject(user);
-                        var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-                        HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/usuario/{user.UsuarioID}", content);
-
+                        UsuarioController.putTask(user);
                         textBoxErrorGeneral.Text = "la contraseña se modifico con exito";
                     }
 
@@ -179,7 +165,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
 
         }
 
-        private async void enviarAvatarAPI(string avatar)
+        private void enviarAvatarAPI(string avatar)
         {
             textBoxCambiarAvatar.Text= "Se cambio con exito el avatar";
 
@@ -189,11 +175,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
             user.Pendientes = null;
             user.Avatar = avatar;
 
-            var httpHandler = new HttpClientHandler();
-            var client = new HttpClient(httpHandler);
-            var json = JsonConvert.SerializeObject(user);
-            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/usuario/{user.UsuarioID}", content);
+            UsuarioController.putTask(user);
         }
 
         private void rb_Checked(object sender, RoutedEventArgs e)

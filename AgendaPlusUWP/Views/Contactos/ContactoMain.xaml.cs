@@ -1,11 +1,9 @@
 ﻿using AgendaPlusUWP.Controllers;
 using AgendaPlusUWP.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -19,18 +17,18 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace AgendaPlusUWP.Views.FechasImportantes
+namespace AgendaPlusUWP.Views.Contactos
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class FechasImportantesMain : Page
+    public sealed partial class ContactoMain : Page
     {
 
-        private static List<FechasImportante> resultadoAPI;
+        private static List<Contacto> resultadoAPI;
         private static int userID;
 
-        public FechasImportantesMain()
+        public ContactoMain()
         {
             this.InitializeComponent();
         }
@@ -42,18 +40,17 @@ namespace AgendaPlusUWP.Views.FechasImportantes
             userID = Int32.Parse(IDstr);
 
             inizializarAPI();
-
             base.OnNavigatedTo(e);
         }
 
         private async void inizializarAPI()
         {
-            resultadoAPI = await FechasImportantesController.getFecha(userID);
+            resultadoAPI = await ContactoController.getContacto(userID);
 
-            ListaFechasImportantes.ItemsSource = resultadoAPI;
+            ListaContacto.ItemsSource = resultadoAPI;
         }
 
-        private void TextBox_Buscar(object sender, TextChangedEventArgs e)
+        private void textBoxBuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string palabra = textBoxBuscar.Text.ToUpper();
 
@@ -63,43 +60,43 @@ namespace AgendaPlusUWP.Views.FechasImportantes
             }
             else
             {
-                List<FechasImportante> resultado = resultadoAPI.Where(x => x.Titulo.ToUpper().Contains(palabra)).ToList();
+                List<Contacto> resultado = resultadoAPI.Where(x => x.NombreContacto.ToUpper().Contains(palabra)).ToList();
 
-                ListaFechasImportantes.ItemsSource = resultado;
+                ListaContacto.ItemsSource = resultado;
             }
+
         }
 
-        private void crearFecha(object sender, RoutedEventArgs e)
+        private void BotonCrear_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = null;
-            Frame.Navigate(typeof(FechasImportantesCreate), userID);
+            Frame.Navigate(typeof(ContactoCrear), userID);
         }
 
-        private void editarFecha(object sender, RoutedEventArgs e)
+        private void editarContacto(object sender, RoutedEventArgs e)
         {
-            FechasImportante fecha = (FechasImportante)ListaFechasImportantes.SelectedItem;
+            Contacto contacto = (Contacto)ListaContacto.SelectedItem;
 
-            if (fecha != null)
+            if (contacto != null)
             {
                 Frame.Content = null;
-                Frame.Navigate(typeof(FechasImportatesEditar), (userID, fecha.FechasImportantesID));
-                inizializarAPI();
-
+                Frame.Navigate(typeof(ContactoEditar), (userID, contacto.ContactoID));
             }
         }
 
-        private async void borrarNota(object sender, RoutedEventArgs e)
+        private async void borrarContacto(object sender, RoutedEventArgs e)
         {
-            FechasImportante fecha = (FechasImportante)ListaFechasImportantes.SelectedItem;
+            Contacto contacto = (Contacto)ListaContacto.SelectedItem;
 
-            if (fecha != null)
+            if (contacto != null)
             {
-                fecha.Usuario = null;
+
+                contacto.Usuario = null;
 
                 ContentDialog noWifiDialog = new ContentDialog
                 {
                     Title = "Advertencia",
-                    Content = "estas seguro de que quieres borrar la fecha",
+                    Content = "estas seguro de que quieres borrar el contacto",
                     CloseButtonText = "Cancelar",
                     PrimaryButtonText = "Borrar"
                 };
@@ -109,16 +106,17 @@ namespace AgendaPlusUWP.Views.FechasImportantes
 
                 if (resultSTR.Equals("Primary"))
                 {
-                    FechasImportantesController.deleteFecha(fecha);
+                    ContactoController.deleteContacto(contacto);
 
+                    ListaContacto.ItemsSource = null;
 
-                    ListaFechasImportantes.ItemsSource = null;
+                    resultadoAPI.Remove(contacto);
 
-                    resultadoAPI.Remove(fecha);
-
-                    ListaFechasImportantes.ItemsSource = resultadoAPI;
+                    ListaContacto.ItemsSource = resultadoAPI;
                 }
             }
         }
+
+      
     }
 }

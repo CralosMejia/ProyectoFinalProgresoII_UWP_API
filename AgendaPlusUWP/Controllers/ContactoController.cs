@@ -7,13 +7,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace AgendaPlusUWP.Controllers
 {
-    class FechasImportantesController
+    class ContactoController
     {
-
-        public static async Task<List<FechasImportante>> getFecha(int userID)
+        public static async Task<List<Contacto>> getContacto(int userID)
         {
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
@@ -29,34 +27,35 @@ namespace AgendaPlusUWP.Controllers
 
             var resultado = JsonConvert.DeserializeObject<List<Usuario>>(content);
 
-            return resultado.FirstOrDefault(x => x.UsuarioID == userID).FechasImportantes.ToList();
+            return resultado.FirstOrDefault(x => x.UsuarioID == userID).Contactos.ToList();
         }
 
-        public static async void postFecha(FechasImportante fecha)
+        public static async void postContacto(Contacto contacto)
         {
-            var json = JsonConvert.SerializeObject(fecha);
+            var json = JsonConvert.SerializeObject(contacto);
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            await httpClient.PostAsync("https://localhost:44304/api/fechaimportante", content);
+            await httpClient.PostAsync("https://localhost:44304/api/contacto", content);
         }
 
-        public static async void putNota(FechasImportante fecha)
+        public static async void putContacto(Contacto contacto)
         {
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
-            var json = JsonConvert.SerializeObject(fecha);
+            var json = JsonConvert.SerializeObject(contacto);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/fechaimportante/{fecha.FechasImportantesID}", content);
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/contacto/{contacto.ContactoID}", content);
         }
 
-        public static async void deleteFecha(FechasImportante fecha)
+
+        public static async void deleteContacto(Contacto contacto)
         {
             var httpHandler = new HttpClientHandler();
             var client = new HttpClient(httpHandler);
-            var json = JsonConvert.SerializeObject(fecha);
+            var json = JsonConvert.SerializeObject(contacto);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.DeleteAsync($"https://localhost:44304/api/fechaimportante/{fecha.FechasImportantesID}");
+            await client.DeleteAsync($"https://localhost:44304/api/contacto/{contacto.ContactoID}");
         }
     }
 }

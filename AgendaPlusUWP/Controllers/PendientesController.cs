@@ -18,7 +18,7 @@ namespace AgendaPlusUWP.Controllers
             var httpHandler = new HttpClientHandler();
             var request = new HttpRequestMessage();
 
-            request.RequestUri = new Uri("https://localhost:44386/api/usuario");
+            request.RequestUri = new Uri("https://localhost:44304/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 
@@ -42,7 +42,7 @@ namespace AgendaPlusUWP.Controllers
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            await httpClient.PostAsync("https://localhost:44386/api/pendientes", content);
+            await httpClient.PostAsync("https://localhost:44304/api/pendiente", content);
         }
 
 
@@ -53,7 +53,7 @@ namespace AgendaPlusUWP.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(pendiente);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"https://localhost:44386/api/pendientes/{pendiente.PendienteID}", content);
+            HttpResponseMessage response = await client.PutAsync($"https://localhost:44304/api/pendiente/{pendiente.PendienteID}", content);
 
         }
 
@@ -63,7 +63,7 @@ namespace AgendaPlusUWP.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(pendiente);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            await client.DeleteAsync($"https://localhost:44386/api/pendientes/{pendiente.PendienteID}");
+            await client.DeleteAsync($"https://localhost:44304/api/pendiente/{pendiente.PendienteID}");
         }
     }
 }
