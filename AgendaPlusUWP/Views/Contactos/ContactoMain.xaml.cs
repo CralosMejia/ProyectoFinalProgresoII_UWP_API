@@ -95,10 +95,10 @@ namespace AgendaPlusUWP.Views.Contactos
 
                 ContentDialog noWifiDialog = new ContentDialog
                 {
-                    Title = "Advertencia",
-                    Content = "estas seguro de que quieres borrar el contacto",
-                    CloseButtonText = "Cancelar",
-                    PrimaryButtonText = "Borrar"
+                    Title = "Warning",
+                    Content = "Are you sure you want to delete the contact?",
+                    CloseButtonText = "Cancel",
+                    PrimaryButtonText = "Delete"
                 };
 
                 ContentDialogResult result = await noWifiDialog.ShowAsync();

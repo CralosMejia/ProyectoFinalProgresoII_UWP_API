@@ -97,10 +97,10 @@ namespace AgendaPlusUWP.Views.Notes
 
                 ContentDialog noWifiDialog = new ContentDialog
                 {
-                    Title = "Advertencia",
-                    Content = "estas seguro de que quieres borrar la nota",
-                    CloseButtonText = "Cancelar",
-                    PrimaryButtonText = "Borrar"
+                    Title = "Warning",
+                    Content = "Are you sure you want to delete the note?",
+                    CloseButtonText = "Cancel",
+                    PrimaryButtonText = "Delete"
                 };
 
                 ContentDialogResult result = await noWifiDialog.ShowAsync();

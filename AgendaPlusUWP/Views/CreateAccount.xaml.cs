@@ -89,7 +89,7 @@ namespace AgendaPlusUWP.Views
         {
             if (a == null || a.Equals(""))
             {
-                textboxErrorPassword.Text = "The password field is requiredo";
+                textboxErrorPassword.Text = "The password field is required";
                 return false;
             }
 

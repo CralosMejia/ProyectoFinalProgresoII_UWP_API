@@ -67,7 +67,7 @@ namespace AgendaPlusUWP.Views.Notes
         {
             if (a.Equals(""))
             {
-                textBoxErrorTitle.Text = "El campo titulo es requerido";
+                textBoxErrorTitle.Text = "The title field is required";
                 return false;
             }
             textBoxErrorTitle.Text = "";
@@ -78,7 +78,7 @@ namespace AgendaPlusUWP.Views.Notes
         {
             if (a.Equals(""))
             {
-                textBoxErrorDescription.Text = "El campo decripcion es requerido";
+                textBoxErrorDescription.Text = "The description field is required";
                 return false;
             }
             textBoxErrorDescription.Text = "";

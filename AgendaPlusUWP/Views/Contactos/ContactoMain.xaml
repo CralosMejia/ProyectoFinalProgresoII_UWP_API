@@ -39,7 +39,7 @@
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox x:Name="textBoxBuscar" PlaceholderText="Buscar"  HorizontalAlignment="Right" Grid.Column="0" Width="200" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="18" PlaceholderForeground="Black" BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" TextChanged="textBoxBuscar_TextChanged"  />
+                                <TextBox x:Name="textBoxBuscar" PlaceholderText="Search"  HorizontalAlignment="Right" Grid.Column="0" Width="200" Background="#FFF0F3FA" BorderBrush="#FF020000" FontSize="18" PlaceholderForeground="Black" BorderThickness="1,1,1,1" CornerRadius="12" Foreground="#FF020202" TextChanged="textBoxBuscar_TextChanged"  />
                                 <Button Background="#FFF" Grid.Column="1" FocusVisualPrimaryBrush="#FF212020" Foreground="Black">
                                     <Image Source="/Assets/Icons/vidrio-de-aumento.png" Width="30" Height="30" HorizontalAlignment="Left" Margin="0,0,10,0" FocusVisualPrimaryBrush="Black"/>
                                 </Button>
@@ -75,9 +75,9 @@
                                 <GridView.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
-                                            <TextBlock Text="Nombre" Width="280" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
-                                            <TextBlock Text="Correo electronico" Width="300"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
-                                            <TextBlock Text="Numero" Width="200"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                            <TextBlock Text="Name" Width="280" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                            <TextBlock Text="Email" Width="300"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                            <TextBlock Text="Phone number" Width="200"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridView.HeaderTemplate>

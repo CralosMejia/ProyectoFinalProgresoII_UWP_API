@@ -76,8 +76,8 @@
                                 <GridView.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Margin="15,5,0,0">
-                                            <TextBlock Text="Titulo" Width="320" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
-                                            <TextBlock Text="Descripcion" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                            <TextBlock Text="Title" Width="320" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
+                                            <TextBlock Text="Description" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridView.HeaderTemplate>

@@ -74,9 +74,9 @@
                                 <GridView.HeaderTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Margin="16,5,0,0">
-                                            <TextBlock Text="Titulo" Width="250" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
-                                            <TextBlock Text="Descripcion" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
-                                            <TextBlock Text="Fecha limite" Width="250"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                                            <TextBlock Text="Title" Width="250" FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                                            <TextBlock Text="Description" Width="500"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
+                                            <TextBlock Text="Deadline" Width="250"  FocusVisualPrimaryBrush="Black" Foreground="Black" FontWeight="Bold" FontSize="25" Margin="5,0,0,0"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridView.HeaderTemplate>

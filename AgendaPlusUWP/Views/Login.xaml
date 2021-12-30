@@ -10,65 +10,67 @@
 
     <StackPanel>
         <Frame Name="LoginFrame" Width="1283" Height="720">
-        <Grid>
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF47A1C3"/>
-                    <GradientStop Color="#FF3A92B4" Offset="0.733"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <StackPanel>
-                <Grid Margin="61,79,841,539">
-                    <Image Source="/Assets/agendaBlack.png" FocusVisualPrimaryBrush="{x:Null}" Margin="33,9,204,9" Height="84" Width="90"/>
-                    <TextBlock Foreground="#FF4C4747" Text="Agenda+" Margin="150,12,9,3" FontSize="50" FontWeight="Bold" FocusVisualPrimaryBrush="#FF4C4747"></TextBlock>
-                </Grid>
-            </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF47A1C3"/>
+                        <GradientStop Color="#FF3A92B4" Offset="0.733"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
 
-            <StackPanel>
-                <Grid Margin="404,213,472,57">
-
-                    <Rectangle Fill="White" Margin="0,0,10,0" RadiusX="8" RadiusY="8">
-
-                    </Rectangle>
-                    <StackPanel>
-                        <TextBlock Foreground="Black" Text="Hello" Margin="141,10,143,376" FontSize="45" FontWeight="Bold" RenderTransformOrigin="0.5,0.5">
-                            <TextBlock.RenderTransform>
-                                <CompositeTransform ScaleX="1"/>
-                            </TextBlock.RenderTransform></TextBlock>
+                <!--Logo-->
+                <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="20,15,0,0">
+                    <Image Source="/Assets/agendaBlack.png" FocusVisualPrimaryBrush="{x:Null}"  Height="84" Width="90"/>
+                    <TextBlock Foreground="#FF4C4747" Text="Agenda+" FontSize="50" FontWeight="Bold" FocusVisualPrimaryBrush="#FF4C4747"></TextBlock>
+                </StackPanel>
+                
+                <!--Panel principal-->
+                <StackPanel Grid.Row="1" Orientation="vertical">
+                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Width="420" >
+                        <Grid>
+                            <Rectangle Fill="White" Width="393" Height="80" HorizontalAlignment="Center" RadiusX="8" RadiusY="8"/>
+                            <TextBlock Foreground="Black" Text="Hello"  FontSize="45" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
                     </StackPanel>
+                    <StackPanel Width="420" Height="400" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Canvas.ZIndex="1" Background="#FFDEDEDE" CornerRadius="8">
+                        <Grid>
+                            <TextBlock Foreground="#FF666666" Text="Email" FontSize="25"></TextBlock>
+                            <TextBox x:Name="textboxCorreo" Height="33"/>
+                            <TextBlock x:Name="textboxErrorCorreo" FocusVisualPrimaryBrush="#FF020202" Foreground="Red" FontSize="9" ></TextBlock>
+                            <TextBlock Foreground="#FF666666" Text="Password" FontSize="25" ></TextBlock>
+                            <PasswordBox x:Name="textboxContrasena"  Width="344"/>
+                            <TextBlock x:Name="textboxErrorContrasena" FontSize="9" FocusVisualPrimaryBrush="#FFACAAAA" Foreground="Red" ></TextBlock>
+                            <Button Height="41" Width="176"  VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold" Click="Button_Click_2">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFB9C2F7"/>
+                                        <GradientStop Color="#FF2BCCDC" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <TextBlock x:Name="textBoxErrorLogin" Foreground="Red" ></TextBlock>
+                            <TextBlock  Text="Don't have an account?" Foreground="Black" FontSize="15"></TextBlock>
+                            <Button Content="Register Now" VerticalAlignment="Top" Background="#FFDEDEDE" BorderBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" Foreground="#FF30AFD4" FontWeight="Bold" Click="Button_Click_1"/>
+                        </Grid>
+                    </StackPanel>
+                    
                     <StackPanel>
                         <TextBlock Text="Sing into your account" Foreground="#FF959090" Margin="73,75,79,338" FontSize="25" />
                     </StackPanel>
-                </Grid>
-            </StackPanel>
-            <StackPanel>
-                <Grid>
-                    <Rectangle Margin="400,324,480,49" Fill="#FFDEDEDE" Width="393" Height="330" RadiusY="8" RadiusX="8"></Rectangle>
-                    <TextBlock Foreground="#FF666666" Text="Email" FontSize="25" Margin="434,360,780,324"></TextBlock>
-                    <TextBox x:Name="textboxCorreo" Margin="430,395,506,290" Height="33"/>
-                        <TextBlock x:Name="textboxErrorCorreo" FocusVisualPrimaryBrush="#FF020202" Foreground="Red" Margin="430,427,0,0" FontSize="9" > </TextBlock>
-                    <TextBlock Foreground="#FF666666" Text="Password" FontSize="25" Margin="434,435,715,243"></TextBlock>
-                    <PasswordBox x:Name="textboxContrasena" Margin="430,468,506,222" Width="344"/>
-                        <TextBlock x:Name="textboxErrorContrasena"  Margin="431,501,0,0" FontSize="9" FocusVisualPrimaryBrush="#FFACAAAA" Foreground="Red" > </TextBlock>
-                    <Button Height="41" Width="176" Margin="514,518,0,0" VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold" Click="Button_Click_2">
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFB9C2F7"/>
-                                <GradientStop Color="#FF2BCCDC" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                    </Button>
-                        <TextBlock x:Name="textBoxErrorLogin" Margin="539,568,0,0" Foreground="Red" ></TextBlock>
-                    <TextBlock Margin="446,597,672,88" Text="Don't have an account?" Foreground="Black" FontSize="15"></TextBlock>
-                    <Button Content="Register Now" Margin="617,590,0,0" VerticalAlignment="Top" Background="#FFDEDEDE" BorderBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" Foreground="#FF30AFD4" FontWeight="Bold" Click="Button_Click_1"/>
-                </Grid>
-            </StackPanel>
-            <StackPanel>
-                <Grid>
-                    <TextBlock Foreground="White" FontSize="11" Text="© Carlos Mejia - Victor Ponce - Caleb Naranjo" Margin="480,690,566,-7"></TextBlock>
-                </Grid>
-            </StackPanel>
-        </Grid>
+
+                </StackPanel>
+
+                <StackPanel>
+                    <Grid>
+                        <TextBlock Foreground="White" FontSize="11" Text="© Carlos Mejia - Victor Ponce - Caleb Naranjo" Margin="480,690,566,-7"></TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Grid>
         </Frame>
     </StackPanel>
 

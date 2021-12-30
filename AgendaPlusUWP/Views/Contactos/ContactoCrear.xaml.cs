@@ -61,7 +61,7 @@ namespace AgendaPlusUWP.Views.Contactos
         {
             if (a.Equals(""))
             {
-                textBoxErrorNombre.Text = "El campo nombre es requerido";
+                textBoxErrorNombre.Text = "The name field is required";
                 return false;
             }
             textBoxErrorNombre.Text = "";
@@ -72,7 +72,7 @@ namespace AgendaPlusUWP.Views.Contactos
         {
             if (a.Equals(""))
             {
-                textBoxErrorCorreo.Text = "El campo correo es requerido";
+                textBoxErrorCorreo.Text = "The email field is required";
                 return false;
             }
             textBoxErrorCorreo.Text = "";
@@ -85,7 +85,7 @@ namespace AgendaPlusUWP.Views.Contactos
             var expresionRegular = new Regex(@"(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}");
             if (a.Equals("") && !expresionRegular.IsMatch(a))
             {
-                textBoxErrorCorreo.Text = "El campo numero es requerido o el numero es incorrecto";
+                textBoxErrorCorreo.Text = "The phone number field is required or the number is incorrect.";
                 return false;
             }
             textBoxErrorCorreo.Text = "";

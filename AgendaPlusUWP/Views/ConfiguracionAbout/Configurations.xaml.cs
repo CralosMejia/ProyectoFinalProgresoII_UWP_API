@@ -72,7 +72,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
                         user.Pendientes = null;
 
                         UsuarioController.putTask(user);
-                        textBoxErrorGeneral.Text = "la contraseña se modifico con exito";
+                        textBoxErrorGeneral.Text = "password changed successfully";
                     }
 
                 }
@@ -90,7 +90,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
         {
             if (a.Equals(""))
             {
-                textBoxErrorPassword.Text = "El campo password es requerido";
+                textBoxErrorPassword.Text = "The password field is required";
                 return false;
             }
             textBoxErrorPassword.Text = "";
@@ -101,7 +101,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
         {
             if (a.Equals(""))
             {
-                textBoxErrorConfirmPassword.Text = "El campo confirm password es requerido";
+                textBoxErrorConfirmPassword.Text = "The confirm password field is required";
                 return false;
             }
             textBoxErrorConfirmPassword.Text = "";
@@ -124,7 +124,7 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
         {
             if (!a.Equals(b))
             {
-                textBoxErrorGeneral.Text = "las Contraseñas no coinciden";
+                textBoxErrorGeneral.Text = "The confirm password field is required";
                 return false;
             }
             textBoxErrorGeneral.Text = "";
@@ -160,14 +160,14 @@ namespace AgendaPlusUWP.Views.ConfiguracionAbout
             }
             else
             {
-                textBoxCambiarAvatar.Text = "Seleciona un avatar";
+                textBoxCambiarAvatar.Text = "Select an avatar";
             }
 
         }
 
         private void enviarAvatarAPI(string avatar)
         {
-            textBoxCambiarAvatar.Text= "Se cambio con exito el avatar";
+            textBoxCambiarAvatar.Text= "Successfully changed avatar";
 
             user.FechasImportantes = null;
             user.Contactos = null;

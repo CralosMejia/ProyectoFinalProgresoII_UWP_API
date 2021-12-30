@@ -98,10 +98,10 @@ namespace AgendaPlusUWP.Views.FechasImportantes
 
                 ContentDialog noWifiDialog = new ContentDialog
                 {
-                    Title = "Advertencia",
-                    Content = "estas seguro de que quieres borrar la fecha",
-                    CloseButtonText = "Cancelar",
-                    PrimaryButtonText = "Borrar"
+                    Title = "Warning",
+                    Content = "Are you sure you want to delete the date?",
+                    CloseButtonText = "Cancel",
+                    PrimaryButtonText = "Delete"
                 };
 
                 ContentDialogResult result = await noWifiDialog.ShowAsync();
