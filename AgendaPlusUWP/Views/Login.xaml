@@ -8,70 +8,73 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <Frame Name="LoginFrame" Width="1283" Height="720">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF47A1C3"/>
-                        <GradientStop Color="#FF3A92B4" Offset="0.733"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
 
-                <!--Logo-->
-                <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="20,15,0,0">
-                    <Image Source="/Assets/agendaBlack.png" FocusVisualPrimaryBrush="{x:Null}"  Height="84" Width="90"/>
-                    <TextBlock Foreground="#FF4C4747" Text="Agenda+" FontSize="50" FontWeight="Bold" FocusVisualPrimaryBrush="#FF4C4747"></TextBlock>
-                </StackPanel>
-                
-                <!--Panel principal-->
-                <StackPanel Grid.Row="1" Orientation="vertical">
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Width="420" >
-                        <Grid>
-                            <Rectangle Fill="White" Width="393" Height="80" HorizontalAlignment="Center" RadiusX="8" RadiusY="8"/>
-                            <TextBlock Foreground="Black" Text="Hello"  FontSize="45" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Grid>
-                    </StackPanel>
-                    <StackPanel Width="420" Height="400" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Canvas.ZIndex="1" Background="#FFDEDEDE" CornerRadius="8">
-                        <Grid>
-                            <TextBlock Foreground="#FF666666" Text="Email" FontSize="25"></TextBlock>
-                            <TextBox x:Name="textboxCorreo" Height="33"/>
-                            <TextBlock x:Name="textboxErrorCorreo" FocusVisualPrimaryBrush="#FF020202" Foreground="Red" FontSize="9" ></TextBlock>
-                            <TextBlock Foreground="#FF666666" Text="Password" FontSize="25" ></TextBlock>
-                            <PasswordBox x:Name="textboxContrasena"  Width="344"/>
-                            <TextBlock x:Name="textboxErrorContrasena" FontSize="9" FocusVisualPrimaryBrush="#FFACAAAA" Foreground="Red" ></TextBlock>
-                            <Button Height="41" Width="176"  VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold" Click="Button_Click_2">
-                                <Button.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FFB9C2F7"/>
-                                        <GradientStop Color="#FF2BCCDC" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
-                            </Button>
-                            <TextBlock x:Name="textBoxErrorLogin" Foreground="Red" ></TextBlock>
-                            <TextBlock  Text="Don't have an account?" Foreground="Black" FontSize="15"></TextBlock>
-                            <Button Content="Register Now" VerticalAlignment="Top" Background="#FFDEDEDE" BorderBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" Foreground="#FF30AFD4" FontWeight="Bold" Click="Button_Click_1"/>
-                        </Grid>
-                    </StackPanel>
-                    
-                    <StackPanel>
-                        <TextBlock Text="Sing into your account" Foreground="#FF959090" Margin="73,75,79,338" FontSize="25" />
-                    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF47A1C3"/>
+                <GradientStop Color="#FF3A92B4" Offset="0.733"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-                </StackPanel>
+        <!--Logo-->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="20,15,0,0">
+            <Image Source="/Assets/agendaBlack.png" FocusVisualPrimaryBrush="{x:Null}"  Height="84" Width="90"/>
+            <TextBlock Foreground="#FF4C4747" Text="Agenda+" FontSize="50" FontWeight="Bold" FocusVisualPrimaryBrush="#FF4C4747"></TextBlock>
+        </StackPanel>
 
-                <StackPanel>
-                    <Grid>
-                        <TextBlock Foreground="White" FontSize="11" Text="© Carlos Mejia - Victor Ponce - Caleb Naranjo" Margin="480,690,566,-7"></TextBlock>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </Frame>
-    </StackPanel>
+        <!--Panel principal-->
+        <StackPanel Grid.Row="1" Orientation="vertical" Background="#FFDEDEDE" Width="420" CornerRadius="8">
+            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Width="420" Height="100" CornerRadius="8" Orientation="Vertical">
+                <TextBlock Foreground="Black" Text="Hello"  FontSize="45" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="Sing into your account" Foreground="#FF959090" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Width="420" Height="400" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Canvas.ZIndex="1" Background="#FFDEDEDE" CornerRadius="8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <TextBlock Foreground="#FF666666" Text="Email" FontSize="25" Grid.Row="0" Grid.ColumnSpan="2" Margin="20,30,0,0"></TextBlock>
+                    <TextBox x:Name="textboxCorreo" Height="33" Grid.Row="1" Grid.ColumnSpan="2" Width="344" HorizontalAlignment="Left" Margin="20,10,0,0"/>
+                    <TextBlock x:Name="textboxErrorCorreo" FocusVisualPrimaryBrush="#FF020202" Foreground="Red" FontSize="9" Grid.Row="2" Grid.ColumnSpan="2" Margin="20,10,0,0"></TextBlock>
+                    <TextBlock Foreground="#FF666666" Text="Password" FontSize="25" Grid.Row="3" Grid.ColumnSpan="2" Margin="20,30,0,0"></TextBlock>
+                    <PasswordBox x:Name="textboxContrasena"  Width="344" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="20,10,0,0"/>
+                    <TextBlock x:Name="textboxErrorContrasena" FontSize="9" FocusVisualPrimaryBrush="#FFACAAAA" Foreground="Red" Grid.Row="5" Grid.ColumnSpan="2" Margin="20,10,0,0"></TextBlock>
+                    <Button Height="41" Width="176"  VerticalAlignment="Top" Content="Login" FontSize="20" FontWeight="Bold" Click="Button_Click_2" Grid.Row="6" Grid.ColumnSpan="2" Margin="20,30,0,0" HorizontalAlignment="Center">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFB9C2F7"/>
+                                <GradientStop Color="#FF2BCCDC" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock x:Name="textBoxErrorLogin" Foreground="Red" Grid.Row="7" Grid.ColumnSpan="2" Margin="20,10,0,0"></TextBlock>
+                    <TextBlock  Text="Don't have an account?" Foreground="Black" FontSize="15" Grid.Row="8" Grid.Column="0" Margin="20,10,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                    <Button Content="Register Now" VerticalAlignment="Center" Background="#FFDEDEDE" BorderBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" Foreground="#FF30AFD4" FontWeight="Bold" Click="Button_Click_1" Grid.Row="8" Grid.Column="1" Margin="20,10,0,0" HorizontalAlignment="Left"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Foreground="White" FontSize="18" Text="© Carlos Mejia - Victor Ponce - Caleb Naranjo"></TextBlock>
+        </StackPanel>
+    </Grid>
 </Page>

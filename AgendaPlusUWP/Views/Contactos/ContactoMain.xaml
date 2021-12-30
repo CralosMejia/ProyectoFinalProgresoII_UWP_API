@@ -30,7 +30,7 @@
 
 
                         <StackPanel Grid.Row="0" VerticalAlignment="Center">
-                            <TextBlock Text="Notes" FocusVisualPrimaryBrush="Black" Foreground="Black" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Contact" FocusVisualPrimaryBrush="Black" Foreground="Black" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">

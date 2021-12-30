@@ -8,95 +8,81 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <Frame Name="LoginFrame" Width="1283" Height="720">
-            <Grid>
-                <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF47A1C3"/>
-                        <GradientStop Color="#FF3A92B4" Offset="0.733"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <StackPanel>
-                    <Grid Margin="61,79,841,539">
-                        <Image Source="/Assets/agendaBlack.png" FocusVisualPrimaryBrush="{x:Null}" Margin="33,9,204,9" Height="84" Width="90"/>
-                        <TextBlock Foreground="#FF4C4747" Text="Agenda+" Margin="150,12,9,3" FontSize="50" FontWeight="Bold" FocusVisualPrimaryBrush="#FF4C4747"></TextBlock>
-                    </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF47A1C3"/>
+                <GradientStop Color="#FF3A92B4" Offset="0.733"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!--Logo-->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="20,15,0,0">
+            <Image Source="/Assets/agendaBlack.png" FocusVisualPrimaryBrush="{x:Null}"  Height="84" Width="90"/>
+            <TextBlock Foreground="#FF4C4747" Text="Agenda+" FontSize="50" FontWeight="Bold" FocusVisualPrimaryBrush="#FF4C4747"></TextBlock>
+        </StackPanel>
+
+        <!--Panel principal-->
+        <StackPanel Grid.Row="1" Orientation="vertical" Background="#FFDEDEDE" Width="820" CornerRadius="8">
+            <StackPanel Background="White" Height="100" CornerRadius="8" >
+                    <TextBlock Foreground="Black" Text="Create Account" Margin="141,10,183,305" FontSize="45" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel>
-                    <Grid Margin="191,214,197,124">
+            <StackPanel Width="800" Height="400" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Background="#FFDEDEDE" CornerRadius="8">
+                <Grid Width="800" Height="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Rectangle Fill="White" RadiusX="8" RadiusY="8"></Rectangle>
 
-                        <StackPanel>
-                            <TextBlock Foreground="Black" Text="Create Account" Margin="141,10,183,305" FontSize="45" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                        <Grid>
 
-                            <Rectangle Fill="#FFDEDEDE" Margin="0,80,0,-43" RadiusX="8" RadiusY="8"></Rectangle>
+                    <TextBlock Text="Username" Margin="20,0,0,0" FontSize="25" Foreground="#FF7E7E7E" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    <TextBox x:Name="textboxUsername" Margin="20,0,0,0" Width="334" Height="33"  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+                    <TextBlock x:Name="textboxErrorUsername" Text="" Foreground="Red" Margin="20,0,0,0" Height="166" Grid.Row="2" Grid.Column="0" ></TextBlock>
+                    <TextBlock Text="Password" Margin="20,0,0,0" FontSize="25" Foreground="#FF7E7E7E" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                    <PasswordBox x:Name="textboxPassword" Margin="20,0,0,0" Width="334" Height="33" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"></PasswordBox>
+                    <TextBlock x:Name="textboxErrorPassword" Margin="20,0,0,0" Foreground="Red" Grid.Row="5" Grid.Column="0" ></TextBlock>
+                    <TextBlock Text="Email" Margin="20,0,0,0" FontSize="25" Foreground="#FF7E7E7E" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    <TextBox x:Name="textboxEmail" Margin="20,0,0,0" Width="334" Height="33" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+                    <TextBlock x:Name="textboxErrorEmail" Margin="20,0,0,0" Foreground="Red" Grid.Row="2" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="Confirm Password" Margin="20,0,0,0" FontSize="25" Foreground="#FF7E7E7E" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    <PasswordBox x:Name="textBoxConfirmPassword" Margin="20,0,0,0" Width="334" Height="33" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></PasswordBox>
+                    <TextBlock x:Name="textBoxErrorConfirmPassword"  FocusVisualPrimaryBrush="Black" Foreground="Red" Margin="20,0,0,0"  Grid.Row="5" Grid.Column="1"></TextBlock>
+                    <Button Height="41" Width="176" Margin="20,0,0,0" VerticalAlignment="Center" Content="Register Now" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_Click" Grid.Row="6" Grid.ColumnSpan="2">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFB9C2F7"/>
+                                <GradientStop Color="#FF2BCCDC" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <TextBlock Foreground="Black" FontSize="15" Text="Already have an account?" Margin="20,0,0,0" Height="23" FontWeight="Bold" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                    <Button Content="Login" Background="#FFDEDEDE" Foreground="#FF48DDE4" FontWeight="Bold" FontStyle="Normal" BorderBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" Margin="20,0,0,0" Click="Button_Click_1" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center"/>
+                    
 
-                            <StackPanel>
-                                <TextBlock Text="Username" Margin="37,107,512,238" FontSize="25" Foreground="#FF7E7E7E"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBox x:Name="textboxUsername" Margin="-6,140,488,191" Width="334" Height="33"></TextBox>
-                                <TextBlock x:Name="textboxErrorUsername" Text="" Foreground="Red" Margin="41,-207,0,0" Height="166" >    </TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Password" Margin="37,214,512,131" FontSize="25" Foreground="#FF7E7E7E"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <PasswordBox x:Name="textboxPassword" Margin="-3,252,488,79" Width="334" Height="33"></PasswordBox>
-                                <TextBlock x:Name="textboxErrorPassword" Margin="36,-78,0,0" Foreground="Red" > </TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Email" Margin="492,107,57,238" FontSize="25" Foreground="#FF7E7E7E"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBox x:Name="textboxEmail" Margin="449,140,34,191" Width="334" Height="33"></TextBox>
-                                <TextBlock x:Name="textboxErrorEmail" Margin="490,-192,0,0" Foreground="Red"> </TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Confirm Password" Margin="492,214,57,131" FontSize="25" Foreground="#FF7E7E7E"></TextBlock>
-                            </StackPanel>
-                            <StackPanel>
-                                <PasswordBox x:Name="textBoxConfirmPassword" Margin="448,252,34,79" Width="334" Height="33"></PasswordBox>
-                                <TextBlock x:Name="textBoxErrorConfirmPassword"  FocusVisualPrimaryBrush="Black" Foreground="Red" Margin="488,-82,0,0" ></TextBlock>
-                                <TextBlock x:Name="textBoxErrorPasswords"  FocusVisualPrimaryBrush="Black" Foreground="Red" Margin="488,-52,0,0" ></TextBlock>
 
-                            </StackPanel>
-                            <StackPanel>
-                                <Button Height="41" Width="176" Margin="0,331,0,0" VerticalAlignment="Top" Content="Register Now" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_Click">
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FFB9C2F7"/>
-                                            <GradientStop Color="#FF2BCCDC" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
-                                </Button>
-                            </StackPanel>
-                        </Grid>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
 
-                        <Grid>
 
-                            <TextBlock Foreground="Black" FontSize="15" Text="Already have an account?" Margin="324,390,387,-31" Height="23" FontWeight="Bold"></TextBlock>
-
-                        </Grid>
-                        <Grid>
-                            <TextBlock Foreground="White" FontSize="11" Text="© Carlos Mejia - Victor Ponce - Caleb Naranjo" Margin="314,473,345,-112" RenderTransformOrigin="0.5,0.5">
-                                <TextBlock.RenderTransform>
-                                    <CompositeTransform ScaleY="1"/>
-                                </TextBlock.RenderTransform></TextBlock>
-
-                        </Grid>
-
-                    </Grid>
-
-                </StackPanel>
-                <StackPanel>
-                    <Button Content="Login" Background="#FFDEDEDE" Foreground="#FF48DDE4" FontWeight="Bold" FontStyle="Normal" BorderBrush="#FFDEDEDE" FocusVisualSecondaryBrush="#FFDEDEDE" FocusVisualPrimaryBrush="#FFDEDEDE" Margin="704,599,0,0" Click="Button_Click_1"/>
-                </StackPanel>
-            </Grid>
-        </Frame>
-    </StackPanel>
+        <StackPanel Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Foreground="White" FontSize="18" Text="© Carlos Mejia - Victor Ponce - Caleb Naranjo"></TextBlock>
+        </StackPanel>
+    </Grid>
 </Page>
