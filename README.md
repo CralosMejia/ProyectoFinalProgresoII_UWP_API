@@ -75,7 +75,7 @@ Caso contrario debe dar click en **"Register Now"** para crear un nuevo usuario
 ![](https://i.ibb.co/xjj8y28/create.png)
 >Pantalla para crear un Usuario Nuevo
 
-####Agenda+ fue Creada por:
+#### Agenda+ fue Creada por:
 - Carlos Mejía
 - Caleb Naranjo
 - Victor Ponce
