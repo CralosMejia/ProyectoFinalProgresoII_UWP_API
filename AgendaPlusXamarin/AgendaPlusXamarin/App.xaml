@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--definicion de estilos para aplicar en toda la app-->
+
+            <!--LABELS-->
+            <Style x:Key="lblStyle" TargetType="Label">
+                <Setter  Property="FontSize" Value="Default" />
+                <Setter  Property="TextColor" Value="#4C4747" />
+            </Style>
+
+            <!--BOTONES-->
+            <Style x:Key="btnStyle" TargetType="Button">
+                <Setter  Property="FontSize" Value="Default" />
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="#FF63A2AC"/>
+                <Setter Property="CornerRadius" Value="20"/>
+
+            </Style>
+
+            <!--ENTRADAS DE TEXTO-->
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Setter  Property="IsPassword" Value="False" />
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="Keyboard" Value="Text"/>
+                <Setter Property="ReturnType" Value="Go"/>
+                <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

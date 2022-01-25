@@ -50,6 +50,7 @@ namespace AgendaPlusUWP.Views.Notes
             resultadoAPI = await NotasController.getNota(userID);
 
             ListaNota.ItemsSource = resultadoAPI;
+
         }
 
         private void TextBox_Buscar(object sender, TextChangedEventArgs e)

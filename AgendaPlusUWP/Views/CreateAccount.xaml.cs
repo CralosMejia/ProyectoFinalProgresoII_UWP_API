@@ -125,11 +125,11 @@ namespace AgendaPlusUWP.Views
         {
             if (!textBoxConfirmPassword.Password.Equals(textboxPassword.Password))
             {
-                textBoxErrorPasswords.Text = "The passwords doesn't match";
+                textboxErrorPassword.Text = "The passwords doesn't match";
                 return false;
             }
 
-            textBoxErrorPasswords.Text = "";
+            textboxErrorPassword.Text = "";
             return true;
         }
 

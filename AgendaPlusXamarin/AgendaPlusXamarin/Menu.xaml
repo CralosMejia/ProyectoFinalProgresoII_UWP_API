@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Menu">
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="MyButtonStyle">
+            <Setter Property="BackgroundColor" Value="#393A3D" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Page.Resources>
+
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Mi app">
+
+            <ScrollView>
+                <Frame Background="#393A3D">
+                    <StackLayout Spacing="10">
+                        <Button  Style="{StaticResource MyButtonStyle}" ContentLayout="Left,5" Image="proximoBlanco"  Text="Menu" HorizontalOptions="Start" />
+                        <StackLayout Orientation="Horizontal" Padding="20,10">
+                            <Image Source="perfil" Margin="0,0,20,0"  x:Name="ImgUser"/>
+                            <Label Text="Username" TextColor="White" FontSize="25"  VerticalOptions="Center" x:Name="userName"/>
+                        </StackLayout>
+                        <Button Style="{StaticResource MyButtonStyle}" Text="Tasks" ContentLayout="Left,5" Image="checklist" />
+                        <Button Style="{StaticResource MyButtonStyle}" Text="Contacts" ContentLayout="Left,5" Image="contactBook" />
+                        <Button Style="{StaticResource MyButtonStyle}" Text="Notes" ContentLayout="Left,5" Image="notes" />
+                        <Button Style="{StaticResource MyButtonStyle}" Text="Important Dates" ContentLayout="Left,5" Image="calendar" />
+                        <Label Text="─────────────────────" TextColor="White" FontSize="20" Background="#393A3D"  HorizontalOptions="Center"/>
+                        <Button Style="{StaticResource MyButtonStyle}" Text="Settings" ContentLayout="Left,5" Image="settings" />
+                        <Button Style="{StaticResource MyButtonStyle}" Text="About" ContentLayout="Left,5" Image="informationButton" />
+
+                        <Button  Style="{StaticResource MyButtonStyle}" ContentLayout="Left,5" Image="logOut"  Text="   Log out" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </Frame>
+            </ScrollView>
+
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+</MasterDetailPage>
