@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AgendaPlusXamarin.Views.FechaImportante.SeeImportantDate">
+             x:Class="AgendaPlusXamarin.Views.FechasImpotantes.SeeImportantDate">
     <ContentPage.Content>
         <StackLayout Spacing="30" Background="#F0F3FA" Padding="10">
             <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 

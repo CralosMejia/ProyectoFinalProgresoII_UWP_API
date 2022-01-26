@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AgendaPlusXamarin.Views.FechaImportante.CreateImportantDate">
+             x:Class="AgendaPlusXamarin.Views.FechasImpotantes.EditImportantDate">
     <ContentPage.Content>
         <StackLayout Spacing="30" Background="#F0F3FA" Padding="10">
             <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
                     Clicked="closedButton" BackgroundColor="Transparent" CornerRadius="50" BorderColor="Black" 
                     BorderWidth="1" FontSize="20" Margin="20"/>
-            <Label Text="Create new Important Date" FontSize="30" HorizontalOptions="Center" TextColor="#000000"/>
-            <Entry x:Name="dateTitle" Placeholder="Title" TextColor="#4C4747" BackgroundColor="Transparent" PlaceholderColor="#A99F9F" HorizontalTextAlignment="Start"/>
-            <Editor x:Name="dateDescription" Placeholder="Descrition" PlaceholderColor="#A99F9F"  Background="#fff" TextColor="#4C4747" AutoSize="TextChanges" MaxLength="180"
+            <Label Text="Edit Important Date" FontSize="30" HorizontalOptions="Center" TextColor="#000000"/>
+            <Entry Placeholder="Title" TextColor="#4C4747" BackgroundColor="Transparent" 
+                   PlaceholderColor="#A99F9F" HorizontalTextAlignment="Start"
+                   x:Name="dateTitle"/>
+            <Editor Placeholder="Descrition" PlaceholderColor="#A99F9F"  Background="#fff" TextColor="#4C4747" 
+                    AutoSize="TextChanges" MaxLength="180" x:Name="dateDescription"
                     VerticalOptions="FillAndExpand"/>
             <Frame BackgroundColor="Transparent">
                 <Grid>
@@ -23,7 +26,7 @@
 
                 </Grid>
             </Frame>
-            <Button Text="Create" CornerRadius="20" FontSize="20" Clicked="createDate">
+            <Button Text="Edit" CornerRadius="20" FontSize="20"  Clicked="editDate">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF63A2AC" Offset="0.026"/>

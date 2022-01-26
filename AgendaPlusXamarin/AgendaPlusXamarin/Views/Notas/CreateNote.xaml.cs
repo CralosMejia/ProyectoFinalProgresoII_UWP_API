@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgendaPlusXamarin.Controllers;
+using AgendaPlusXamarin.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
