@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.FechaImportante.MainImportantDate">
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+            <GradientStop Color="#FF3EB3C5" Offset="1"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Label  Text="Important Dates" FontSize="40" TextColor="#4C4747" Padding="20" HorizontalTextAlignment="Center"/>
+            <Frame HasShadow="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <SearchBar x:Name="textSearch"  Grid.Row="0" Margin="10" Background="#F0F3FA" 
+                                TextColor="#000" Placeholder="Search" 
+                                HorizontalTextAlignment="Center" PlaceholderColor="#4C4747" TextChanged="searchEvent"/>
+                    <Grid Grid.Row="1" BackgroundColor="#fff">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollView Grid.Row="0" >
+                            <ListView x:Name="ListImportantDate">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{x:Binding Titulo}" Detail="{Binding Descripcion}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
+
+
+                        <Frame BackgroundColor="Transparent" Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" CornerRadius="50"  VerticalOptions="Center" 
+                                HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
+                                ImageSource="ver" Clicked="seeImportantDate" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+
+                                <Button CornerRadius="50" Grid.Column="1" VerticalOptions="Center" 
+                                HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
+                                ImageSource="mas" Clicked="createImportantDate">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+
+                            </Grid>
+                        </Frame>
+
+
+                    </Grid>
+
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
