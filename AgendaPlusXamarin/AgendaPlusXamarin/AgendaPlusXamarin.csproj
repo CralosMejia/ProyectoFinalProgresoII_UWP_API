@@ -18,12 +18,17 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Notas\MainNote.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
