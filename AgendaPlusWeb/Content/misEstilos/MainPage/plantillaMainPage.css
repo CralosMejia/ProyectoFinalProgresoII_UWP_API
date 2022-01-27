@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    position: relative;
+}
+
+header {
+    width: 100%;
+    height: 10vh;
+    min-height: 75px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background: #608ac9;
+    background: linear-gradient(110deg, #608ac9 15%, rgba(12, 171, 184, 0.65) 100%);
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 20;
+}
+
+    header .navbar-nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: start;
+        margin-left: 10%;
+        width: 100%;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+        header .navbar-nav li {
+            list-style: none;
+            margin: 0 8% 0 8%;
+            text-align: center;
+        }
+
+            header .navbar-nav li a {
+                text-decoration: none;
+                color: #292727;
+                font-size: 20px;
+                font-weight: 600;
+                text-align: center;
+            }
+
+                header .navbar-nav li a:hover {
+                    color: #666464;
+                }
+
+    header .container-username {
+        width: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: end;
+        padding-right: 4rem;
+    }
+
+        header .container-username .container-img-username {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+            header .container-username .container-img-username span {
+                width: 50px;
+                height: 50px;
+                margin-right: 0.5rem;
+            }
+
+        header .container-username .User-Name {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+            header .container-username .User-Name span {
+                font-size: 3.5rem;
+            }
+
+aside {
+    width: 8%;
+    height: 100vh;
+    background-color: #0C1C39;
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+    aside div {
+        height: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    aside .container-inicio-agenda {
+        position: relative;
+    }
+
+        aside .container-inicio-agenda form {
+            width: 100%;
+            height: 150px;
+            color: #fff;
+            font-size: 65px;
+        }
+
+            aside .container-inicio-agenda form .input-agenda-adelante {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            aside .container-inicio-agenda form i {
+                position: absolute;
+                top: 15px;
+                left: 20px;
+                z-index: 1;
+            }
+
+            aside .container-inicio-agenda form input {
+                width: 100%;
+                height: 100px;
+                z-index: 10;
+                background-color: rgba(0, 0, 0, 0.0000001);
+                outline: none;
+                border: none;
+            }
+
+            aside .container-inicio-agenda form:hover i {
+                color: #c2c2c2;
+            }
+
+    aside .container-menu {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+        aside .container-menu ul {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-box-pack: space-evenly;
+            -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+        }
+
+            aside .container-menu ul li {
+                list-style: none;
+                position: relative;
+            }
+
+                aside .container-menu ul li input {
+                    position: absolute;
+                    top: -2px;
+                    left: -8px;
+                    width: 54px;
+                    height: 44px;
+                    background-color: rgba(0, 0, 0, 0.0000001);
+                    outline: none;
+                    border: none;
+                }
+
+                aside .container-menu ul li:hover i {
+                    color: #a0a0a0;
+                }
+
+                aside .container-menu ul li i {
+                    color: #fff;
+                    font-size: 40px;
+                }
+
+                    aside .container-menu ul li i:hover {
+                        color: #a0a0a0;
+                    }
+
+main {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+    main .header-atras {
+        width: 100%;
+        height: 10vh;
+        min-height: 75px;
+    }
+
+    main .container-asidebar-atras {
+        width: 100%;
+        height: 84.6vh;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 8% 92%;
+        grid-template-columns: 8% 92%;
+    }
+
+        main .container-asidebar-atras div {
+            -ms-grid-column: 2;
+            -ms-grid-column-span: 1;
+            grid-column: 2/3;
+        }

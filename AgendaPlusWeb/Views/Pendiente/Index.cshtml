@@ -1,0 +1,186 @@
+﻿@using AgendaPlusWeb.Models;
+
+@model  AgendaPlusWeb.Models.Paginacion
+
+@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_PlantillaMainPage.cshtml";
+    var cantidadPaginas = (int)Math.Ceiling((double)Model.TotalDeRegistros / Model.RegistrosPorPagina);
+}
+
+<script>
+    function confirmar() {
+        if (confirm("Are you sure??")) {
+            document.getElementById("del").value = "yes";
+        } else {
+            document.getElementById("del").value = "no";
+        }
+    }
+</script>
+
+
+<div class="options-menu">
+    @using (Html.BeginForm("Index", "Pendiente", FormMethod.Post, new { @class = "container-input-buscar" }))
+    {
+        <i class="fas fa-search"></i>
+        <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+        <input type="text" class="input-buscar" name="busqueda">
+        <input type="submit" value="Search" class="boton-buscar-enviar">
+
+    }
+    @using (Html.BeginForm("Index", "Pendiente", FormMethod.Post, new { @class = "input-tipo-lista-tareas" }))
+    {
+        @*<form class="input-tipo-lista-tareas">*@
+        <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+        <select name="completTask">
+            <option value="false" selected>Pending tasks</option>
+            <option value="true">Completed tasks</option>
+        </select>
+        <input type="submit" value="Change" class="boton-buscar-enviar">
+        @*</form>*@
+    }
+    @using (Html.BeginForm("Index", "Pendiente", FormMethod.Post, new { @class = "input-ordenar-por" }))
+    {
+        @*<form class="input-ordenar-por">*@
+        <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+        <select name="ordenar">
+            <option value="important" selected>Important</option>
+        </select>
+        <input type="submit" value="Order" class="boton-buscar-enviar">
+        @*</form>*@
+    }
+    @using (Html.BeginForm("Index", "Pendiente", FormMethod.Post, new { @class = "input-ordenar-por" }))
+    {
+        @*<form class="input-ordenar-por">*@
+        <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+        <input type="number" name="rPorPagina" min="1" max="100" />
+        @*<select>
+                <option value="9" selected>#Elmentos</option>
+                <option value="value2"></option>
+                <option value="value2">Important</option>
+                <option value="value2">Important</option>
+            </select>*@
+        <input type="submit" value="Paginate" class="boton-buscar-enviar">
+        @*</form>*@
+    }
+</div>
+<div class="container-container-task">
+    <div class="task-container">
+        @using (Html.BeginForm("CompletedTask", "Pendiente", FormMethod.Post, new { @class = "PanelTasks", @id = "form-completed-task" }))
+        {
+            @*<div class="PanelTasks">*@
+            <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+            if (@Model.Usuario.Pendientes != null)
+            {
+                foreach (Pendiente a in @Model.Usuario.Pendientes)
+                {
+                    if (a.Prioridad == 1)
+                    {
+                        ViewBag.prioridad = "Severe";
+                    }
+                    else if (a.Prioridad == 2)
+                    {
+                        ViewBag.prioridad = "Important";
+                    }
+                    else if (a.Prioridad == 3)
+                    {
+                        ViewBag.prioridad = "Normal";
+                    }
+
+                    if (a.Estado == ViewBag.tareasCompletas)
+                    {
+                    <div class="pendiente-container" style="background-color: @a.ColorPrioridad">
+                        <div class="container-check">
+                            <input type="checkbox" value="@a.PendienteID" name="check">
+                        </div>
+                        <div class="container-info">
+                            <h1>@a.Titulo</h1>
+                            <h2>Priority: @ViewBag.prioridad</h2>
+                            <h2>Deadline: @a.FechaLimite</h2>
+                        </div>
+                        <div class="contianer-icon">
+                            <div action="" class="form-botones">
+                                <input type="submit" value="@a.PendienteID" form="edit-button" class="input-button-pagina" name="pendienteID">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div action="" class="form-botones">
+                                <input type="submit" value="@a.PendienteID" form="information-button" class="input-button-pagina" name="pendienteID">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div action="" class="form-botones">
+                                <input type="submit" value="@a.PendienteID" form="delete-button" class="input-button-pagina" onclick="confirmar()" name="pendienteID">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+            }
+        }
+        @*</div>*@
+        <div class="option-task">
+            <div class="pagination-container">
+                <div class="pagination">
+                    @{
+                        int Inicial = 1;
+                        var radio = 2;
+                        var CantidadMaximaDePaginas = radio * 2 + 1;
+                        int Final = (cantidadPaginas > CantidadMaximaDePaginas) ? CantidadMaximaDePaginas : cantidadPaginas;
+                        if (Model.PaginaActual > radio + 1)
+                        {
+                            Inicial = Model.PaginaActual - radio;
+                            if (cantidadPaginas > Model.PaginaActual + radio)
+                            {
+                                Final = Model.PaginaActual + radio;
+                            }
+                            else
+                            {
+                                Final = cantidadPaginas;
+                            }
+                        }
+                    }
+
+                    <ul class="paginations">
+                        <li>@Html.ActionLink("First", null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = 1 })</li>
+                        @for (int i = Inicial; i <= Final; i++)
+                        {
+                            if (i == Model.PaginaActual)
+                            {
+                                <li class="active">@Html.ActionLink(i.ToString(), null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = i })</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink(i.ToString(), null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = i })</li>
+                            }
+                        }
+                        <li>@Html.ActionLink("Last", null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = cantidadPaginas })</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="button-task">
+                @using (Html.BeginForm("Crear", "Pendiente", FormMethod.Post, new { @class = "form-button" }))
+                {
+                    <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+                    <i class="fas fa-plus"></i>
+                    <input type="submit" value="" class="button-task-button Check-all-tasks">
+                    <input type="submit" value="" class="botton-arriba">
+                }
+                <div action="" class="form-button">
+                    <input type="submit" value="" class="button-task-button Check-all-tasks" form="form-completed-task">
+                    <i class="fas fa-check"></i>
+                    <input type="submit" value="" class="botton-arriba" form="form-completed-task">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("editar", "Pendiente", FormMethod.Post, new { @class = "PanelTasks", @id = "edit-button" }))
+{
+}
+@using (Html.BeginForm("ver", "Pendiente", FormMethod.Post, new { @class = "PanelTasks", @id = "information-button" }))
+{
+}
+@using (Html.BeginForm("eliminar", "Pendiente", FormMethod.Post, new { @class = "PanelTasks", @id = "delete-button" }))
+{
+    <input type="hidden" name="del" id="del" />
+}

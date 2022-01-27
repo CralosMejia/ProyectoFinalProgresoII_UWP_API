@@ -1,0 +1,38 @@
+﻿
+@model  AgendaPlusWeb.Models.Usuario
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_PlantillaLoginCreate.cshtml";
+}
+
+<main class="Main-login-register">
+    <div class="Container-login">
+        <div class="Container-top-login">
+            <h1>Hello!</h1>
+            <h2>Sing into your account</h2>
+            <label style="color:red; font-size:1.5rem;">@ViewBag.MessageErrorUserExist</label>
+        </div>
+        @using (Html.BeginForm("Autenticacion", "Usuario", FormMethod.Post, new { @class = "form-login" }))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="container-inputs">
+                @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "label-login-register" })
+                @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "Input-login-register" } })
+            </div>
+            <div class="container-inputs">
+                @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "label-login-register" })
+                @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "Input-login-register" } })
+            </div>
+            <div class="container-button-login">
+                <input class="button-A" value="Login" type="submit">
+            </div>
+            <h3 class="Message-dont-have-account">
+                Don't have an account? <a class="enlace-register-now">@Html.ActionLink("Register Now", "Register", "Usuario")</a>
+            </h3>
+        }
+    </div>
+</main>
+

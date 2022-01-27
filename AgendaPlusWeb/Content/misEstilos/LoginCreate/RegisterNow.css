@@ -1,0 +1,112 @@
+﻿.container-inputs span.field-validation-error.text-danger {
+    font-size: 1.5rem;
+    color: red;
+}
+
+.Container-Create {
+    width: 600px;
+    min-width: 300px;
+    height: 450px;
+    border: 0.3px solid #3b3a3a;
+    border-radius: 20px;
+}
+
+    .Container-Create .Container-top-login {
+        height: 25%;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        background-color: #ffffff;
+        border-radius: 20px 20px 0 0;
+    }
+
+        .Container-Create .Container-top-login h1 {
+            font-size: 3.5rem;
+            color: #857D7D;
+        }
+
+    .Container-Create .form-login {
+        background-color: #F0F3FA;
+        height: 75%;
+        border-radius: 0 0 20px 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+        justify-content: space-evenly;
+        padding: 0 20px 0 20px;
+    }
+
+
+        .Container-Create .form-login .container-container-inputs {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 5px 0 5px 0;
+        }
+
+            .Container-Create .form-login .container-container-inputs .container-inputs {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                margin-bottom: 15px;
+            }
+
+                .Container-Create .form-login .container-container-inputs .container-inputs label {
+                    font-size: 2rem;
+                    color: #4b4747;
+                }
+
+                .Container-Create .form-login .container-container-inputs .container-inputs input {
+                    width: 265px;
+                    height: 30px;
+                    font-size: 1.6rem;
+                    border: none;
+                    border-radius: 10px;
+                    outline: none;
+                    border: 1px solid #b9b9b9;
+                    padding-left: 10px;
+                }
+
+                    .Container-Create .form-login .container-container-inputs .container-inputs input:focus {
+                        -webkit-box-shadow: 0 0 7px #608ac9;
+                        box-shadow: 0 0 7px #608ac9;
+                    }
+
+        .Container-Create .form-login h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top:1rem;
+        }
+
+            .Container-Create .form-login h3 a {
+                color: #0CABB8;
+            }
+
+                .Container-Create .form-login h3 a:active {
+                    color: #0d747e;
+                }

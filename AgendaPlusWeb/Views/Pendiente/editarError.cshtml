@@ -1,0 +1,65 @@
+﻿@model AgendaPlusWeb.Models.Pendiente
+
+@{
+    ViewBag.Title = "CrearPeniente";
+    Layout = "~/Views/Shared/_PlantillaCrearPendiente.cshtml";
+}
+
+@using (Html.BeginForm("editarModel", "Pendiente", FormMethod.Post, new { @class = "form-create-class" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<form class="form-create-class">*@
+    <div class="title-new-task">
+        <h1>Edit Task</h1>
+    </div>
+    <div class="container-info-new-task">
+        <input type="hidden" value="@Model.PendienteID" name="pendienteID" />
+        <input type="hidden" value="@ViewBag.UserId" name="UserID" />
+        @Html.ValidationMessageFor(model => model.Titulo, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "input-title", @placeholder = "Title" } })
+        @*<input type="text" placeholder="Title" class="input-title">*@
+
+        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.TextAreaFor(model => model.Descripcion, new { @cols = "30", @rows = "8", @class = "text-area-description", @placeholder = "Description" })
+        @*<textarea cols="30" rows="8" class="text-area-description" placeholder="Description"></textarea>*@
+        <div class="container-relog">
+            <i class="far fa-clock"></i>
+            <h2>Deadline</h2>
+            @Html.ValidationMessageFor(model => model.FechaLimite, "", new { @style = "color:red; font-size:1.5rem;" })
+            @Html.TextBoxFor(model => model.FechaLimite, "{0:s}", new { @type = "datetime-local", @class = "fecha-hora", @Value = @ViewBag.FechaActual, @min = @ViewBag.FechaActual, @max = "2030-12-31T12:00" })
+            @*<input class="fecha-hora" type="datetime-local">*@
+        </div>
+        <div class="container-prioridad">
+            <i class="fas fa-stream"></i>
+            <h2>Priority</h2>
+            <select name="priority">
+                @{
+                    if (Model.Prioridad == 1)
+                    {
+                        <option value="1" selected>Severe</option>
+                        <option value="2">Important</option>
+                        <option value="3">Normal</option>
+                    }
+                    else if (Model.Prioridad == 2)
+                    {
+                        <option value="1">Severe</option>
+                        <option value="2" selected>Important</option>
+                        <option value="3">Normal</option>
+                    }
+                    else
+                    {
+                        <option value="1">Severe</option>
+                        <option value="2">Important</option>
+                        <option value="3" selected>Normal</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="button-create">
+        <input type="submit" value="Edit" class="Button-create">
+    </div>
+    @*</form>*@
+
+}

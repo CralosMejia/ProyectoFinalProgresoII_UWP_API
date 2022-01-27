@@ -1,0 +1,48 @@
+﻿
+@model AgendaPlusWeb.Models.FechasImportante
+
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_PlantillaCrearFechasImportantes.cshtml";
+}
+
+@using (Html.BeginForm("CrearModel", "FechaImportante", FormMethod.Post, new { @class = "form-create-class" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<form class="form-create-class">*@
+    <div class="title-new-task">
+        <h1>Create new Impotant Date</h1>
+    </div>
+    <div class="container-info-new-task">
+        <input type="hidden" value="@ViewBag.UserId" name="UserID" />
+        @Html.ValidationMessageFor(model => model.Titulo, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "input-title", @placeholder = "Title" } })
+        @*<input type="text" placeholder="Title" class="input-title">*@
+
+        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.TextAreaFor(model => model.Descripcion, new { @cols = "30", @rows = "8", @class = "text-area-description", @placeholder = "Description" })
+        @*<textarea cols="30" rows="8" class="text-area-description" placeholder="Description"></textarea>*@
+        <div class="container-relog">
+            <i class="far fa-clock"></i>
+            <h2>Deadline</h2>
+            @Html.ValidationMessageFor(model => model.FechaLimite, "", new { @style = "color:red; font-size:1.5rem;" })
+            @Html.TextBoxFor(model => model.FechaLimite, "{0:s}", new { @type = "datetime-local", @class = "fecha-hora", @Value = @ViewBag.FechaActual, @min = @ViewBag.FechaActual, @max = "2030-12-31T12:00" })
+            @*<input class="fecha-hora" type="datetime-local">*@
+        </div>
+    </div>
+    <div class="button-create">
+        <input type="submit" value="Create" class="Button-create">
+    </div>
+    @*</form>*@
+
+}
+
+
+@{
+    ViewBag.Title = "CrearError";
+    Layout = "~/Views/Shared/_PlantillaCrearFechasImportantes.cshtml";
+}
+
+<h2>CrearError</h2>
+

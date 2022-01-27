@@ -1,0 +1,95 @@
+﻿@model  AgendaPlusWeb.Models.Usuario
+
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_PlantillaConfiguraciones.cshtml";
+}
+
+<div class="container-configurations">
+    <h1>Settings</h1>
+    <div class="container-configuracions-avatar-contrasena">
+        @using (Html.BeginForm("editarContraseña", "Usuario", FormMethod.Post, new { @class = "container-change-password" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            @Html.HiddenFor(u => u.UsuarioID, Model.UsuarioID);
+            @Html.HiddenFor(u => u.NombreUsuario, Model.NombreUsuario);
+            @Html.HiddenFor(u => u.Correo, Model.Correo);
+            @Html.HiddenFor(u => u.Pendientes, Model.Pendientes);
+            @Html.HiddenFor(u => u.Notas, Model.Notas);
+            @Html.HiddenFor(u => u.FechasImportantes, Model.FechasImportantes);
+            @Html.HiddenFor(u => u.Contactos, Model.Contactos);
+            @Html.HiddenFor(u => u.Avatar, Model.Avatar);
+
+
+            <h2>Change Password</h2>
+            <h3>@ViewBag.MensajeContraseña</h3>
+            <label>Password</label>
+            @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { } })
+            @Html.ValidationMessageFor(model => model.Contrasena, "", new { @style = "color:red; font-size:1.5rem;" })
+
+            <label for="">Confirm Password</label>
+            @Html.EditorFor(model => model.ConfirmarContrasena, new { htmlAttributes = new { } })
+            @Html.ValidationMessageFor(model => model.ConfirmarContrasena, "", new { @style = "color:red; font-size:1.5rem;" })
+
+            <input type="submit" value="Change">
+        }
+        @using (Html.BeginForm("editarAvatar", "Usuario", FormMethod.Post, new { @class = "container-avatar" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(u => u.UsuarioID, Model.UsuarioID);
+            @Html.HiddenFor(u => u.NombreUsuario, Model.NombreUsuario);
+            @Html.HiddenFor(u => u.Correo, Model.Correo);
+            @Html.HiddenFor(u => u.Pendientes, Model.Pendientes);
+            @Html.HiddenFor(u => u.Notas, Model.Notas);
+            @Html.HiddenFor(u => u.FechasImportantes, Model.FechasImportantes);
+            @Html.HiddenFor(u => u.Contactos, Model.Contactos);
+            @Html.HiddenFor(u => u.Avatar, Model.Avatar);
+
+
+            <h2>Change Avatar</h2>
+            <h3>@ViewBag.MensajeAvatar</h3>
+            <div class="container-avatar-imagenes">
+                <label class="checkeable">
+                    @Html.RadioButtonFor(model => model.Avatar, "https://i.ibb.co/185gsr0/profile2.png", new { htmlAttributes = new { @name = "avatar" } })
+                    @*<input type="radio" name="avatar" value="~/assets/Avatar/profile2.png">*@
+                    <img src="/assets/avatarsBotones/avatar.png" alt="">
+                </label>
+                <label class="checkeable">
+                    @Html.RadioButtonFor(model => model.Avatar, "https://i.ibb.co/R7FzpbR/profile1.png", new { htmlAttributes = new { @name = "avatar" } })
+                    @*<input type="radio" name="avatar" value="~/assets/Avatar/profile1.png">*@
+                    <img src="/assets/avatarsBotones/avatar1.png" alt="">
+                </label>
+                <label class="checkeable">
+                    @Html.RadioButtonFor(model => model.Avatar, "https://i.ibb.co/tbcSZhH/profile5.png", new { htmlAttributes = new { @name = "avatar" } })
+                    @*<input type="radio" name="avatar" value="~/assets/Avatar/profile5.png">*@
+                    <img src="/assets/avatarsBotones/avatar2.png" alt="">
+                </label>
+                <label class="checkeable">
+                    @Html.RadioButtonFor(model => model.Avatar, "https://i.ibb.co/2vv7GwK/profile4.png", new { htmlAttributes = new { @name = "avatar" } })
+                    @*<input type="radio" name="avatar" value="~/assets/Avatar/profile4.png">*@
+                    <img src="/assets/avatarsBotones/avatar3.png" alt="">
+                </label>
+                <label class="checkeable">
+                    @Html.RadioButtonFor(model => model.Avatar, "https://i.ibb.co/v1QQ7Kd/profile.png", new { htmlAttributes = new { @name = "avatar" } })
+                    @*<input type="radio" name="avatar" value="~/assets/Avatar/profile.png">*@
+                    <img src="/assets/avatarsBotones/avatar4.png" alt="">
+                </label>
+                <label class="checkeable">
+                    @Html.RadioButtonFor(model => model.Avatar, "https://i.ibb.co/r3nC5qX/profile3.png", new { htmlAttributes = new { @name = "avatar" } })
+                    @*<input type="radio" name="avatar" value="~/assets/Avatar/profile3.png">*@
+                    <img src="/assets/avatarsBotones/avatar5.png" alt="">
+                </label>
+            </div>
+            <input type="submit" value="Change">
+        }
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <link rel="stylesheet" href="~/Content/misEstilos/LoginCreate/plantillasLoginCreate.css" />
+    <link rel="stylesheet" href="~/Content/misEstilos/LoginCreate/RegisterNow.css">
+    <link rel="stylesheet" href="~/Content/misEstilos/LoginCreate/login.css" />
+    <script src="https://kit.fontawesome.com/19f30444a3.js" crossorigin="anonymous"></script>
+    <title>AgendaPlus-@ViewBag.Title</title>
+</head>
+<body class="body-header-login-registerNow">
+    <header class="header-login-registerNow">
+        <i class="fas fa-calendar-week"></i>
+        <h1 class="Main-title_header">Agenda+</h1>
+    </header>
+    @RenderBody()
+    <footer>
+        <h1> © 2021 Carlos Mejia - Victor Ponce - Caleb Naranjo</h1>
+    </footer>
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+</body>
+</html>

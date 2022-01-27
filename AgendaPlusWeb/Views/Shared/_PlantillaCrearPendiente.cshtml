@@ -1,0 +1,84 @@
+﻿@model AgendaPlusWeb.Models.Pendiente
+
+@{
+    ViewBag.Title = "CrearPendiente";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/misEstilos/MainPage/MainPageTask.css" />
+    <link rel="stylesheet" href="~/Content/misEstilos/MainPage/plantillaMainPage.css" />
+    <link rel="stylesheet" href="~/Content/misEstilos/MainPage/CreateNewTask.css" />
+    <script src="https://kit.fontawesome.com/19f30444a3.js" crossorigin="anonymous"></script>
+    <title>AgendaPlus-CrearPendiente</title>
+</head>
+<body>
+    <header>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Tasks", "Index", "Pendiente", new { usuario = Model.Usuario, pagina = 1, UserID = Model.Usuario.UsuarioID.ToString() }, new { htmlAttributes = new { } })</li>
+            <li>@Html.ActionLink("Contacts", "Index", "Contacto", new { usuario = Model.Usuario, pagina = 1, UserID = Model.Usuario.UsuarioID.ToString() }, new { htmlAttributes = new { } })</li>
+            <li>@Html.ActionLink("Notes", "Index", "Nota", new { usuario = Model.Usuario, pagina = 1, UserID = Model.Usuario.UsuarioID.ToString() }, new { htmlAttributes = new { } })</li>
+            <li>@Html.ActionLink("Important Dates", "Index", "FechaImportante", new { usuario = Model.Usuario, pagina = 1, UserID = Model.Usuario.UsuarioID.ToString() }, new { htmlAttributes = new { } })</li>
+        </ul>
+        <div class="container-username">
+            <div class="container-img-username">
+                <span><img src="@Model.Usuario.Avatar" alt=""></span>
+            </div>
+            <div class="User-Name"><span>@ViewBag.Nombre</span></div>
+        </div>
+    </header>
+    <aside>
+        <div class="container-inicio-agenda">
+            @using (Html.BeginForm("Index", "Pendiente", FormMethod.Post, new { @class = "form-create-class" }))
+            {
+                @*<form action="">*@
+                <input type="hidden" value="@ViewBag.UserId" name="UserID" />
+                <input type="submit" value="">
+                <i class="fas fa-calendar-week"></i>
+                <input type="submit" value="" class="input-agenda-adelante">
+
+                @*</form>*@
+            }
+        </div>
+        <div class="container-menu">
+            <ul>
+                <li>
+                    @using (Html.BeginForm("about", "Usuario", FormMethod.Post, new { @class = "form-create-class" }))
+                    {
+                        @*<form action="">*@
+                        <input type="hidden" value="@ViewBag.UserId" name="usuarioIDS">
+                        <input type="submit" value="">
+                        <i class="fas fa-info-circle"></i>
+                        @*</form>*@
+                    }
+                </li>
+                <li>
+                    @using (Html.BeginForm("settings", "Usuario", FormMethod.Post, new { @class = "form-create-class" }))
+                    {
+                        @*<form action="">*@
+                        <input type="hidden" value="@ViewBag.UserId" name="usuarioIDS">
+                        <input type="submit" value="">
+                        <i class="fas fa-cog"></i>
+                        @*</form>*@
+                    }
+                </li>
+                <li><a href="~/Usuario/Logout"><i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        <div class="header-atras"></div>
+        <div class="container-asidebar-atras">
+            <div class="main-content">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

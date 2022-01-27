@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.form-create-class {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.form-create-class .title-new-task h1 {
+  font-size: 3.7rem;
+  margin-bottom: 20px;
+}
+.form-create-class .container-info-new-task {
+  width: 70%;
+  height: 65%;
+  background-color: #F0F3FA;
+  -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  padding: 25px;
+}
+.form-create-class .container-info-new-task .input-title {
+  width: 80%;
+  height: 4rem;
+  font-size: 3.5rem;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  border-bottom: 2px solid #A99F9F;
+  margin-bottom: 2rem;
+}
+.form-create-class .container-info-new-task .text-area-description {
+  resize: none;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  padding: 10px;
+  -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+.form-create-class .container-info-new-task div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+.form-create-class .container-info-new-task .container-relog i, .form-create-class .container-info-new-task .container-prioridad i {
+  font-size: 2rem;
+  color: #A99F9F;
+  margin-right: 10px;
+}
+.form-create-class .container-info-new-task .container-relog h2, .form-create-class .container-info-new-task .container-prioridad h2 {
+  font-size: 2rem;
+  color: #A99F9F;
+  margin-right: 50px;
+}
+.form-create-class .container-info-new-task .container-prioridad select {
+  color: #4C4747;
+  border-radius: 12px;
+  outline: none;
+  width: 170px;
+  height: 30px;
+  text-align: center;
+  font-size: 1.6rem;
+  background-color: #fff;
+}
+.form-create-class .container-info-new-task .container-prioridad select option {
+  font-size: 1.2rem;
+  background-color: #Fff;
+}
+.form-create-class .button-create input {
+  border: none;
+  width: 150px;
+  height: 40px;
+  font-size: 2.5rem;
+  color: #fff;
+  background: -webkit-gradient(linear, left top, right top, from(#608AC9), to(rgba(12, 171, 184, 0.65)));
+  background: linear-gradient(90deg, #608AC9 0%, rgba(12, 171, 184, 0.65) 100%);
+  -webkit-box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  margin-top: 20px;
+}
+.form-create-class .button-create input:hover {
+  color: #afafaf;
+  background: -webkit-gradient(linear, left top, right top, from(#557bb4), to(rgba(10, 146, 158, 0.65)));
+  background: linear-gradient(90deg, #557bb4 0%, rgba(10, 146, 158, 0.65) 100%);
+}

@@ -1,0 +1,352 @@
+.main-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+    .main-content .options-menu {
+        width: 100%;
+        height: auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+        .main-content .options-menu form {
+            margin-right: 3rem;
+        }
+
+        .main-content .options-menu .container-input-buscar {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            color: #4C4747;
+            font-size: 1.5rem;
+            position: relative;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+            .main-content .options-menu .container-input-buscar .boton-buscar-enviar {
+                margin-top: 10px;
+                border: none;
+                outline: none;
+                width: 100px;
+                height: 30px;
+                border: none;
+                font-size: 1.4rem;
+                color: #fff;
+                background: -webkit-gradient(linear, left top, right top, from(#608AC9), to(rgba(12, 171, 184, 0.65)));
+                background: linear-gradient(90deg, #608AC9 0%, rgba(12, 171, 184, 0.65) 100%);
+                -webkit-box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 50px;
+                margin-top: 20px;
+            }
+
+                .main-content .options-menu .container-input-buscar .boton-buscar-enviar:hover {
+                    color: #afafaf;
+                    background: -webkit-gradient(linear, left top, right top, from(#557bb4), to(rgba(10, 146, 158, 0.65)));
+                    background: linear-gradient(90deg, #557bb4 0%, rgba(10, 146, 158, 0.65) 100%);
+                }
+
+            .main-content .options-menu .container-input-buscar i {
+                position: absolute;
+                left: 8px;
+                top: 5px;
+            }
+
+            .main-content .options-menu .container-input-buscar .input-buscar {
+                height: 30px;
+                width: 200px;
+                border: none;
+                -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 12px;
+                outline: none;
+                padding-left: 2.3rem;
+                font-size: 1.8rem;
+                background-color: #F0F3FA;
+            }
+
+                .main-content .options-menu .container-input-buscar .input-buscar:focus {
+                    -webkit-box-shadow: -4px 4px 4px rgba(96, 138, 201, 0.2), 4px -4px 4px rgba(96, 138, 201, 0.2), -4px -3px 4px rgba(96, 138, 201, 0.2), 4px 4px 4px rgba(96, 138, 201, 0.2), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    box-shadow: -4px 4px 4px rgba(96, 138, 201, 0.2), 4px -4px 4px rgba(96, 138, 201, 0.2), -4px -3px 4px rgba(96, 138, 201, 0.2), 4px 4px 4px rgba(96, 138, 201, 0.2), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                }
+
+        .main-content .options-menu .input-tipo-lista-tareas, .main-content .options-menu .input-ordenar-por {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+
+            .main-content .options-menu .input-tipo-lista-tareas input[type=number], .main-content .options-menu .input-ordenar-por input[type=number] {
+                background-color: #f0f3fa;
+                -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border: none;
+                border-radius: 12px;
+                outline: none;
+                width: 80px;
+                height: 30px;
+                padding-left: 10px;
+            }
+
+                .main-content .options-menu .input-tipo-lista-tareas input[type=number]:hover, .main-content .options-menu .input-ordenar-por input[type=number]:hover {
+                    color: #afafaf;
+                    background: -webkit-gradient(linear, left top, right top, from(#557bb4), to(rgba(10, 146, 158, 0.65)));
+                    background: linear-gradient(90deg, #557bb4 0%, rgba(10, 146, 158, 0.65) 100%);
+                }
+
+            .main-content .options-menu .input-tipo-lista-tareas .boton-buscar-enviar, .main-content .options-menu .input-ordenar-por .boton-buscar-enviar {
+                margin-top: 10px;
+                border: none;
+                outline: none;
+                width: 100px;
+                height: 30px;
+                border: none;
+                font-size: 1.4rem;
+                color: #fff;
+                background: -webkit-gradient(linear, left top, right top, from(#608AC9), to(rgba(12, 171, 184, 0.65)));
+                background: linear-gradient(90deg, #608AC9 0%, rgba(12, 171, 184, 0.65) 100%);
+                -webkit-box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 50px;
+                margin-top: 20px;
+            }
+
+                .main-content .options-menu .input-tipo-lista-tareas .boton-buscar-enviar:hover, .main-content .options-menu .input-ordenar-por .boton-buscar-enviar:hover {
+                    color: #afafaf;
+                    background: -webkit-gradient(linear, left top, right top, from(#557bb4), to(rgba(10, 146, 158, 0.65)));
+                    background: linear-gradient(90deg, #557bb4 0%, rgba(10, 146, 158, 0.65) 100%);
+                }
+
+            .main-content .options-menu .input-tipo-lista-tareas select, .main-content .options-menu .input-ordenar-por select {
+                color: #4C4747;
+                border: none;
+                -webkit-box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25), -3px -3px 4px rgba(255, 255, 255, 0.62);
+                box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25), -3px -3px 4px rgba(255, 255, 255, 0.62);
+                border-radius: 12px;
+                outline: none;
+                width: 170px;
+                height: 30px;
+                text-align: center;
+                font-size: 1.6rem;
+                background-color: #F0F3FA;
+            }
+
+                .main-content .options-menu .input-tipo-lista-tareas select option, .main-content .options-menu .input-ordenar-por select option {
+                    font-size: 1.2rem;
+                    background-color: #Fff;
+                }
+
+    .main-content .container-container-task {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        height: 71vh;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-top: 30px;
+    }
+
+        .main-content .container-container-task .task-container {
+            width: 75%;
+            height: 100%;
+            max-height: 700px;
+            background: #F0F3FA;
+            -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+            padding-bottom: 15px;
+        }
+
+            .main-content .container-container-task .task-container .PanelTasks {
+                width: 100%;
+                height: 90%;
+                overflow-y: scroll;
+                overflow: auto;
+                padding: 20px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -ms-flex-line-pack: start;
+                align-content: flex-start;
+            }
+
+            .main-content .container-container-task .task-container .option-task {
+                display: -ms-grid;
+                display: grid;
+                -ms-grid-columns: 80% 20%;
+                grid-template-columns: 80% 20%;
+            }
+
+                .main-content .container-container-task .task-container .option-task .pagination-container {
+                    -ms-grid-column: 1;
+                    -ms-grid-column-span: 1;
+                    grid-column: 1/2;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                }
+
+                .main-content .container-container-task .task-container .option-task .button-task {
+                    -ms-grid-column: 2;
+                    -ms-grid-column-span: 1;
+                    grid-column: 2/3;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: space-evenly;
+                    -ms-flex-pack: space-evenly;
+                    justify-content: space-evenly;
+                }
+
+                    .main-content .container-container-task .task-container .option-task .button-task .form-button {
+                        width: 50px;
+                        height: 50px;
+                        position: relative;
+                    }
+
+                        .main-content .container-container-task .task-container .option-task .button-task .form-button i {
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                            font-size: 30px;
+                            color: #fff;
+                        }
+
+                        .main-content .container-container-task .task-container .option-task .button-task .form-button .botton-arriba {
+                            position: absolute;
+                            top: 0;
+                            left: 0px;
+                            width: 50px;
+                            height: 50px;
+                            border: none;
+                            border-radius: 50px;
+                            background: rgba(0, 0, 0, 0.00001);
+                        }
+
+                        .main-content .container-container-task .task-container .option-task .button-task .form-button .button-task-button {
+                            text-decoration: none;
+                            border: none;
+                            width: 50px;
+                            height: 50px;
+                            background: -webkit-gradient(linear, left top, right top, from(#608AC9), to(rgba(12, 171, 184, 0.65)));
+                            background: linear-gradient(90deg, #608AC9 0%, rgba(12, 171, 184, 0.65) 100%);
+                            -webkit-box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                            box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                            border-radius: 50px;
+                        }
+
+                        .main-content .container-container-task .task-container .option-task .button-task .form-button:hover i {
+                            color: #afafaf;
+                        }
+
+                        .main-content .container-container-task .task-container .option-task .button-task .form-button:hover .button-task-button {
+                            background: -webkit-gradient(linear, left top, right top, from(#557bb4), to(rgba(10, 146, 158, 0.65)));
+                            background: linear-gradient(90deg, #557bb4 0%, rgba(10, 146, 158, 0.65) 100%);
+                        }
+
+                .main-content .container-container-task .task-container .option-task .pagination-container {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -webkit-box-orient: horizontal;
+                    -webkit-box-direction: normal;
+                    -ms-flex-direction: row;
+                    flex-direction: row;
+                    margin-left: 200px;
+                }
+
+                    .main-content .container-container-task .task-container .option-task .pagination-container .pagination {
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -webkit-box-orient: horizontal;
+                        -webkit-box-direction: normal;
+                        -ms-flex-direction: row;
+                        flex-direction: row;
+                        -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                        justify-content: center;
+                        width: 300px;
+                        background: #FFFFFF;
+                        border: 1px solid rgba(48, 47, 47, 0.12);
+                        -webkit-box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                        box-shadow: -3px -4px 4px rgba(255, 255, 255, 0.65), 3px 4px 4px rgba(0, 0, 0, 0.25);
+                        border-radius: 12px;
+                    }
+
+                        .main-content .container-container-task .task-container .option-task .pagination-container .pagination .paginations {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            list-style: none;
+                            padding: 10px 10px 10px 10px;
+                        }
+
+                            .main-content .container-container-task .task-container .option-task .pagination-container .pagination .paginations .active a {
+                                font-size: 2.6rem;
+                                font-weight: 600;
+                                color: #608AC9;
+                            }
+
+                            .main-content .container-container-task .task-container .option-task .pagination-container .pagination .paginations li {
+                                margin: 0 5px 0 5px;
+                            }
+
+                                .main-content .container-container-task .task-container .option-task .pagination-container .pagination .paginations li a {
+                                    text-decoration: none;
+                                    font-size: 2.3rem;
+                                    margin: 0 3px 0 3px;
+                                    color: #B0B0B0;
+                                }

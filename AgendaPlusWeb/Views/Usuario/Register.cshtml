@@ -1,0 +1,57 @@
+﻿
+@model AgendaPlusWeb.Models.Usuario
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_PlantillaLoginCreate.cshtml";
+}
+
+
+<main class="Main-login-register">
+    <div class="Container-Create ">
+        <div class="Container-top-login">
+            <h1>Create account</h1>
+            <label style="color:red; font-size:1.5rem;">@ViewBag.MessageErrorUserExist</label>
+        </div>
+        @using (Html.BeginForm("validarRegisterUser", "Usuario", FormMethod.Post, new { @class = "form-login" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="container-container-inputs">
+                <div class="container-iquierda">
+                    <div class="container-inputs">
+                        @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "label-login-register" })
+                        @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "Input-login-register" } })
+                        @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @style = "color:red; font-size:1.5rem;" })
+                    </div>
+
+                    <div class="container-inputs">
+                        @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "label-login-register" })
+                        @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "Input-login-register" } })
+                        @Html.ValidationMessageFor(model => model.Contrasena, "", new { @style = "color:red; font-size:1.5rem;" })
+                    </div>
+                </div>
+                <div class="container-derecha">
+                    <div class="container-inputs">
+                        @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "label-login-register" })
+                        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "Input-login-register" } })
+                        @Html.ValidationMessageFor(model => model.Correo, "", new { @style = "color:red; font-size:1.5rem;" })
+                    </div>
+
+                    <div class="container-inputs">
+                        @Html.LabelFor(model => model.ConfirmarContrasena, htmlAttributes: new { @class = "label-login-register" })
+                        @Html.EditorFor(model => model.ConfirmarContrasena, new { htmlAttributes = new { @class = "Input-login-register" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmarContrasena, "", new { @style = "color:red; font-size:1.5rem;" })
+                    </div>
+                </div>
+            </div>
+            <div class="container-button-login">
+                <input class="button-A" value="Register Now" type="submit">
+            </div>
+            <h3 class="Message-dont-have-account">
+                Already have an account? <a class="enlace-register-now">@Html.ActionLink("Login", "Index", "Usuario")</a>
+            </h3>
+        }
+    </div>
+</main>

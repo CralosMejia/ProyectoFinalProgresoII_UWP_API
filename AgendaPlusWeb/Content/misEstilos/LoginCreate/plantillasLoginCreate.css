@@ -1,0 +1,35 @@
+﻿.header-login-registerNow {
+    width: 100%;
+    height: 10vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 3rem;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 5rem 0 0 5rem;
+    color: #4C4747;
+}
+
+    .header-login-registerNow i {
+        font-size: 4.2rem;
+        margin: 0.8rem 0.3rem 0 0;
+    }
+
+.body-header-login-registerNow {
+    background: #608ac9;
+    background: linear-gradient(110deg, #608ac9 15%, rgba(12, 171, 184, 0.65) 100%);
+}
+footer {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+}
+
+    footer h1 {
+        font-size: 1.8rem;
+    }

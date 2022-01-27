@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.containerAcercaDe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-grid-rows: 15% 85%;
+  grid-template-rows: 15% 85%;
+  width: 100%;
+  height: 100%;
+}
+.containerAcercaDe h1 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  font-size: 3.5rem;
+  color: #4c4747;
+  margin: 10px 0 0 10px;
+}
+.containerAcercaDe .ContainerImagenes {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  width: 100%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+}
+.containerAcercaDe .ContainerImagenes .containe-container-Img {
+  width: 50%;
+  background: #F0F3FA;
+  -webkit-box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+  border-radius: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.containerAcercaDe .ContainerImagenes .containe-container-Img h2 {
+  font-size: 2.3rem;
+  color: #383838;
+}
+.containerAcercaDe .ContainerImagenes .containe-container-Img .container-img-nombres {
+  width: 100%;
+}
+.containerAcercaDe .ContainerImagenes .containe-container-Img .container-img-nombres .nombres-imagenes {
+  width: 100%;
+  margin: 25px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.containerAcercaDe .ContainerImagenes .containe-container-Img .container-img-nombres .nombres-imagenes h3 {
+  margin-right: 30px;
+  color: #7b7171;
+  font-size: 2.5rem;
+}
+.containerAcercaDe .ContainerImagenes .containe-container-Img h3.copy-right {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}

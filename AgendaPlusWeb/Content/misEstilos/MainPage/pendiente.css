@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.pendiente-container {
+  width: 45%;
+  height: 120px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 75% 15%;
+  grid-template-columns: 10% 75% 15%;
+  background-color: aqua;
+  border-radius: 15px;
+  border: 1px solid rgba(124, 114, 114, 0.67);
+  -webkit-box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25), -3px -3px 4px rgba(255, 255, 255, 0.62);
+          box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25), -3px -3px 4px rgba(255, 255, 255, 0.62);
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.pendiente-container .container-check {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.pendiente-container .container-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+.pendiente-container .container-info h1 {
+  font-size: 2.4rem;
+}
+.pendiente-container .container-info h2 {
+  color: #4C4747;
+  font-size: 1.6rem;
+}
+.pendiente-container .contianer-icon {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  font-size: 2.2rem;
+  color: #4C4747;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.pendiente-container .contianer-icon .form-botones {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+.pendiente-container .contianer-icon .form-botones .input-button-pagina {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  outline: none;
+  border: none;
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+.pendiente-container .contianer-icon .form-botones:hover i {
+  color: #000000;
+}

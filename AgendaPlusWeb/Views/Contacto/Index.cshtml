@@ -1,0 +1,134 @@
+﻿@using AgendaPlusWeb.Models;
+
+@model  AgendaPlusWeb.Models.Paginacion
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_PlantillaMainPage.cshtml";
+    var cantidadPaginas = (int)Math.Ceiling((double)Model.TotalDeRegistros / Model.RegistrosPorPagina);
+}
+
+<script>
+    function confirmar() {
+        if (confirm("Are you sure??")) {
+            document.getElementById("del").value = "yes";
+        } else {
+            document.getElementById("del").value = "no";
+        }
+    }
+</script>
+
+
+<div class="options-menu">
+    @using (Html.BeginForm("Index", "Contacto", FormMethod.Post, new { @class = "container-input-buscar" }))
+    {
+        <i class="fas fa-search"></i>
+        <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+        <input type="text" class="input-buscar" name="busqueda">
+        <input type="submit" value="Search" class="boton-buscar-enviar">
+
+    }
+    @using (Html.BeginForm("Index", "Contacto", FormMethod.Post, new { @class = "input-ordenar-por" }))
+    {
+        @*<form class="input-ordenar-por">*@
+        <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+        <input type="number" name="rPorPagina" min="1" max="100" />
+        @*<select>
+                <option value="9" selected>#Elmentos</option>
+                <option value="value2"></option>
+                <option value="value2">Important</option>
+                <option value="value2">Important</option>
+            </select>*@
+        <input type="submit" value="Paginate" class="boton-buscar-enviar">
+        @*</form>*@
+    }
+</div>
+<div class="container-container-task">
+    <div class="task-container">
+        @using (Html.BeginForm("", "Contacto", FormMethod.Post, new { @class = "PanelTasks", @id = "form-completed-task" }))
+        {
+            @*<div class="PanelTasks">*@
+            <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+            if (@Model.Usuario.Contactos != null)
+            {
+                foreach (Contacto a in @Model.Usuario.Contactos)
+                {
+                    <div class="pendiente-container" style="background-color: " #AEFEF4">
+                        <div class="container-info">
+                            <h1>@a.NombreContacto</h1>
+                            <h2>Email: @a.CorreoContacto</h2>
+                            <h2>Number: @a.TelefonoContacto</h2>
+                        </div>
+                        <div class="contianer-icon">
+                            <div action="" class="form-botones">
+                                <input type="submit" value="@a.ContactoID" form="edit-button" class="input-button-pagina" name="contactoID">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div action="" class="form-botones">
+                                <input type="submit" value="@a.ContactoID" form="delete-button" class="input-button-pagina" onclick="confirmar()" name="contactoID">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        @*</div>*@
+        <div class="option-task">
+            <div class="pagination-container">
+                <div class="pagination">
+                    @{
+                        int Inicial = 1;
+                        var radio = 2;
+                        var CantidadMaximaDePaginas = radio * 2 + 1;
+                        int Final = (cantidadPaginas > CantidadMaximaDePaginas) ? CantidadMaximaDePaginas : cantidadPaginas;
+                        if (Model.PaginaActual > radio + 1)
+                        {
+                            Inicial = Model.PaginaActual - radio;
+                            if (cantidadPaginas > Model.PaginaActual + radio)
+                            {
+                                Final = Model.PaginaActual + radio;
+                            }
+                            else
+                            {
+                                Final = cantidadPaginas;
+                            }
+                        }
+                    }
+
+                    <ul class="paginations">
+                        <li>@Html.ActionLink("First", null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = 1 })</li>
+                        @for (int i = Inicial; i <= Final; i++)
+                        {
+                            if (i == Model.PaginaActual)
+                            {
+                                <li class="active">@Html.ActionLink(i.ToString(), null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = i })</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink(i.ToString(), null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = i })</li>
+                            }
+                        }
+                        <li>@Html.ActionLink("Last", null, new { UserID = Model.Usuario.UsuarioID.ToString(), pagina = cantidadPaginas })</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="button-task">
+                @using (Html.BeginForm("Crear", "Contacto", FormMethod.Post, new { @class = "form-button" }))
+                {
+                    <input type="hidden" value="@Model.Usuario.UsuarioID" name="UserID" />
+                    <i class="fas fa-plus"></i>
+                    <input type="submit" value="" class="button-task-button Check-all-tasks">
+                    <input type="submit" value="" class="botton-arriba">
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("editar", "Contacto", FormMethod.Post, new { @class = "PanelTasks", @id = "edit-button" }))
+{
+}
+@using (Html.BeginForm("eliminar", "Contacto", FormMethod.Post, new { @class = "PanelTasks", @id = "delete-button" }))
+{
+    <input type="hidden" name="del" id="del" />
+}

@@ -1,0 +1,36 @@
+﻿@model AgendaPlusWeb.Models.Contacto
+
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_PlantillaCrearContacto.cshtml";
+}
+
+@using (Html.BeginForm("CrearModel", "Contacto", FormMethod.Post, new { @class = "form-create-class" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<form class="form-create-class">*@
+    <div class="title-new-task">
+        <h1>Create new Contact</h1>
+    </div>
+    <div class="container-info-new-task">
+        <input type="hidden" value="@ViewBag.UserId" name="UserID" />
+        @Html.ValidationMessageFor(model => model.NombreContacto, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.EditorFor(model => model.NombreContacto, new { htmlAttributes = new { @class = "input-title", @placeholder = "Name" } })
+        @*<input type="text" placeholder="Title" class="input-title">*@
+
+        @Html.ValidationMessageFor(model => model.CorreoContacto, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.EditorFor(model => model.CorreoContacto, new { htmlAttributes = new { @class = "input-title", @placeholder = "Email" } })
+        @*<input type="text" placeholder="Title" class="input-title">*@
+
+        @Html.ValidationMessageFor(model => model.TelefonoContacto, "", new { @style = "color:red; font-size:1.5rem;" })
+        @Html.EditorFor(model => model.TelefonoContacto, new { htmlAttributes = new { @class = "input-title", @placeholder = "Phone number" } })
+        @*<input type="text" placeholder="Title" class="input-title">*@
+
+    </div>
+    <div class="button-create">
+        <input type="submit" value="Create" class="Button-create">
+    </div>
+    @*</form>*@
+
+}
