@@ -24,6 +24,6 @@ namespace AgendaPlusXamarin.Models
 
         public virtual ICollection<Nota> Notas { get; set; }
 
-        //public virtual ICollection<Pendiente> Pendientes { get; set; }
+        public virtual ICollection<Pendiente> Pendientes { get; set; }
     }
 }
