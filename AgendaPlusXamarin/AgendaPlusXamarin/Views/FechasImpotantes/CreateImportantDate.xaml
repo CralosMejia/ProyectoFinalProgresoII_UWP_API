@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.FechasImpotantes.CreateImportantDate">
+    <ContentPage.Content>
+        <StackLayout Spacing="30" Background="#F0F3FA" Padding="10">
+            <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
+                    Clicked="closedButton" BackgroundColor="Transparent" CornerRadius="50" BorderColor="Black" 
+                    BorderWidth="1" FontSize="20" Margin="20"/>
+            <Label Text="Create new Important Date" FontSize="30" HorizontalOptions="Center" TextColor="#000000"/>
+            <Entry x:Name="dateTitle" Placeholder="Title" TextColor="#4C4747" BackgroundColor="Transparent" PlaceholderColor="#A99F9F" HorizontalTextAlignment="Start"/>
+            <Editor x:Name="dateDescription" Placeholder="Descrition" PlaceholderColor="#A99F9F"  Background="#fff" TextColor="#4C4747" AutoSize="TextChanges" MaxLength="180"
+                    VerticalOptions="FillAndExpand"/>
+            <Frame BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Text="Deadline" FontSize="18" TextColor="#4C4747" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <DatePicker Grid.Column="1" x:Name="datePi"/>
+
+                </Grid>
+            </Frame>
+            <Button Text="Create" CornerRadius="20" FontSize="20" Clicked="createDate">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
