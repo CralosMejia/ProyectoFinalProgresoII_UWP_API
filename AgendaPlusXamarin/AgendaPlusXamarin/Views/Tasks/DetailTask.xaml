@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Tasks.DetailTask">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Grid >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--titulo pagina-->
+                <StackLayout Grid.Row="0" >
+
+                    <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
+                                    Clicked="dispose_Clicked" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Black" 
+                                    BorderWidth="1.5" FontSize="10.00" x:Name="dispose" Margin="15" FontAttributes="Bold"/>
+
+                </StackLayout>
+                <StackLayout Grid.Row="1" >
+                    <Label  Text="Task Title" 
+                            FontSize="30" 
+                            HorizontalOptions="CenterAndExpand"
+                            x:Name="taskTitle"
+                            />
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Padding="10" >
+                    <Label  Text="Task Description" 
+                            FontSize="25.00" 
+                            HorizontalOptions="Fill" 
+                            HeightRequest="200"
+                            x:Name="taskDesc"/>
+                </StackLayout>
+
+                <!--grid para organizar por filas y columnas el resto de labels-->
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="75"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0"  Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition  Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="Priority:" Style="{StaticResource lblStyle}" 
+                                   FontSize="25.00" 
+                                   HorizontalOptions="FillAndExpand"/>
+                            <Label Grid.Column="1" Text="Severe" Style="{StaticResource lblStyle}" 
+                                   FontSize="25.00" 
+                                   HorizontalOptions="FillAndExpand"
+                                   x:Name="taskPriority"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1"  Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition  Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="Deadline:" Style="{StaticResource lblStyle}" 
+                                   FontSize="25.00" 
+                                   HorizontalOptions="FillAndExpand"/>
+                            <DatePicker Grid.Column="1"   
+                                   FontSize="25.00" 
+                                   HorizontalOptions="FillAndExpand"
+                                        IsEnabled="False"
+                                        x:Name="taskDeadline"/>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2"  Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition  Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="State:" Style="{StaticResource lblStyle}" 
+                                   FontSize="25.00" 
+                                   HorizontalOptions="FillAndExpand"/>
+                            <Label Grid.Column="1" Text="Pending" Style="{StaticResource lblStyle}" 
+                                   FontSize="25.00" 
+                                   HorizontalOptions="FillAndExpand"
+                                   x:Name="taskState"/>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <!--grid para organizar por columnas los BOTONES-->
+                <StackLayout Grid.Row="4">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" 
+                                     Orientation="Horizontal" 
+                                     HorizontalOptions="Center">
+                            <Button 
+                            ImageSource="basura.png"
+                                    WidthRequest="80"
+                                    HeightRequest="80" 
+                                    CornerRadius="40"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource btnStyle}"
+                                  x:Name="deleteBtn"
+                                Clicked="deleteBtn_Clicked">
+                                <Button.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#608AC9" Offset="0.55"/>
+                                        <GradientStop Color="#0CABB8" Offset="0.75"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" 
+                                     Orientation="Horizontal"
+                                     HorizontalOptions="Center">
+                            <Button 
+                            ImageSource="editar.png"
+                                       WidthRequest="80"
+                                    HeightRequest="80" 
+                                    CornerRadius="40"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource btnStyle}"
+                                    x:Name="editBtn"
+                                Clicked="editBtn_Clicked">
+                                <Button.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#608AC9" Offset="0.55"/>
+                                        <GradientStop Color="#0CABB8" Offset="0.75"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" 
+                                     Orientation="Horizontal"
+                                     HorizontalOptions="Center">
+                            <Button 
+                            ImageSource="visto.png"
+                                    WidthRequest="80"
+                                    HeightRequest="80" 
+                                    CornerRadius="40"
+                                    HorizontalOptions="Fill"
+                                    Style="{StaticResource btnStyle}"
+                                x:Name="doneBtn"
+                                Clicked="doneBtn_Clicked">
+                                <Button.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#608AC9" Offset="0.55"/>
+                                        <GradientStop Color="#0CABB8" Offset="0.75"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

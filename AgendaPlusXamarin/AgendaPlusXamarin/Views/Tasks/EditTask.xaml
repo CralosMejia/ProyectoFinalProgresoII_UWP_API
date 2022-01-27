@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Tasks.EditTask">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="stackStyle" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style TargetType="RadioButton">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor"
+                                        Value="Black" />
+                                    <Setter Property="Opacity"
+                                        Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor"
+                                        Value="Gray" />
+                                    <Setter Property="Opacity"
+                                        Value="0.5" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--titulo create new task-->
+                    <StackLayout Grid.Row="0" >
+                        <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
+                                    Clicked="dispose_Clicked" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Black" 
+                                    BorderWidth="1.5" FontSize="10.00" x:Name="dispose" Margin="15" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" >
+                        <Label Text="Edit Task" FontSize="35.0" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+
+
+                    <!--empieza contenido de textblocks-->
+                    <StackLayout Grid.Row="2" Padding="12">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+                            <!--TITULO-->
+                            <StackLayout Grid.Row="0" VerticalOptions="Center">
+
+                                <Editor x:Name="txtTitle" Grid.Row="0" 
+                                       Placeholder="Title"
+                                       HorizontalOptions="FillAndExpand" 
+                                       FontSize="25.00"
+                                       HeightRequest="65"/>
+                            </StackLayout>
+                            <!--DESCRIPCION-->
+                            <StackLayout Grid.Row="1" VerticalOptions="Center">
+
+                                <Editor x:Name="txtDescription"
+                                       
+                                       Placeholder="Description" 
+                                       HorizontalOptions="FillAndExpand"
+                                       Background="White"
+                                       FontSize="25.00"
+                                       HeightRequest="150"/>
+                            </StackLayout>
+
+
+                            <!--SE DEFINE DEADLINE-->
+                            <StackLayout Grid.Row="2" Style="{StaticResource Key=stackStyle}" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" Style="{StaticResource Key=stackStyle}">
+                                        <Image HeightRequest="35" WidthRequest="50"
+                                                   HorizontalOptions="Start" 
+                                                   Source="reloj.png">
+                                        </Image>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" Style="{StaticResource Key=stackStyle}">
+                                        <Label Text="Deadline" FontSize="25.00" />
+
+                                    </StackLayout>
+
+                                    <!--AQUI VAN LAS FECHAS Y HORA-->
+                                    <StackLayout Grid.Column="2" Style="{StaticResource Key=stackStyle}">
+                                        <DatePicker x:Name="calendarioDL" 
+                                                    WidthRequest="100" 
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    FontSize="25.00"
+                                                    />
+                                    </StackLayout>
+
+                                </Grid>
+
+                            </StackLayout>
+
+                            <!--A PARTIR DE AQUI VAN PRIORIDADES-->
+                            <StackLayout Grid.Row="3" Style="{StaticResource Key=stackStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" Style="{StaticResource Key=stackStyle}">
+                                        <Image HeightRequest="35" 
+                                                   WidthRequest="47"
+                                                   HorizontalOptions="Start"
+                                                   Source="volume.png">
+
+                                        </Image>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" Style="{StaticResource Key=stackStyle}">
+                                        <Label  Text="Priority"  FontSize="25"  HorizontalOptions="Start">
+
+                                        </Label>
+                                    </StackLayout>
+
+                                    <!--COMBOBOX DE PRIORIDADES-->
+                                    <StackLayout Grid.Column="2" Style="{StaticResource Key=stackStyle}" RadioButtonGroup.GroupName="prioridades">
+                                        <RadioButton Content="Severe"
+                                                      FontSize="25.00"
+                                                     GroupName="prioridades"
+                                                     Value="Severe"
+                                                     x:Name="rb_Severe"
+                                                     CheckedChanged="rb_Severe_CheckedChanged"/>
+                                        <RadioButton Content="Important"  FontSize="25.00"
+                                                     GroupName="prioridades"
+                                                     Value="Important"
+                                                     x:Name="rb_Important"
+                                                     CheckedChanged="rb_Important_CheckedChanged"/>
+                                        <RadioButton Content="Normal" FontSize="25.00"
+                                                     GroupName="prioridades"
+                                                     Value="Normal"
+                                                     x:Name="rb_Normal"
+                                                     CheckedChanged="rb_Normal_CheckedChanged"/>
+                                    </StackLayout>
+
+                                </Grid>
+                            </StackLayout>
+
+
+
+                            <StackLayout Grid.Row="4" Style="{StaticResource Key=stackStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" Style="{StaticResource Key=stackStyle}">
+                                        <Image HeightRequest="35" 
+                                                   WidthRequest="47"
+                                                   HorizontalOptions="Start"
+                                                   Source="visto.png">
+
+                                        </Image>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Column="1" Style="{StaticResource Key=stackStyle}">
+                                        <Label  Text="State"  FontSize="25"  HorizontalOptions="Start">
+
+                                        </Label>
+                                    </StackLayout>
+
+                                    <!--COMBOBOX DE PRIORIDADES-->
+                                    <StackLayout Grid.Column="2" Style="{StaticResource Key=stackStyle}" RadioButtonGroup.GroupName="state">
+                                        <RadioButton Content="Done"
+                                                     FontSize="25.00"
+                                                     GroupName="state"
+                                                     Value="Done"
+                                                     x:Name="rb_Done"/>
+                                        <RadioButton Content="Pending"  FontSize="25.00"
+                                                     GroupName="state"
+                                                     Value="Pending"
+                                                     x:Name="rb_Pending"
+                                                     />
+
+                                    </StackLayout>
+
+                                </Grid>
+                            </StackLayout>
+
+                            <!--boton///////////////////-->
+                            <StackLayout Grid.Row="5" Style="{StaticResource Key=stackStyle}" WidthRequest="314">
+                                <Button  WidthRequest="300" Text="Edit" FontSize="25" CornerRadius="20"
+                                         x:Name="btnEditar" Clicked="btnEditar_Clicked">
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
+                                                <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
+                                                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </ResourceDictionary>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+                                </Button>
+
+                            </StackLayout>
+                        </Grid>
+
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
