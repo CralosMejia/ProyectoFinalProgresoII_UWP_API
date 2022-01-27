@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Tasks.ModalMainTaskSettings">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="RadioButton">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor"
+                                        Value="Gray" />
+                                    <Setter Property="Opacity"
+                                        Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor"
+                                        Value="LightGray" />
+                                    <Setter Property="Opacity"
+                                        Value="0.5" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#393A3D" Padding="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" RadioButtonGroup.GroupName="states">
+                    <StackLayout>
+                        <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
+                                    Clicked="dispose_Clicked" BackgroundColor="Transparent" CornerRadius="15" BorderColor="White" 
+                                    BorderWidth="1.5" FontSize="10.00" x:Name="dispose" Margin="15" FontAttributes="Bold" TextColor="White"/>
+                        <Label FontSize="35.00" Text="Sort and Filter" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Text="State filter" FontSize="25.00" TextColor="White" HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <RadioButton Content="Default"
+                             Value="Default"
+                             x:Name="showDefault"
+                             IsChecked="True"
+                             GroupName="states"
+                             FontSize="25.00" TextColor="White"
+                             HorizontalOptions="Center"
+                             CheckedChanged="showDefault_CheckedChanged"/>
+                        <RadioButton Content="Pending tasks"
+                             Value="Pending tasks"
+                             x:Name="showPending"
+                             GroupName="states"
+                             FontSize="25.00" TextColor="White"
+                             HorizontalOptions="Center"
+                              CheckedChanged="showPending_CheckedChanged"/>
+                        <RadioButton Content="Done tasks"
+                             Value="Done tasks"
+                             x:Name="showDone"
+                             GroupName="states"
+                             FontSize="25.00" TextColor="White"
+                             HorizontalOptions="Center"
+                             CheckedChanged="showDone_CheckedChanged"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" RadioButtonGroup.GroupName="orderby">
+
+                    <!--boxview a manera de separador-->
+                    <BoxView   VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               HeightRequest="1"
+                               WidthRequest="200"  
+                               Color="#5b5d68"></BoxView>
+                    <Label Text="Order by" 
+                           FontSize="25.00" 
+                           TextColor="White"/>
+                    <RadioButton Content="Default"
+                             Value="Default"
+                             x:Name="noOrder"
+                              GroupName="orderby"
+                                 IsChecked="True"
+                                 FontSize="25.00" TextColor="White"
+                                 HorizontalOptions="Center"
+                                 CheckedChanged="noOrder_CheckedChanged"/>
+                    <RadioButton Content="Priority"
+                             Value="Priority"
+                             x:Name="orderPriority"
+                              GroupName="orderby"
+                                 FontSize="25.00" TextColor="White"
+                                 HorizontalOptions="Center"
+                                 CheckedChanged="orderPriority_CheckedChanged"/>
+                    <!--boxview a manera de separador-->
+                    <BoxView   VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               HeightRequest="1"
+                               WidthRequest="200"  
+                               Color="#5b5d68"></BoxView>
+
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Button  WidthRequest="300"
+                             HeightRequest="60" 
+                             CornerRadius="20"
+                             HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand"
+                             Style="{StaticResource btnStyle}"
+                             BackgroundColor="White"
+                             TextColor="Black"
+                             Text="SAVE CHANGES"
+                             FontSize="30.00"
+                             Clicked="saveAndExit_Clicked"
+                             x:Name="saveAndExit"
+                       />
+                </StackLayout>
+
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
