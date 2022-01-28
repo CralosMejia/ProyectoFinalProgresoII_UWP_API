@@ -18,7 +18,7 @@ namespace AgendaPlusXamarin.Models
 
         public string Avatar { get; set; }
 
-        //public virtual ICollection<Contacto> Contactos { get; set; }
+        public virtual ICollection<Contacto> Contactos { get; set; }
 
         public virtual ICollection<FechaImportante> FechasImportantes { get; set; }
 

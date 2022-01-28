@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Contacts.createContact">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#7FB6FF" Margin="0">
+            <Label Text="Contacts" FontSize="45" HorizontalOptions="Center" TextColor="Black"></Label>
+            <Grid>
+                <Rectangle BackgroundColor="White" WidthRequest="20" HeightRequest="659"></Rectangle>
+            </Grid>
+            <Label Text="Create new" FontSize="30" HorizontalOptions="Center" Margin="0,-649,0,0" ></Label>
+            <Entry x:Name="txtName_Contact" Placeholder="Contact Name " FontSize="30" ></Entry>
+
+            <Entry x:Name="txtEmail_Contacts" Placeholder="Contact Email" FontSize="30" ></Entry>
+
+            <Entry x:Name="txtNumber_Contact" Placeholder="Number" FontSize="30"></Entry>
+
+            <Button x:Name="btn_crear" Text="Create" TextColor="White" FontSize="20"  BackgroundColor="#7FB6FF" CornerRadius="40" Margin="15,62,15,0" Clicked="btn_crear_Clicked" ></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
