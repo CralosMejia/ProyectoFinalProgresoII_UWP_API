@@ -17,7 +17,7 @@ namespace AgendaPlusXamarin.Controllers
             var request = new HttpRequestMessage();
 
             //cambiar uri a usuario OJO
-            request.RequestUri = new Uri("http://10.0.2.2:44386/api/usuario");
+            request.RequestUri = new Uri("http://10.0.2.2:44304/api/usuario");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
 
@@ -45,7 +45,7 @@ namespace AgendaPlusXamarin.Controllers
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            await httpClient.PostAsync("http://10.0.2.2:44386/api/pendientes", content);
+            await httpClient.PostAsync("http://10.0.2.2:44304/api/pendientes", content);
         }
 
 
@@ -56,7 +56,7 @@ namespace AgendaPlusXamarin.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(pendiente);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync($"http://10.0.2.2:44386/api/pendientes/{pendiente.PendienteID}", content);
+            HttpResponseMessage response = await client.PutAsync($"http://10.0.2.2:44304/api/pendientes/{pendiente.PendienteID}", content);
 
         }
 
@@ -66,7 +66,7 @@ namespace AgendaPlusXamarin.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(pendiente);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            await client.DeleteAsync($"http://10.0.2.2:44386/api/pendientes/{pendiente.PendienteID}");
+            await client.DeleteAsync($"http://10.0.2.2:44304/api/pendientes/{pendiente.PendienteID}");
         }
     }
 }
