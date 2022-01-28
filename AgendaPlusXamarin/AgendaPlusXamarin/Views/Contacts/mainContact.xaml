@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Contacts.mainContact">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#7FB6FF" Margin="0">
+            <Label Text="Contacts" FontSize="45" HorizontalOptions="Center" TextColor="Black"></Label>
+            <Grid>
+                <Rectangle BackgroundColor="White" WidthRequest="20" HeightRequest="150"></Rectangle>
+            </Grid>
+            <Grid Margin="0,-130,-90,0">
+                <SearchBar x:Name="SearchContact" Grid.Column="0" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   Placeholder="Enter the Contact Name" 
+                                   PlaceholderColor="Black" 
+                                   FontSize="22.00"
+                                   HeightRequest="50"
+                                   CancelButtonColor="Blue" Margin="0,10,0,0"  TextChanged="searchContactEvent"/>
+            </Grid>
+            <Grid>
+                <Rectangle BackgroundColor="#F2F2F2" WidthRequest="20" HeightRequest="507" ></Rectangle>
+                <ScrollView Grid.Row="0">
+                    <ListView x:Name="ListContacts" BackgroundColor="#fff">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{x:Binding NombreContacto}" Detail="{Binding TelefonoContacto}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+                <Grid Margin="0,100,0,0">
+                    <Button ImageSource="mas.png" BackgroundColor="#7FB6FF" Margin="259,420,49,5" CornerRadius="40" Clicked="newContact" ></Button>
+                    <Button ImageSource="ver" BackgroundColor="#7FB6FF" CornerRadius="40" Margin="49,420,260,5" Clicked="seeContact" ></Button>
+                </Grid>
+
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

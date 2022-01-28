@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Contacts.seeContact">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#7FB6FF" Margin="0">
+            <Label Text="Contacts" FontSize="45" HorizontalOptions="Center" TextColor="Black"></Label>
+            <Grid>
+                <Rectangle BackgroundColor="White" WidthRequest="20" HeightRequest="659"></Rectangle>
+            </Grid>
+            <Label Text="" FontSize="30" HorizontalOptions="Center" Margin="0,-649,0,0" ></Label>
+            <Entry x:Name="txtName_Contact" FontSize="30" Placeholder="ContactName" IsEnabled="False"></Entry>
+
+            <Entry x:Name="txtEmail_Contacts" Placeholder="Contact Email" FontSize="30" IsEnabled="False" ></Entry>
+
+            <Entry x:Name="txtNumber_Contact" Placeholder="Number" FontSize="30" IsEnabled="False"></Entry>
+            <Grid Margin="0,20,0,0">
+                <Button BackgroundColor="#7FB6FF" CornerRadius="40" ImageSource="editar.png" Margin="52,60,255,59" Clicked="editarContacto"></Button>
+                <Button BackgroundColor="#7FB6FF" CornerRadius="40" ImageSource="trash.png" Margin="255,52,52,70" Clicked="borrarContacto"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

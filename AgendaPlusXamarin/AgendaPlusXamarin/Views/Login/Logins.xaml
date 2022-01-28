@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendaPlusXamarin.Views.Login.Logins">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor = "#7FB6FF" ScaleY="1" ScaleX="1" Padding="0" Margin="0" HorizontalOptions="Fill" >
+            <Image Source="agendaBlack.png" Margin="100">
+            </Image>
+            <Grid Margin="0">
+                <Rectangle BackgroundColor="White" ScaleX="20" ScaleY="330" AnchorX="0.5" RotationX="45" Scale="1" Margin="23,0,53,0" StrokeLineCap="Flat" Opacity="1" MinimumHeightRequest="-1" RotationY="0" Rotation="0" Aspect="Fill" />
+            </Grid>
+
+            <Label Text="Hello" HorizontalOptions="Center" Margin="0,-76,0,0" ScaleX="3" ScaleY="3" TextColor="#000000"></Label>
+            <Label Text="Sing into your accunt" HorizontalOptions="Center" Margin="0,15,0,0" ScaleY="1" ScaleX="1"></Label>
+            <Grid Margin="0,166,0,0">
+                <Rectangle BackgroundColor="#F2F2F2" Scale="294" Margin="1,1,0,1" RadiusX="8" RadiusY="8" Aspect="Fill" ></Rectangle>
+            </Grid>
+            <Grid Margin="0,-152,0,0" Scale="1" InputTransparent="False" IsClippedToBounds="False">
+                <Label Text="Email" Padding="0" Margin="35,0,0,0" Scale="1" TranslationX="3" ScaleX="1" ScaleY="1" FontSize="Large"/>
+            </Grid>
+            <Entry x:Name="txtEmail"></Entry>
+            <Grid Margin="35,5,0,0">
+                <Label Text="Password" FontSize="Large" Margin="0" ></Label>
+            </Grid>
+            <Entry IsPassword="True" x:Name="txtPassword"></Entry>
+            <Grid>
+                <Button BackgroundColor="#7FB6FF" Text="Login" TextColor="White"  Margin="80,20,80,0" Padding="0" Scale="1" FontSize="Large" CornerRadius="40" Clicked="Login" ></Button>
+            </Grid>
+            <Label Text="Don't have an account?" TextColor="#000000" HorizontalOptions="Start" FontSize="Body" FontAttributes="Bold" Margin="36,12,-42,0" ></Label>
+            <Button BackgroundColor="#F2F2F2" Text="Register Now" TextColor="#7FB6FF" FontAttributes="Bold" Margin="202,-40,38,0" Clicked="crearCuenta" ></Button>
+            <Label Text=" © 2021 Carlos Mejia - Victor Ponce - Caleb Naranjo" TextColor="White" FontSize="Default" FontAttributes="Bold" Margin="0,78,0,0" HorizontalTextAlignment="Center"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
