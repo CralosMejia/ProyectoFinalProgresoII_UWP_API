@@ -8,14 +8,14 @@
             <Grid>
                 <Rectangle BackgroundColor="White" WidthRequest="20" HeightRequest="659"></Rectangle>
             </Grid>
-            <Label Text="Create new" FontSize="30" HorizontalOptions="Center" Margin="0,-649,0,0" ></Label>
+            <Label Text="Edit" FontSize="30" HorizontalOptions="Center" Margin="0,-649,0,0" ></Label>
             <Entry x:Name="txtName_Contact" Placeholder="Contact Name" FontSize="30"></Entry>
 
             <Entry x:Name="txtEmail_Contacts" Placeholder="Contact Email" FontSize="30" ></Entry>
 
             <Entry x:Name="txtNumber_Contact" Placeholder="Number" FontSize="30"></Entry>
 
-            <Button Text="Editar" TextColor="White" FontSize="20"  BackgroundColor="#7FB6FF" CornerRadius="40" Margin="15,62,15,0" Clicked="editarContacto" ></Button>
+            <Button Text="Edit TextColor="White" FontSize="20"  BackgroundColor="#7FB6FF" CornerRadius="40" Margin="15,62,15,0" Clicked="editarContacto" ></Button>
 
         </StackLayout>
     </ContentPage.Content>
