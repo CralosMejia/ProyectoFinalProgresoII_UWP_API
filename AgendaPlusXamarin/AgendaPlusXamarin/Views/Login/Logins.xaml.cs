@@ -31,7 +31,7 @@ namespace AgendaPlusXamarin.Views.Login
 
         private async void crearCuenta(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateAccounts(userID));
+            await Navigation.PushModalAsync(new CreateAccounts(userID));
 
         }
 
@@ -45,7 +45,7 @@ namespace AgendaPlusXamarin.Views.Login
         {
             if (txtEmail.Text != null && txtPassword.Text != null && validarUsuario())
             {
-                await Navigation.PushAsync(new mainContact(userID));
+                await Navigation.PushModalAsync(new Menu(userID));
             }
             else
             {

@@ -27,7 +27,7 @@ namespace AgendaPlusXamarin.Views.CreateAccount
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Logins());
+            await Navigation.PopModalAsync();
         }
 
         
@@ -44,7 +44,7 @@ namespace AgendaPlusXamarin.Views.CreateAccount
 
                 await DisplayAlert("Alert", "User created successfully", "OK");
 
-                await Navigation.PushAsync(new Logins());
+                await Navigation.PopModalAsync();
             }
             else
             {

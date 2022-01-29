@@ -3,21 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AgendaPlusXamarin.Views.Contacts.seeContact">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#7FB6FF" Margin="0">
-            <Label Text="Contacts" FontSize="45" HorizontalOptions="Center" TextColor="Black"></Label>
-            <Grid>
-                <Rectangle BackgroundColor="White" WidthRequest="20" HeightRequest="659"></Rectangle>
-            </Grid>
-            <Label Text="" FontSize="30" HorizontalOptions="Center" Margin="0,-649,0,0" ></Label>
+        <StackLayout Spacing="30" Background="#F0F3FA" Padding="10" VerticalOptions="FillAndExpand">
+            <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
+                                    Clicked="closeButton" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Black" 
+                                    BorderWidth="1.5" FontSize="10.00" x:Name="dispose" Margin="15" FontAttributes="Bold"/>
             <Entry x:Name="txtName_Contact" FontSize="30" Placeholder="ContactName" IsEnabled="False"></Entry>
 
             <Entry x:Name="txtEmail_Contacts" Placeholder="Contact Email" FontSize="30" IsEnabled="False" ></Entry>
 
             <Entry x:Name="txtNumber_Contact" Placeholder="Number" FontSize="30" IsEnabled="False"></Entry>
-            <Grid Margin="0,20,0,0">
-                <Button BackgroundColor="#7FB6FF" CornerRadius="40" ImageSource="editar.png" Margin="52,60,255,59" Clicked="editarContacto"></Button>
-                <Button BackgroundColor="#7FB6FF" CornerRadius="40" ImageSource="trash.png" Margin="255,52,52,70" Clicked="borrarContacto"></Button>
-            </Grid>
+
+            <Frame BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button CornerRadius="50" Grid.Column="0" VerticalOptions="Center" 
+                                HorizontalOptions="Center" Margin="10" WidthRequest="60" HeightRequest="60" 
+                                ImageSource="eliminar" Clicked="borrarContacto" BackgroundColor="#7FB6FF">
+                    </Button>
+
+                    <Button CornerRadius="50" Grid.Column="1" VerticalOptions="Center" 
+                                HorizontalOptions="Center" Margin="10" WidthRequest="60" HeightRequest="60" 
+                                ImageSource="editarBlanco" Clicked="editarContacto" BackgroundColor="#7FB6FF">
+                    </Button>
+
+                </Grid>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

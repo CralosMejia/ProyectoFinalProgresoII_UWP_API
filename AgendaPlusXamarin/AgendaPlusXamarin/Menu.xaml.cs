@@ -3,6 +3,8 @@ using AgendaPlusXamarin.Models;
 using AgendaPlusXamarin.Views.AboutSetting;
 using AgendaPlusXamarin.Views.FechasImpotantes;
 using AgendaPlusXamarin.Views.Notas;
+using AgendaPlusXamarin.Views.Contacts;
+using AgendaPlusXamarin.Views.Tasks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,29 +73,48 @@ namespace AgendaPlusXamarin
 
         public void Init()
         {
-            Detail = new NavigationPage(new MainNote()) { BarBackgroundColor = Color.FromHex("#393A3D") };
+            Detail = new NavigationPage(new MainTask(userID)) { BarBackgroundColor = Color.FromHex("#393A3D") };
 
         }
+
+        private void openPageTasks(object sender, EventArgs e)
+        {
+            IsPresented = false;
+            Detail = new NavigationPage(new MainTask(userID)) { BarBackgroundColor = Color.FromHex("#393A3D") };
+        }
+
+        private void openPageContacts(object sender, EventArgs e)
+        {
+            IsPresented = false;
+            Detail = new NavigationPage(new mainContact(userID)) { BarBackgroundColor = Color.FromHex("#393A3D") };
+        }
+
 
         private void openPageNotes(object sender, EventArgs e)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new MainNote()) { BarBackgroundColor = Color.FromHex("#393A3D") };
+            Detail = new NavigationPage(new MainNote(userID)) { BarBackgroundColor = Color.FromHex("#393A3D") };
         }
 
         private void openImportantDates(object sender, EventArgs e)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new MainImportantDate()) { BarBackgroundColor = Color.FromHex("#393A3D") };
+            Detail = new NavigationPage(new MainImportantDate(userID)) { BarBackgroundColor = Color.FromHex("#393A3D") };
         }
 
         private void openSettings(object sender, EventArgs e)
         {
             IsPresented = false;
-            Detail = new NavigationPage(new Settings()) { BarBackgroundColor = Color.FromHex("#393A3D") };
+            Detail = new NavigationPage(new Settings(userID)) { BarBackgroundColor = Color.FromHex("#393A3D") };
         }
 
         private void openAbout(object sender, EventArgs e)
+        {
+            IsPresented = false;
+            Detail = new NavigationPage(new About()) { BarBackgroundColor = Color.FromHex("#393A3D") };
+        }
+
+        private void logOut(object sender, EventArgs e)
         {
             IsPresented = false;
             Detail = new NavigationPage(new About()) { BarBackgroundColor = Color.FromHex("#393A3D") };

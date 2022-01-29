@@ -1,17 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AgendaPlusXamarin.Views.Notas.MainNote">
-    <ContentPage.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-        </LinearGradientBrush>
-    </ContentPage.Background>
+             x:Class="AgendaPlusXamarin.Views.Notas.MainNote"
+             BackgroundColor="#7FB6FF">
 
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <Label  Text="Notes" FontSize="40" TextColor="#4C4747" Padding="20" HorizontalTextAlignment="Center"/>
+            <Label  Text="Notess" FontSize="40" TextColor="#4C4747" Padding="20" HorizontalTextAlignment="Center"/>
             <Frame HasShadow="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -48,24 +43,13 @@
 
                                 <Button Grid.Column="0" CornerRadius="50"  VerticalOptions="Center" 
                                 HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
-                                ImageSource="ver" Clicked="seeNote" >
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
+                                ImageSource="ver" Clicked="seeNote" BackgroundColor="#7FB6FF">
                                 </Button>
 
                                 <Button CornerRadius="50" Grid.Column="1" VerticalOptions="Center" 
                                 HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
-                                ImageSource="mas" Clicked="createNote" >
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
+                                ImageSource="mas" Clicked="createNote" 
+                                        BackgroundColor="#7FB6FF">
                                 </Button>
 
                             </Grid>

@@ -43,7 +43,7 @@ namespace AgendaPlusXamarin.Controllers
             HttpClient httpClient = new HttpClient();
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            await httpClient.PostAsync("http://10.0.2.2:44304/api/contactos", content);
+            await httpClient.PostAsync("http://10.0.2.2:44304/api/contacto", content);
         }
 
         public static async void putContacto(Contacto contacto)
@@ -52,7 +52,7 @@ namespace AgendaPlusXamarin.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(contacto);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            await client.PutAsync($"http://10.0.2.2:44304/api/contactos/{contacto.ContactoID}", content);
+            await client.PutAsync($"http://10.0.2.2:44304/api/contacto/{contacto.ContactoID}", content);
         }
 
 
@@ -62,7 +62,7 @@ namespace AgendaPlusXamarin.Controllers
             var client = new HttpClient(httpHandler);
             var json = JsonConvert.SerializeObject(contacto);
             var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
-            await client.DeleteAsync($"http://10.0.2.2:44304/api/contactos/{contacto.ContactoID}");
+            await client.DeleteAsync($"http://10.0.2.2:44304/api/contacto/{contacto.ContactoID}");
         }
     }
 }

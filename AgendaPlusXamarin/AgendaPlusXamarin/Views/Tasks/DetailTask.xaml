@@ -114,13 +114,8 @@
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource btnStyle}"
                                   x:Name="deleteBtn"
-                                Clicked="deleteBtn_Clicked">
-                                <Button.Background>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="#608AC9" Offset="0.55"/>
-                                        <GradientStop Color="#0CABB8" Offset="0.75"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
+                                Clicked="deleteBtn_Clicked"
+                                BackgroundColor="#7FB6FF">
                             </Button>
                         </StackLayout>
                         <StackLayout Grid.Column="1" 
@@ -134,13 +129,8 @@
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource btnStyle}"
                                     x:Name="editBtn"
-                                Clicked="editBtn_Clicked">
-                                <Button.Background>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="#608AC9" Offset="0.55"/>
-                                        <GradientStop Color="#0CABB8" Offset="0.75"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
+                                Clicked="editBtn_Clicked"
+                                BackgroundColor="#7FB6FF">
                             </Button>
                         </StackLayout>
                         <StackLayout Grid.Column="2" 
@@ -154,13 +144,8 @@
                                     HorizontalOptions="Fill"
                                     Style="{StaticResource btnStyle}"
                                 x:Name="doneBtn"
-                                Clicked="doneBtn_Clicked">
-                                <Button.Background>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="#608AC9" Offset="0.55"/>
-                                        <GradientStop Color="#0CABB8" Offset="0.75"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
+                                Clicked="doneBtn_Clicked"
+                                BackgroundColor="#7FB6FF">
                             </Button>
                         </StackLayout>
                     </Grid>

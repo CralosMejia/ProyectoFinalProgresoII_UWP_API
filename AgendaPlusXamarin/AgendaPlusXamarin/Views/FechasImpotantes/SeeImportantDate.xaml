@@ -5,8 +5,8 @@
     <ContentPage.Content>
         <StackLayout Spacing="30" Background="#F0F3FA" Padding="10">
             <Button Text="X" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="End" 
-                    Clicked="closedButton" BackgroundColor="Transparent" CornerRadius="50" BorderColor="Black" 
-                    BorderWidth="1" FontSize="20" Margin="20"/>
+                                    Clicked="closedButton" BackgroundColor="Transparent" CornerRadius="15" BorderColor="Black" 
+                                    BorderWidth="1.5" FontSize="10.00" x:Name="dispose" Margin="15" FontAttributes="Bold"/>
             <Entry x:Name="dateTitle" Placeholder="Title" TextColor="#4C4747" BackgroundColor="Transparent" 
                    PlaceholderColor="#A99F9F" HorizontalTextAlignment="Start"
                    IsEnabled="False"/>
@@ -34,24 +34,12 @@
 
                     <Button CornerRadius="50" Grid.Column="0" VerticalOptions="Center" 
                                 HorizontalOptions="Center" Margin="10" WidthRequest="60" HeightRequest="60" 
-                                ImageSource="eliminar" Clicked="deleteDate">
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
+                                ImageSource="eliminar" Clicked="deleteDate" BackgroundColor="#7FB6FF">
                     </Button>
 
                     <Button CornerRadius="50" Grid.Column="1" VerticalOptions="Center" 
                                 HorizontalOptions="Center" Margin="10" WidthRequest="60" HeightRequest="60" 
-                                ImageSource="editarBlanco" Clicked="editImportantDate">
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
+                                ImageSource="editarBlanco" Clicked="editImportantDate" BackgroundColor="#7FB6FF">
                     </Button>
 
                 </Grid>

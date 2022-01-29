@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AgendaPlusXamarin.Views.Login;
 
 namespace AgendaPlusXamarin
 {
@@ -10,7 +11,7 @@ namespace AgendaPlusXamarin
         {
             InitializeComponent();
 
-            MainPage = new Menu();
+            MainPage = new Logins();
         }
 
         protected override void OnStart()

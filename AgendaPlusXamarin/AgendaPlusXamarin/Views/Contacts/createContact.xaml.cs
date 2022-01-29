@@ -22,6 +22,10 @@ namespace AgendaPlusXamarin.Views.Contacts
             InitializeComponent();
         }
 
+        private async void closedButton(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
 
         private async void btn_crear_Clicked(object sender, EventArgs e)
         {

@@ -3,47 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AgendaPlusXamarin.Views.CreateAccount.CreateAccounts">
     <ContentPage.Content>
-        <StackLayout BackgroundColor = "#7FB6FF" ScaleY="1" ScaleX="1" Padding="0" Margin="0" HorizontalOptions="Fill" >
-            <Image Source="agendaBlack.png" Margin="10">
+        <StackLayout BackgroundColor = "#7FB6FF"  Padding="12" Spacing="10">
+            <Image Source="agendaBlack.png" Margin="0, 20, 0 ,20 " >
             </Image>
-
-            <Grid Margin="0,76,0,0">
-                <Rectangle BackgroundColor="White" ScaleX="20" ScaleY="330" AnchorX="0.5" RotationX="45" Scale="1" Margin="23,0,53,0" StrokeLineCap="Flat" Opacity="1" MinimumHeightRequest="-1" RotationY="0" Rotation="0" Aspect="Fill" />
-            </Grid>
-
-            <Label Text="Create Account" HorizontalOptions="Center" Margin="0,-67,0,0" ScaleX="2" ScaleY="2" TextColor="#000000" FontSize="Body"></Label>
-            <Grid Margin="0,166,0,0">
-                <Rectangle BackgroundColor="#F2F2F2" Scale="1" Margin="1,91,0,1" RadiusX="8" RadiusY="8" Aspect="Fill" ScaleY="460" ></Rectangle>
-
-
-            </Grid>
-            <Grid Margin="0,-232,0,0">
-                <Label Text="Username" Padding="0" Margin="32,-18,0,0" Scale="1" TranslationX="3" ScaleX="1" ScaleY="1" FontSize="Large"/>
-                <Entry x:Name="txtUsername"  Margin="0,0,0,173"></Entry>
-            </Grid>
-
-            <Grid Margin="0,-165,0,0" Scale="1" InputTransparent="False" IsClippedToBounds="False">
-                <Label Text="Email" Padding="0" Margin="35,0,0,0" Scale="1" TranslationX="3" ScaleX="1" ScaleY="1" FontSize="Large"/>
-            </Grid>
-            <Entry x:Name="txtEmail" Margin="0,-13,0,-12"></Entry>
-            <Grid Margin="35,13,0,0">
-                <Label Text="Password" FontSize="Large" Margin="0" ></Label>
-            </Grid>
-            <Entry IsPassword="True" x:Name="txtPassword" Margin="0,-13,0,45"></Entry>
-            <Grid Margin="35,-30,0,0">
-                <Label Text="Confirm Password" FontSize="Large" Margin="0,-13,0,45"></Label>
-            </Grid>
-            <Entry IsPassword="True" x:Name="txtConfirmPassword" Margin="0,-61,0,11"></Entry>
-            <Grid>
-                <Button BackgroundColor="#7FB6FF" Text="Register Now" TextColor="White"  Margin="80,19,80,0" Padding="0" Scale="1" FontSize="Large" CornerRadius="40" Clicked="Register" ></Button>
-            </Grid>
-            <Grid>
-                <Label Text="Already have an account?" TextColor="#000000" HorizontalOptions="Start" FontSize="Body" FontAttributes="Bold" Margin="42,60,-42,0" ></Label>
-                <Button BackgroundColor="#F2F2F2" Text="Login" TextColor="#7FB6FF" FontAttributes="Bold" Margin="235,48,56,27" Clicked="Button_Clicked" ></Button>
-            </Grid>
-            <Label Text=" © 2021 Carlos Mejia - Victor Ponce - Caleb Naranjo" TextColor="White" FontSize="Default" FontAttributes="Bold" Margin="0,-8,0,0" HorizontalTextAlignment="Center"></Label>
-
-
+            <Frame CornerRadius="20" Padding="0">
+                <StackLayout  Background="#fff" Margin="0">
+                    <Label Text="Create Account" HorizontalOptions="Center"  FontSize="20" Margin="0, 15,0 ,15"></Label>
+                    <Frame BackgroundColor="#F0F3FA" Margin="0">
+                        <StackLayout>
+                            <Label Text="Username"  FontSize="Large"/>
+                            <Entry x:Name="txtUsername"></Entry>
+                            <Label Text="Email"  FontSize="Large"/>
+                            <Entry x:Name="txtEmail"></Entry>
+                            <Label Text="Password" FontSize="Large" ></Label>
+                            <Entry IsPassword="True" x:Name="txtPassword" ></Entry>
+                            <Label Text="Confirm Password" FontSize="Large"></Label>
+                            <Entry IsPassword="True" x:Name="txtConfirmPassword" ></Entry>
+                            <Button BackgroundColor="#7FB6FF" Text="Register Now" TextColor="White"  FontSize="Large" CornerRadius="40" Clicked="Register" ></Button>
+                            <Label Text="Already have an account?" TextColor="#000000" HorizontalOptions="Start" FontSize="Body" FontAttributes="Bold" Margin="26,12,-42,0" ></Label>
+                            <Button BackgroundColor="#F2F2F2" Text="Login" TextColor="#7FB6FF" FontAttributes="Bold" Clicked="Button_Clicked"  Margin="230,-40,38,0"></Button>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Label Text=" © 2021 Carlos Mejia - Victor Ponce - Caleb Naranjo" TextColor="White" FontSize="Default" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

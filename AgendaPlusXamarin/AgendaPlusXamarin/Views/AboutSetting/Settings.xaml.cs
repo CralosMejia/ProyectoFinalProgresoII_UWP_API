@@ -44,9 +44,9 @@ namespace AgendaPlusXamarin.Views.AboutSetting
                         user.Contrasena = textPassword.Text;
                         user.ConfirmarContrasena = textConfirmPassword.Text;
                         user.FechasImportantes = null;
-                        //user.Contactos = null;
+                        user.Contactos = null;
                         user.Notas = null;
-                        //user.Pendientes = null;
+                        user.Pendientes = null;
 
                         UsuarioController.putTask(user);
                         await DisplayAlert("Alert", "password changed successfully", "OK");
@@ -126,9 +126,9 @@ namespace AgendaPlusXamarin.Views.AboutSetting
             await DisplayAlert("Alert", "Successfully changed avatar", "OK");
 
             user.FechasImportantes = null;
-            //user.Contactos = null;
+            user.Contactos = null;
             user.Notas = null;
-            //user.Pendientes = null;
+            user.Pendientes = null;
             user.Avatar = avatar;
 
             UsuarioController.putTask(user);

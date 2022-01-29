@@ -1,40 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AgendaPlusXamarin.Views.Contacts.mainContact">
+             x:Class="AgendaPlusXamarin.Views.Contacts.mainContact"
+             BackgroundColor="#7FB6FF">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#7FB6FF" Margin="0">
-            <Label Text="Contacts" FontSize="45" HorizontalOptions="Center" TextColor="Black"></Label>
-            <Grid>
-                <Rectangle BackgroundColor="White" WidthRequest="20" HeightRequest="150"></Rectangle>
-            </Grid>
-            <Grid Margin="0,-130,-90,0">
-                <SearchBar x:Name="SearchContact" Grid.Column="0" 
-                                   HorizontalOptions="FillAndExpand" 
-                                   Placeholder="Enter the Contact Name" 
-                                   PlaceholderColor="Black" 
-                                   FontSize="22.00"
-                                   HeightRequest="50"
-                                   CancelButtonColor="Blue" Margin="0,10,0,0"  TextChanged="searchContactEvent"/>
-            </Grid>
-            <Grid>
-                <Rectangle BackgroundColor="#F2F2F2" WidthRequest="20" HeightRequest="507" ></Rectangle>
-                <ScrollView Grid.Row="0">
-                    <ListView x:Name="ListContacts" BackgroundColor="#fff">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextCell Text="{x:Binding NombreContacto}" Detail="{Binding TelefonoContacto}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollView>
-                <Grid Margin="0,100,0,0">
-                    <Button ImageSource="mas.png" BackgroundColor="#7FB6FF" Margin="259,420,49,5" CornerRadius="40" Clicked="newContact" ></Button>
-                    <Button ImageSource="ver" BackgroundColor="#7FB6FF" CornerRadius="40" Margin="49,420,260,5" Clicked="seeContact" ></Button>
+        <StackLayout Spacing="0">
+            <Label  Text="Contacts" FontSize="40" TextColor="#4C4747" Padding="20" HorizontalTextAlignment="Center"/>
+            <Frame HasShadow="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <SearchBar x:Name="SearchContact"  Grid.Row="0" Margin="10" Background="#F0F3FA" TextColor="#000" 
+                                Placeholder="Search" HorizontalTextAlignment="Center" PlaceholderColor="#4C4747" TextChanged="searchContactEvent"/>
+                    <Grid Grid.Row="1" BackgroundColor="#fff">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <ScrollView Grid.Row="0">
+                            <ListView x:Name="ListContacts" BackgroundColor="#fff">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{x:Binding NombreContacto}" Detail="{Binding TelefonoContacto}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
+
+
+                        <Frame BackgroundColor="Transparent" Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" CornerRadius="50"  VerticalOptions="Center" 
+                                HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
+                                ImageSource="ver" Clicked="seeContact" BackgroundColor="#7FB6FF">
+                                </Button>
+
+                                <Button CornerRadius="50" Grid.Column="1" VerticalOptions="Center" 
+                                HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
+                                ImageSource="mas" Clicked="newContact" 
+                                        BackgroundColor="#7FB6FF">
+                                </Button>
+
+                            </Grid>
+                        </Frame>
+
+                    </Grid>
+
                 </Grid>
-
-            </Grid>
-
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

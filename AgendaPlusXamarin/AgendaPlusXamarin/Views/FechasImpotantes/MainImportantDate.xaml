@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AgendaPlusXamarin.Views.FechasImpotantes.MainImportantDate">
-    <ContentPage.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-        </LinearGradientBrush>
-    </ContentPage.Background>
+             x:Class="AgendaPlusXamarin.Views.FechasImpotantes.MainImportantDate"
+             BackgroundColor="#7FB6FF">
 
     <ContentPage.Content>
         <StackLayout Spacing="0">
@@ -49,24 +44,12 @@
 
                                 <Button Grid.Column="0" CornerRadius="50"  VerticalOptions="Center" 
                                 HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
-                                ImageSource="ver" Clicked="seeImportantDate" >
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
+                                ImageSource="ver" Clicked="seeImportantDate" BackgroundColor="#7FB6FF">
                                 </Button>
 
                                 <Button CornerRadius="50" Grid.Column="1" VerticalOptions="Center" 
                                 HorizontalOptions="Center" Margin="10" WidthRequest="50" HeightRequest="55" 
-                                ImageSource="mas" Clicked="createImportantDate">
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
+                                ImageSource="mas" Clicked="createImportantDate" BackgroundColor="#7FB6FF">
                                 </Button>
 
                             </Grid>

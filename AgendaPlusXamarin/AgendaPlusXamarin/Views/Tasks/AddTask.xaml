@@ -177,24 +177,8 @@
                                          FontSize="25" 
                                          CornerRadius="20"
                                          x:Name="btn_AddTask"
-                                         Clicked="btn_AddTask_Clicked">
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
-                                    <Button.Resources>
-                                        <ResourceDictionary>
-                                            <ResourceDictionary x:Key="Dark">
-                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black"/>
-                                                <LinearGradientBrush  x:Key="ButtonBackgroundPointerOver" EndPoint="0.5,1" StartPoint="0.5,0">
-                                                    <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                                    <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </ResourceDictionary>
-                                        </ResourceDictionary>
-                                    </Button.Resources>
+                                         Clicked="btn_AddTask_Clicked"
+                                         Background="#7FB6FF">
                                 </Button>
 
                             </StackLayout>

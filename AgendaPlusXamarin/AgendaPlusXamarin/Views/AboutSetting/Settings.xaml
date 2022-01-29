@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AgendaPlusXamarin.Views.AboutSetting.Settings">
-    <ContentPage.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-            <GradientStop Color="#FF3EB3C5" Offset="1"/>
-        </LinearGradientBrush>
-    </ContentPage.Background>
+             x:Class="AgendaPlusXamarin.Views.AboutSetting.Settings"
+             BackgroundColor="#7FB6FF">
 
     <ContentPage.Content>
         <StackLayout Spacing="0">
@@ -20,13 +15,8 @@
                             <Entry  x:Name="textPassword" Placeholder="Password" Background="#fff" PlaceholderColor="#7B7171" IsPassword="True"/>
                             <Entry x:Name="textConfirmPassword" Placeholder="Confirm password" Background="#fff" PlaceholderColor="#7B7171" IsPassword="True"/>
                             <Button Text="Change" CornerRadius="18" FontSize="18" TextTransform="None"
-                                    Clicked="changePassword">
-                                <Button.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
+                                    Clicked="changePassword"
+                                    BackgroundColor="#7FB6FF">
                             </Button>
                         </StackLayout>
                     </Frame>
@@ -62,13 +52,8 @@
                                 </StackLayout>
                             </FlexLayout>
 
-                            <Button Text="Change" CornerRadius="18" FontSize="18" TextTransform="None" Clicked="cambiarAvatar">
-                                <Button.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FF63A2AC" Offset="0.026"/>
-                                        <GradientStop Color="#FF3EB3C5" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Button.Background>
+                            <Button Text="Change" CornerRadius="18" FontSize="18" TextTransform="None" Clicked="cambiarAvatar"
+                                    BackgroundColor="#7FB6FF">
                             </Button>
                         </StackLayout>
                     </Frame>
